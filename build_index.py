@@ -40,11 +40,16 @@ def check_nodes(where, nodes, lo, hi):
         assert n.get("kind", "proc") in KINDS, (where, n.get("kind"))
 
 
-def check_diagram(f, it):
+TOP3_DIAGRAM_FROM = "2026-10-15"  # 이 날짜 발간분부터 diagram은 1~3위에만 허용 (기존 작성분은 유지)
+
+
+def check_diagram(f, it, date):
     g = it.get("diagram")
     if g is None:
         return
     where = (f, it["id"], "diagram")
+    if date >= TOP3_DIAGRAM_FROM:
+        assert it["rank"] <= 3, (where, "diagram은 Top 3(1~3위)에만 작성합니다")
     assert g.get("type") in ("flow", "compare", "hub", "layers") and g.get("title"), where
     if g["type"] == "flow":
         check_nodes(where, g.get("nodes") or [], 3, 6)
@@ -70,7 +75,7 @@ for f in files:
             assert it.get(k), (f, it.get("id"), k)
         assert it["category"] in CATS, (f, it["id"], it["category"])
         check_visual(f, it)
-        check_diagram(f, it)
+        check_diagram(f, it, d["date"])
     items = sorted(d["items"], key=lambda x: x["rank"])
     dates.append({
         "date": d["date"],
