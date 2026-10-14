@@ -83,14 +83,8 @@ def build(date):
     <span style="display:inline-block;font-size:11px;letter-spacing:.5px;color:{EASY};background:{PAPER};border-radius:999px;padding:1px 9px">EASY 설명</span>
     <div style="font-size:15.5px;line-height:1.8;color:{INK};margin-top:6px">{e(it["easy"])}</div>
   </div>
-  <div style="margin-top:14px;font-size:13px">
-    <a href="{link(date, "easy", it["id"])}" style="color:{EASY};text-decoration:none;font-weight:700">웹에서 보기 →</a>
-    <span style="color:{RULE}">&nbsp;|&nbsp;</span>
-    <a href="{link(date, "normal", it["id"])}" style="color:{NORMAL};text-decoration:none">Normal</a>
-    <span style="color:{RULE}">&nbsp;·&nbsp;</span>
-    <a href="{link(date, "original", it["id"])}" style="color:{ORIG};text-decoration:none">Original</a>
-    <span style="color:{RULE}">&nbsp;·&nbsp;</span>
-    <a href="{e(it["url"])}" style="color:{INK3};text-decoration:none">GeekNews</a>
+  <div style="margin-top:12px;font-size:13px">
+    <a href="{e(it["url"])}" style="color:{INK3};text-decoration:none">GeekNews 원문 보기 ↗</a>
   </div>
 </td></tr></table>
 </td></tr>'''
@@ -101,7 +95,7 @@ def build(date):
 <tr><td style="padding:12px 0;border-top:1px dashed #e0d8ec">
   <table role="presentation" cellpadding="0" cellspacing="0" width="100%"><tr>{rank_badge(it["rank"], False)}
   <td valign="top">{cat_chip(it["category"])}
-    <div style="margin-top:4px"><a href="{link(date, "easy", it["id"])}" style="font-size:15.5px;font-weight:800;line-height:1.5;color:{INK};text-decoration:none">{e(it["title"])}</a></div>
+    <div style="margin-top:4px;font-size:15.5px;font-weight:800;line-height:1.5;color:{INK}">{e(it["title"])}</div>
     <div style="font-size:13.5px;line-height:1.6;color:{INK2};margin-top:2px">{e(it["why"])}</div></td></tr></table>
 </td></tr>'''
 
@@ -127,8 +121,7 @@ def build(date):
   <div style="font-size:12px;color:{INK3};font-family:ui-monospace,monospace">수집 구간: {e(d.get("window", ""))}</div>
   <div style="font-size:20px;font-weight:900;line-height:1.45;color:{INK};margin:6px 0 14px">{e(d.get("headline", ""))}</div>
   <a href="{link(date)}" style="display:inline-block;background:{ACCENT};color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:11px 22px;border-radius:999px">웹에서 오늘의 뉴스 보기 →</a>
-  <div style="margin-top:12px;font-size:12px;color:{INK3}">난이도를 골라 바로 열기</div>
-  <div style="margin-top:6px;margin-left:-3px">{level_btns}</div>
+  <div style="margin-top:10px;font-size:12px;color:{INK3}">웹에서 Easy · Normal · Original 난이도를 바꿔 가며 볼 수 있습니다.</div>
 </td></tr></table>
 </td></tr>
 
@@ -143,8 +136,8 @@ def build(date):
 </td></tr>
 
 <tr><td style="font-size:12px;line-height:1.7;color:{INK3};padding:4px 6px 20px">
-  이 메일은 웹과 같은 데이터에서 자동으로 만들어져, 웹 화면과 내용이 같습니다. 항목 제목이나 '웹에서 보기'를 누르면 웹의 해당 카드로 바로 이동합니다.<br>
-  매일 새벽 4시경 새 뉴스가 발간됩니다. 출처: <a href="https://news.hada.io/" style="color:{INK3}">GeekNews</a> · <a href="{SITE}" style="color:{INK3}">{SITE}</a>
+  이 메일은 웹과 같은 데이터에서 자동으로 만들어져, 웹 화면과 내용이 같습니다.<br>
+  매일 새벽 4시경 새 뉴스가 발간됩니다. 출처: GeekNews
 </td></tr>
 </table></td></tr></table></body></html>'''
 
@@ -152,10 +145,10 @@ def build(date):
              f"웹에서 보기: {link(date)}", "", "■ 오늘의 Top 3"]
     for it in top:
         lines += [f"{it['rank']}. {it['title']} [{it['category']}]", f"  왜 중요? {it['why']}",
-                  f"  {it['easy']}", f"  → {link(date, 'easy', it['id'])}", ""]
+                  f"  {it['easy']}", ""]
     lines.append("■ 함께 볼 뉴스")
     for it in rest:
-        lines.append(f"{it['rank']}. {it['title']} → {link(date, 'easy', it['id'])}")
+        lines.append(f"{it['rank']}. {it['title']}")
     lines += ["", "매일 새벽 4시경 새 뉴스가 발간됩니다. 출처: GeekNews"]
 
     short = re.split(r"[,，]", d.get("headline", ""))[0].strip()
