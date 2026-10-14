@@ -55,6 +55,53 @@
         ],
         "note": "Anthropic 내부 측정 중앙값 · 약 84배 단축",
         "highlight": 1
+      },
+      "diagram": {
+        "type": "compare",
+        "title": "Git에서 Scion으로: 무엇이 바뀌었나",
+        "before": {
+          "title": "기존 Git",
+          "nodes": [
+            {
+              "label": "모든 작업 공간이 저장소를 통째로 복제",
+              "kind": "input",
+              "sub": "약 100GB 이력",
+              "detail": "CI에서만 하루 약 2,500만 번 체크아웃"
+            },
+            {
+              "label": "병합이 폭증할수록 복제본이 뒤처짐",
+              "kind": "risk",
+              "sub": "하루 병합 2,500 → 3만 건",
+              "detail": "미러 수백 개로도 따라잡기 어려움"
+            },
+            {
+              "label": "작업 공간 하나 만드는 데 7.1분",
+              "kind": "risk"
+            }
+          ]
+        },
+        "after": {
+          "title": "Scion",
+          "nodes": [
+            {
+              "label": "서버가 병합·이력 계산을 대신 처리",
+              "kind": "proc",
+              "sub": "클라이언트는 화면·캐시만",
+              "detail": "커밋 비용이 저장소 전체가 아니라 변경 크기에 비례"
+            },
+            {
+              "label": "3단계 캐시에서 필요한 파일만 받기",
+              "kind": "proc",
+              "sub": "노드 → 지역 캐시 → 원본",
+              "detail": "계층별 적중률 99% 이상, CPU·메모리 1/200"
+            },
+            {
+              "label": "작업 공간 생성 5.1초",
+              "kind": "result"
+            }
+          ]
+        },
+        "caption": "AI가 코드를 쓰는 속도에 맞춰 '전부 복사' 대신 '서버가 일하고 필요한 것만 받는' 구조로 바꿨습니다."
       }
     },
     {
@@ -105,6 +152,37 @@
           }
         ],
         "note": "Google 발표 기준"
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "Gemini 4 Argon이 긴 답을 만드는 방식",
+        "nodes": [
+          {
+            "label": "긴 입력",
+            "kind": "input",
+            "sub": "텍스트·이미지·영상·PDF",
+            "detail": "입력·추론·출력이 약 104만 토큰 한도를 함께 씀"
+          },
+          {
+            "label": "오래 생각하기",
+            "kind": "proc",
+            "sub": "내부 추론 토큰",
+            "detail": "추론 토큰도 출력 요금에 포함"
+          },
+          {
+            "label": "64K씩 이어 쓰기",
+            "kind": "proc",
+            "sub": "long decode",
+            "detail": "백그라운드 실행 시 서버가 64K 단위로 생성을 이어 감"
+          },
+          {
+            "label": "대형 결과물",
+            "kind": "result",
+            "sub": "리팩터링·연구·3D",
+            "detail": "Chromium 600만 줄 영역 분리 사례"
+          }
+        ],
+        "caption": "입력이 길수록 생각하고 쓸 공간이 줄어드는 '공유 한도'가 핵심 제약입니다."
       }
     },
     {
@@ -146,6 +224,41 @@
           }
         ],
         "note": ""
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "인기 AI 앱이 파산보호까지 간 흐름",
+        "nodes": [
+          {
+            "label": "긴 대화·역할극",
+            "kind": "input",
+            "sub": "사용 시간이 김",
+            "detail": "대화가 길수록 모델 운영 비용(토큰)이 커짐"
+          },
+          {
+            "label": "돈 내는 사용자는 적음",
+            "kind": "risk",
+            "sub": "무료 사용 중심",
+            "detail": "구독·광고 전환이 낮은 구조"
+          },
+          {
+            "label": "비용 > 수입",
+            "kind": "risk"
+          },
+          {
+            "label": "Chapter 11 신청",
+            "kind": "proc",
+            "sub": "법원 감독하 정리",
+            "detail": "재건형 파산보호"
+          },
+          {
+            "label": "자산 매각·IP 계약",
+            "kind": "result",
+            "sub": "Disney 계열 $2,000만",
+            "detail": "일부 IP 비독점 영구 이용권"
+          }
+        ],
+        "caption": ""
       }
     },
     {
@@ -194,6 +307,45 @@
         ],
         "note": "대신 대역폭은 1.5TB/s로 Gaudi 3(3.7TB/s)의 절반 이하",
         "highlight": 1
+      },
+      "diagram": {
+        "type": "compare",
+        "title": "작지만 빠른 창고 vs 크지만 느린 창고",
+        "before": {
+          "title": "HBM GPU (예: Gaudi 3)",
+          "nodes": [
+            {
+              "label": "초고속 메모리 128GB",
+              "kind": "proc",
+              "sub": "대역폭 3.7TB/s"
+            },
+            {
+              "label": "긴 대화가 몰리면 KV 캐시가 넘침",
+              "kind": "risk",
+              "sub": "모델·맥락을 다 못 담음"
+            }
+          ]
+        },
+        "after": {
+          "title": "Intel D270",
+          "nodes": [
+            {
+              "label": "저가 메모리 최대 480GB",
+              "kind": "proc",
+              "sub": "대역폭 1.5TB/s"
+            },
+            {
+              "label": "큰 모델과 긴 맥락을 통째로 보관",
+              "kind": "result",
+              "sub": "카드당 약 3,000억 파라미터 모델"
+            },
+            {
+              "label": "350W 공랭 · 기존 서버 랙에 장착",
+              "kind": "actor"
+            }
+          ]
+        },
+        "caption": "AI가 답을 만드는 단계(추론)는 계산보다 '기억 공간'이 먼저 부족해지는 경우가 많습니다."
       }
     },
     {
@@ -239,6 +391,46 @@
           }
         ],
         "note": "소규모 화학 예측 과제 기반 개념 증명"
+      },
+      "diagram": {
+        "type": "compare",
+        "title": "평가할 때와 비밀 신호가 들어올 때",
+        "before": {
+          "title": "평가·테스트 중",
+          "nodes": [
+            {
+              "label": "모델 가중치 안에 암호화된 신경망이 숨어 있음",
+              "kind": "input"
+            },
+            {
+              "label": "트리거가 없으면 잠긴 상태",
+              "kind": "proc",
+              "sub": "디지털 로커"
+            },
+            {
+              "label": "평범하게 행동 → '안전함' 판정",
+              "kind": "result"
+            }
+          ]
+        },
+        "after": {
+          "title": "비밀 트리거 입력 시",
+          "nodes": [
+            {
+              "label": "트리거 문구가 열쇠 역할",
+              "kind": "input"
+            },
+            {
+              "label": "숨긴 신경망 복호화·실행",
+              "kind": "risk"
+            },
+            {
+              "label": "평가에서 안 보이던 능력이 나타남",
+              "kind": "risk"
+            }
+          ]
+        },
+        "caption": "가중치를 다 들여다봐도 열쇠 없이는 찾을 수 없다는 것이 이 연구의 주장입니다."
       }
     },
     {
@@ -287,6 +479,47 @@
         ],
         "note": "노트북 1대(i7-8565U) 측정 · 읽기 1회당 CPU 사이클 약 2,900 → 725",
         "highlight": 1
+      },
+      "diagram": {
+        "type": "compare",
+        "title": "여러 스레드가 같은 파일을 읽을 때",
+        "before": {
+          "title": "기존 커널",
+          "nodes": [
+            {
+              "label": "읽을 때마다 '사용 중' 카운터 +1, −1",
+              "kind": "input"
+            },
+            {
+              "label": "모든 스레드가 같은 카운터를 고치려 줄을 섬",
+              "kind": "risk",
+              "sub": "캐시라인 경합"
+            },
+            {
+              "label": "8스레드: 초당 약 1,000만 회",
+              "kind": "result"
+            }
+          ]
+        },
+        "after": {
+          "title": "패치 적용",
+          "nodes": [
+            {
+              "label": "카운터를 건드리지 않고 바로 읽기",
+              "kind": "proc"
+            },
+            {
+              "label": "지운 메모리는 잠시 뒤에 재사용",
+              "kind": "proc",
+              "sub": "RCU 유예 기간으로 안전 보장"
+            },
+            {
+              "label": "8스레드: 초당 약 3,150만 회",
+              "kind": "result"
+            }
+          ]
+        },
+        "caption": "토발즈가 방향과 측정을 맡고, 코드·테스트·설명 초안은 Claude Code가 작성했습니다."
       }
     },
     {
@@ -315,7 +548,50 @@
         }
       ],
       "url": "https://news.hada.io/topic?id=35312",
-      "originalUrl": "https://news.hada.io/topic?id=35312"
+      "originalUrl": "https://news.hada.io/topic?id=35312",
+      "diagram": {
+        "type": "hub",
+        "title": "Minions: 놀고 있는 Mac을 하나의 AI 작업장으로",
+        "center": {
+          "label": "Minions 스케줄러",
+          "kind": "proc",
+          "sub": "작업을 쪼개 나눠 줌",
+          "detail": "유휴 판정·재시도·결과 수집"
+        },
+        "left": [
+          {
+            "label": "임베딩 생성",
+            "kind": "input",
+            "sub": "Hugging Face 모델"
+          },
+          {
+            "label": "LLM 추론",
+            "kind": "input",
+            "sub": "Ollama"
+          },
+          {
+            "label": "대량 배치 작업",
+            "kind": "input"
+          }
+        ],
+        "right": [
+          {
+            "label": "Mac 1 (유휴 GPU)",
+            "kind": "actor"
+          },
+          {
+            "label": "Mac 2 (유휴 GPU)",
+            "kind": "actor"
+          },
+          {
+            "label": "Mac N …",
+            "kind": "actor"
+          }
+        ],
+        "leftLabel": "할 일",
+        "rightLabel": "놀고 있는 Mac들",
+        "caption": "새 GPU를 사는 대신 사내 Mac의 남는 Apple Silicon GPU를 빌려 씁니다."
+      }
     }
   ]
 }

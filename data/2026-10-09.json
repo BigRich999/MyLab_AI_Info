@@ -27,7 +27,42 @@
         }
       ],
       "url": "https://news.hada.io/topic?id=34960",
-      "originalUrl": "https://openai.com/index/gpt-6-for-everyone/"
+      "originalUrl": "https://openai.com/index/gpt-6-for-everyone/",
+      "diagram": {
+        "type": "compare",
+        "title": "ChatGPT 답변이 달라지는 모습",
+        "before": {
+          "title": "기존 답변",
+          "nodes": [
+            {
+              "label": "질문",
+              "kind": "input"
+            },
+            {
+              "label": "글로 된 설명",
+              "kind": "proc"
+            }
+          ]
+        },
+        "after": {
+          "title": "Intelligent UI",
+          "nodes": [
+            {
+              "label": "질문",
+              "kind": "input"
+            },
+            {
+              "label": "글 + 표·차트·지도",
+              "kind": "proc"
+            },
+            {
+              "label": "버튼·입력칸·계산기를 직접 조작",
+              "kind": "result"
+            }
+          ]
+        },
+        "caption": "필요할 때만 화면 요소를 넣고, 아니면 평소처럼 글로 답합니다."
+      }
     },
     {
       "rank": 2,
@@ -78,6 +113,38 @@
           }
         ],
         "note": ""
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "AI가 수학 난제를 푼 뒤 생기는 일",
+        "nodes": [
+          {
+            "label": "AI 단일 실행",
+            "kind": "proc",
+            "sub": "문제당 약 3시간 · 8,000문제"
+          },
+          {
+            "label": "증명 생성",
+            "kind": "result",
+            "sub": "372건 공개"
+          },
+          {
+            "label": "Lean 형식 검증",
+            "kind": "proc",
+            "sub": "일부만"
+          },
+          {
+            "label": "사람이 해독·이해",
+            "kind": "actor",
+            "sub": "새 병목"
+          },
+          {
+            "label": "오류 발견 시 철회",
+            "kind": "risk",
+            "sub": "같은 주 3건"
+          }
+        ],
+        "caption": ""
       }
     },
     {
@@ -132,6 +199,40 @@
         ],
         "note": "Anthropic 자체 평가 · 오프라인 부분집합",
         "highlight": 2
+      },
+      "diagram": {
+        "type": "hub",
+        "title": "Haiku 5.5의 자리: 빠른 하위 에이전트",
+        "center": {
+          "label": "Haiku 5.5",
+          "kind": "proc",
+          "sub": "빠르고 싼 소형 모델",
+          "detail": "10만 토큰 이하 입력 $0.10/1M"
+        },
+        "left": [
+          {
+            "label": "큰 모델 (Opus·Sonnet)",
+            "kind": "actor",
+            "sub": "계획·어려운 판단"
+          }
+        ],
+        "right": [
+          {
+            "label": "요약·문맥 압축",
+            "kind": "result"
+          },
+          {
+            "label": "분류·데이터 질의",
+            "kind": "result"
+          },
+          {
+            "label": "컴퓨터 조작 보조",
+            "kind": "result"
+          }
+        ],
+        "leftLabel": "일을 맡기는 쪽",
+        "rightLabel": "대량 반복 작업",
+        "caption": ""
       }
     },
     {
@@ -208,7 +309,48 @@
         }
       ],
       "url": "https://news.hada.io/topic?id=34952",
-      "originalUrl": "https://lucumr.pocoo.org/2026/10/6/codemode/"
+      "originalUrl": "https://lucumr.pocoo.org/2026/10/6/codemode/",
+      "diagram": {
+        "type": "compare",
+        "title": "도구를 부르는 두 가지 방식",
+        "before": {
+          "title": "기존: 하나씩 호출",
+          "nodes": [
+            {
+              "label": "도구 1회 호출",
+              "kind": "input"
+            },
+            {
+              "label": "큰 결과가 통째로 컨텍스트에",
+              "kind": "risk"
+            },
+            {
+              "label": "다시 호출 … 반복",
+              "kind": "risk"
+            }
+          ]
+        },
+        "after": {
+          "title": "Codemode",
+          "nodes": [
+            {
+              "label": "AI가 짧은 코드 작성",
+              "kind": "input",
+              "sub": "반복·병렬·필터 포함"
+            },
+            {
+              "label": "샌드박스에서 한 번에 실행",
+              "kind": "proc",
+              "sub": "QuickJS · 동시 4개"
+            },
+            {
+              "label": "요약 결과만 AI에게",
+              "kind": "result"
+            }
+          ]
+        },
+        "caption": "토큰과 왕복 횟수를 줄이는 것이 핵심입니다."
+      }
     },
     {
       "rank": 6,
@@ -232,7 +374,33 @@
         }
       ],
       "url": "https://news.hada.io/topic?id=34977",
-      "originalUrl": "https://arxiv.org/pdf/2609.24984"
+      "originalUrl": "https://arxiv.org/pdf/2609.24984",
+      "diagram": {
+        "type": "flow",
+        "title": "사진 한 장으로 걸어 다니는 세계 만들기",
+        "nodes": [
+          {
+            "label": "이미지 한 장 또는 글",
+            "kind": "input"
+          },
+          {
+            "label": "카메라 이동 입력",
+            "kind": "actor",
+            "sub": "앞으로·왼쪽으로 돌기"
+          },
+          {
+            "label": "33프레임씩 영상 생성",
+            "kind": "proc"
+          },
+          {
+            "label": "3D 인식 기억에 장면 저장",
+            "kind": "result",
+            "sub": "되돌아오면 꺼내 씀"
+          }
+        ],
+        "caption": "돌아와도 같은 장면이 유지되도록 기억을 다시 생성에 사용합니다.",
+        "cycle": true
+      }
     },
     {
       "rank": 7,
@@ -260,7 +428,39 @@
         }
       ],
       "url": "https://news.hada.io/topic?id=34968",
-      "originalUrl": "https://github.com/docker/docker-agent"
+      "originalUrl": "https://github.com/docker/docker-agent",
+      "diagram": {
+        "type": "layers",
+        "title": "Docker Agent 구성",
+        "layers": [
+          {
+            "label": "YAML 정의",
+            "kind": "input",
+            "sub": "모델·지침·도구"
+          },
+          {
+            "label": "에이전트 팀",
+            "kind": "actor",
+            "sub": "전문 에이전트에 위임"
+          },
+          {
+            "label": "도구·지식",
+            "kind": "proc",
+            "sub": "MCP 서버 · RAG 검색"
+          },
+          {
+            "label": "모델",
+            "kind": "proc",
+            "sub": "클라우드 또는 로컬"
+          },
+          {
+            "label": "샌드박스 VM",
+            "kind": "result",
+            "sub": "--sandbox 옵션 시"
+          }
+        ],
+        "caption": ""
+      }
     }
   ]
 }

@@ -30,6 +30,36 @@ def check_visual(f, it):
             assert x.get("value") and x.get("label"), where
 
 
+KINDS = {"input", "proc", "result", "risk", "actor"}
+
+
+def check_nodes(where, nodes, lo, hi):
+    assert lo <= len(nodes) <= hi, where
+    for n in nodes:
+        assert n.get("label"), where
+        assert n.get("kind", "proc") in KINDS, (where, n.get("kind"))
+
+
+def check_diagram(f, it):
+    g = it.get("diagram")
+    if g is None:
+        return
+    where = (f, it["id"], "diagram")
+    assert g.get("type") in ("flow", "compare", "hub", "layers") and g.get("title"), where
+    if g["type"] == "flow":
+        check_nodes(where, g.get("nodes") or [], 3, 6)
+    elif g["type"] == "compare":
+        for side in ("before", "after"):
+            assert g.get(side, {}).get("title"), where
+            check_nodes(where, g[side].get("nodes") or [], 1, 4)
+    elif g["type"] == "hub":
+        assert g.get("center", {}).get("label"), where
+        check_nodes(where, g.get("left") or [], 1, 4)
+        check_nodes(where, g.get("right") or [], 1, 4)
+    else:
+        check_nodes(where, g.get("layers") or [], 2, 6)
+
+
 files = sorted(glob.glob("data/20??-??-??.json"), reverse=True)
 dates = []
 for f in files:
@@ -40,6 +70,7 @@ for f in files:
             assert it.get(k), (f, it.get("id"), k)
         assert it["category"] in CATS, (f, it["id"], it["category"])
         check_visual(f, it)
+        check_diagram(f, it)
     items = sorted(d["items"], key=lambda x: x["rank"])
     dates.append({
         "date": d["date"],

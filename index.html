@@ -276,6 +276,62 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
 :root[data-theme="dark"]{--bar-muted:#4a445a}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bar-muted:#4a445a}}
 
+/* ===== mechanism diagrams ===== */
+.dg{margin-top:14px;border:1px solid var(--rule);border-radius:16px;padding:14px 16px 16px;background:var(--paper);container-type:inline-size}
+.dg-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.dg-h .t{font-size:13.5px;font-weight:800}
+.dg-h .ico{width:18px;height:18px;border-radius:6px;display:grid;place-items:center;background:var(--orig-soft);color:var(--orig)}
+.dg-play{margin-left:auto;border:1px solid var(--rule-2);background:var(--paper);border-radius:999px;padding:3px 12px;font-size:12px;cursor:pointer;color:var(--ink-2);display:inline-flex;gap:6px;align-items:center}
+.dg-play:hover{border-color:var(--orig);color:var(--orig)}
+.dg-cap{margin-top:12px;font-size:12.5px;color:var(--ink-2);background:var(--bg);border-radius:10px;padding:8px 12px}
+.nd{--k:var(--orig);--ks:var(--orig-soft);background:var(--ks);border:1px solid color-mix(in srgb,var(--k) 22%,transparent);border-radius:12px;padding:8px 11px;font-size:13px;line-height:1.45;position:relative;transition:opacity .25s,transform .25s,box-shadow .25s;min-width:0}
+.nd .lb{font-weight:700;color:var(--ink)}
+.nd .sb{display:block;font-size:12px;color:var(--ink-2);margin-top:2px}
+.nd .dt{display:none;font-size:11.5px;color:var(--ink-3);margin-top:3px;border-top:1px dashed color-mix(in srgb,var(--k) 30%,transparent);padding-top:3px}
+body[data-level="original"] .nd .dt{display:block}
+.nd .no{position:absolute;top:-8px;left:-8px;width:18px;height:18px;border-radius:50%;background:var(--k);color:#fff;font-size:10.5px;font-weight:800;display:grid;place-items:center}
+.k-input{--k:var(--normal);--ks:var(--normal-soft)} .k-proc{--k:var(--orig);--ks:var(--orig-soft)}
+.k-result{--k:var(--easy);--ks:var(--easy-soft)} .k-risk{--k:var(--accent);--ks:var(--accent-soft)}
+.k-actor{--k:#a8740f;--ks:#fff1d6}
+:root[data-theme="dark"] .k-actor{--k:#e2b45a;--ks:#3a3122}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .k-actor{--k:#e2b45a;--ks:#3a3122}}
+.dg.playing .nd{opacity:.35}
+.dg.playing .nd.lit{opacity:1;transform:translateY(-2px);box-shadow:0 0 0 2px var(--k)}
+.arw{flex:0 0 auto;color:var(--ink-3);display:grid;place-items:center}
+.arw svg{display:block}
+/* flow */
+.fl{display:flex;align-items:stretch;gap:6px}
+.fl .nd{flex:1 1 0}
+.fl .arw{width:16px}
+.cyc{display:flex;align-items:center;gap:6px;justify-content:center;margin-top:8px;font-size:11.5px;color:var(--ink-3)}
+.cyc::before,.cyc::after{content:"";flex:1;height:0;border-top:1.5px dashed var(--rule-2)}
+/* compare */
+.cmp{display:grid;grid-template-columns:1fr 26px 1fr;gap:8px;align-items:stretch}
+.cmp .col{border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:4px}
+.cmp .col.b{background:var(--bg)} .cmp .col.a{background:color-mix(in srgb,var(--easy-soft) 45%,var(--paper));border:1px dashed color-mix(in srgb,var(--easy) 35%,transparent)}
+.cmp .ct{font-size:12px;font-weight:800;color:var(--ink-3);margin-bottom:4px}
+.cmp .col.a .ct{color:var(--easy)}
+.cmp .dn{color:var(--ink-3);display:grid;place-items:center;height:12px}
+.cmp .mid{display:grid;place-items:center;color:var(--ink-3)}
+/* hub */
+.hub{display:grid;grid-template-columns:1fr 22px 1.15fr 22px 1fr;gap:6px;align-items:center}
+.hub .side{display:flex;flex-direction:column;gap:6px}
+.hub .sl{font-size:11.5px;font-weight:800;color:var(--ink-3);margin-bottom:2px}
+.hub .center .nd{padding:14px 12px;text-align:center;border-width:2px}
+/* layers */
+.lay{display:flex;flex-direction:column;gap:5px;align-items:center}
+.lay .nd{width:100%;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.lay .nd .sb{margin-top:0}
+.lay .nd .dt{flex-basis:100%}
+@container (max-width:560px){
+  .fl{flex-direction:column}
+  .fl .arw{width:auto;height:14px;transform:rotate(90deg)}
+  .cmp{grid-template-columns:1fr}
+  .cmp .mid{transform:rotate(90deg);height:20px}
+  .hub{grid-template-columns:1fr}
+  .hub .arw{transform:rotate(90deg);height:18px}
+}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -409,6 +465,41 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
     }
     return `<div class="viz" style="--cc2:${cc};--cs2:${cs}"><div class="viz-h"><span class="ico">${ico}</span><span class="t">${esc(v.title)}</span>${hint?`<span class="hint">${hint}</span>`:''}</div>${body}${v.note?`<div class="viz-note">${esc(v.note)}</div>`:''}</div>`;
   }
+  // ----- mechanism diagram -----
+  const ARW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  const DN = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>';
+  function nodeHTML(n, step){
+    const tipTxt = `<b>${esc(n.label)}</b>${n.sub?'<br>'+esc(n.sub):''}${n.detail?'<br><span style=&quot;opacity:.8&quot;>'+esc(n.detail)+'</span>':''}`;
+    return `<div class="nd k-${esc(n.kind||'proc')}" data-step="${step}" tabindex="0" data-tip="${tipTxt}">${step?`<span class="no">${step}</span>`:''}<div class="lb">${esc(n.label)}</div>${n.sub?`<div class="sb">${esc(n.sub)}</div>`:''}${n.detail?`<div class="dt">${esc(n.detail)}</div>`:''}</div>`;
+  }
+  function diagramHTML(g){
+    if(!g) return '';
+    let body='', k=0;
+    const st = () => ++k;
+    if (g.type==='flow'){
+      body = '<div class="fl">' + g.nodes.map((n,i)=>(i?`<div class="arw">${ARW}</div>`:'')+nodeHTML(n,st())).join('') + '</div>' + (g.cycle?'<div class="cyc">↺ 마지막 단계가 다시 처음으로 이어집니다</div>':'');
+    } else if (g.type==='compare'){
+      const col = (c,cls) => `<div class="col ${cls}"><div class="ct">${esc(c.title)}</div>${c.nodes.map((n,i)=>(i?`<div class="dn">${DN}</div>`:'')+nodeHTML(n,st())).join('')}</div>`;
+      body = `<div class="cmp">${col(g.before,'b')}<div class="mid">${ARW}</div>${col(g.after,'a')}</div>`;
+    } else if (g.type==='hub'){
+      const side = (arr,label) => `<div class="side"><div class="sl">${esc(label||'')}</div>${arr.map(n=>nodeHTML(n,st())).join('')}</div>`;
+      const left = side(g.left,g.leftLabel); const center = `<div class="center">${nodeHTML(g.center,st())}</div>`; const right = side(g.right,g.rightLabel);
+      body = `<div class="hub">${left}<div class="arw">${ARW}</div>${center}<div class="arw">${ARW}</div>${right}</div>`;
+    } else if (g.type==='layers'){
+      const n = g.layers.length;
+      body = '<div class="lay">' + g.layers.map((x,i)=>`<div style="width:${Math.round(62+38*(i/(Math.max(1,n-1))))}%">${nodeHTML(x,st())}</div>`).join('') + '</div>';
+    }
+    const ico = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></svg>';
+    return `<div class="dg"><div class="dg-h"><span class="ico">${ico}</span><span class="t">${esc(g.title)}</span><button class="dg-play" type="button">▶ 순서대로 보기</button></div>${body}${g.caption?`<div class="dg-cap">${esc(g.caption)}</div>`:''}</div>`;
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.dg-play'); if(!b) return;
+    const dg = b.closest('.dg'); if (dg._t){ clearInterval(dg._t); }
+    const nodes = [...dg.querySelectorAll('.nd')]; let i = 0;
+    dg.classList.add('playing'); nodes.forEach(n=>n.classList.remove('lit')); b.textContent='■ 재생 중';
+    dg._t = setInterval(()=>{ if(i<nodes.length){ nodes[i].classList.add('lit'); i++; } else { clearInterval(dg._t); dg._t=null; setTimeout(()=>{ dg.classList.remove('playing'); nodes.forEach(n=>n.classList.remove('lit')); b.textContent='▶ 순서대로 보기'; }, 900); } }, 750);
+  });
+
   function growBars(root){ requestAnimationFrame(()=>requestAnimationFrame(()=>root.querySelectorAll('.fill[data-w]').forEach(f=>f.style.width=`calc((100% - 78px) * ${parseFloat(f.dataset.w)/100})`))); }
 
   let index = null, current = null, level = 'easy', filter = '전체';
@@ -470,6 +561,7 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
         <div class="c-meta"><span class="cat" ${catStyle(it.category)}>${esc(it.category)}</span></div>
         <h3 class="c-title">${esc(it.title)}</h3></div></div>
       <p class="why"><b>왜 중요?</b> ${esc(it.why)}</p>
+      ${diagramHTML(it.diagram)}
       ${vizHTML(it.visual, it.category)}
       <div class="body"></div>
       ${terms ? `<div class="terms">${terms}</div>` : ''}

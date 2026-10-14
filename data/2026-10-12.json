@@ -52,6 +52,41 @@
           }
         ],
         "note": "Google 발표 기준"
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "업무용 Gemini 에이전트가 일하는 방식",
+        "nodes": [
+          {
+            "label": "목표 맡기기",
+            "kind": "actor",
+            "sub": "지시 대신 목표"
+          },
+          {
+            "label": "계획 세우기",
+            "kind": "proc",
+            "sub": "하위 에이전트 생성"
+          },
+          {
+            "label": "작업별 모델 고르기",
+            "kind": "proc",
+            "sub": "Gemini 또는 Claude",
+            "detail": "스마트 라우팅 · 지출 한도"
+          },
+          {
+            "label": "클라우드에서 계속 실행",
+            "kind": "proc",
+            "sub": "수 시간~수일",
+            "detail": "노트북을 닫아도 진행"
+          },
+          {
+            "label": "기억으로 남기기",
+            "kind": "result",
+            "sub": "4종 메모리",
+            "detail": "세션·의미·절차·경험"
+          }
+        ],
+        "caption": ""
       }
     },
     {
@@ -95,6 +130,33 @@
           }
         ],
         "note": "WSJ 보도 기반 · 공식 공시 전"
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "AI 회사가 컴퓨팅을 확보하는 방식 (보도)",
+        "nodes": [
+          {
+            "label": "Anthropic",
+            "kind": "actor",
+            "sub": "모델 학습·서비스에 GPU 필요"
+          },
+          {
+            "label": "Tom Brown 중개",
+            "kind": "proc",
+            "sub": "정치권·머스크 측 접점"
+          },
+          {
+            "label": "SpaceX 컴퓨팅 임차",
+            "kind": "proc",
+            "sub": "월 $12.5억 · 2029년까지"
+          },
+          {
+            "label": "최대 $845억 장기 약정",
+            "kind": "risk",
+            "sub": "상장 앞둔 고정비 부담"
+          }
+        ],
+        "caption": ""
       }
     },
     {
@@ -145,6 +207,34 @@
           }
         ],
         "note": ""
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "칩 회사가 모델 회사까지 품는 순환",
+        "nodes": [
+          {
+            "label": "Nvidia",
+            "kind": "actor",
+            "sub": "GPU 공급"
+          },
+          {
+            "label": "Reflection AI 투자·인수 검토",
+            "kind": "proc",
+            "sub": "인수 / 지분 확대 / 어크하이어"
+          },
+          {
+            "label": "오픈 웨이트 모델 Beam",
+            "kind": "result",
+            "sub": "5,010억 파라미터 · 코딩 에이전트"
+          },
+          {
+            "label": "누구나 내려받아 실행",
+            "kind": "input",
+            "sub": "→ GPU 수요 증가"
+          }
+        ],
+        "caption": "모델이 퍼질수록 칩 수요가 늘어나는 구조입니다.",
+        "cycle": true
       }
     },
     {
@@ -169,7 +259,34 @@
         }
       ],
       "url": "https://news.hada.io/topic?id=35140",
-      "originalUrl": "https://vercel.com/eve"
+      "originalUrl": "https://vercel.com/eve",
+      "diagram": {
+        "type": "layers",
+        "title": "Eve 에이전트 폴더 구조",
+        "layers": [
+          {
+            "label": "채널",
+            "kind": "actor",
+            "sub": "Slack·Discord·Teams·웹"
+          },
+          {
+            "label": "instructions.md + skills/",
+            "kind": "input",
+            "sub": "역할과 필요할 때만 읽는 절차"
+          },
+          {
+            "label": "tools/",
+            "kind": "proc",
+            "sub": "파일명이 곧 도구 이름"
+          },
+          {
+            "label": "sandbox + Workflows",
+            "kind": "proc",
+            "sub": "격리 실행 · 단계 저장 · 중단 후 재개"
+          }
+        ],
+        "caption": "웹사이트를 폴더 구조로 만들듯, 에이전트도 정해진 폴더 규칙으로 만듭니다."
+      }
     },
     {
       "rank": 5,
@@ -217,6 +334,38 @@
         ],
         "note": "보정 전 · 온도 스케일링 후 두 값이 거의 일치",
         "highlight": 1
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "'고르기 전문' 결정 모델의 원리",
+        "nodes": [
+          {
+            "label": "질문 + 선택지 A~E",
+            "kind": "input"
+          },
+          {
+            "label": "모델이 한 번만 계산",
+            "kind": "proc",
+            "sub": "forward pass 1회",
+            "detail": "출력을 선택지 토큰으로 제한"
+          },
+          {
+            "label": "선택지별 확률",
+            "kind": "proc",
+            "sub": "예: B 98.6%"
+          },
+          {
+            "label": "온도 보정",
+            "kind": "proc",
+            "sub": "과신을 낮춤",
+            "detail": "온도 약 3.8로 확신과 실제 정답률을 맞춤"
+          },
+          {
+            "label": "믿을 만한 확신도",
+            "kind": "result"
+          }
+        ],
+        "caption": ""
       }
     },
     {
@@ -264,6 +413,39 @@
           }
         ],
         "note": "2026-04-21 ~ 09-11"
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "병원처럼 나눈 코딩 에이전트 팀",
+        "nodes": [
+          {
+            "label": "분류 간호사",
+            "kind": "input",
+            "sub": "이슈 수용·거절"
+          },
+          {
+            "label": "펠로우",
+            "kind": "proc",
+            "sub": "재현·계획·구현",
+            "detail": "승인된 계획 없이는 구현 금지"
+          },
+          {
+            "label": "검토 전문의",
+            "kind": "proc",
+            "sub": "다른 에이전트가 검토",
+            "detail": "구현을 되돌리면 새 테스트가 실패하는지 확인"
+          },
+          {
+            "label": "퇴원 간호사",
+            "kind": "proc",
+            "sub": "병합 절차 감사"
+          },
+          {
+            "label": "병합 (퇴원)",
+            "kind": "result"
+          }
+        ],
+        "caption": "풀리지 않는 이슈만 사람(Chief)에게 올라갑니다 — 5개월간 92건."
       }
     },
     {
@@ -287,7 +469,34 @@
         }
       ],
       "url": "https://news.hada.io/topic?id=35170",
-      "originalUrl": "https://deadsimpletech.com/blog/llms-arent-inevitable"
+      "originalUrl": "https://deadsimpletech.com/blog/llms-arent-inevitable",
+      "diagram": {
+        "type": "flow",
+        "title": "기술이 '불가피'해지려면 (글쓴이의 4조건)",
+        "nodes": [
+          {
+            "label": "품질이 대안과 비슷",
+            "kind": "input"
+          },
+          {
+            "label": "가치 크고 일손 부족한 일",
+            "kind": "input"
+          },
+          {
+            "label": "압도적인 우위",
+            "kind": "input"
+          },
+          {
+            "label": "안 쓰는 쪽이 대응 불가",
+            "kind": "input"
+          },
+          {
+            "label": "모두 충족 → 강제 도입",
+            "kind": "result"
+          }
+        ],
+        "caption": "글쓴이는 LLM이 3·4번째 조건을 아직 충족하지 못한다고 봅니다."
+      }
     }
   ]
 }

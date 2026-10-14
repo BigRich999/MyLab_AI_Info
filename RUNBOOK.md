@@ -63,7 +63,21 @@
 ```
 - 모든 숫자는 읽은 출처에 실제로 있는 값만 씁니다. 회사 자체 발표·추산이면 `note`에 밝힙니다.
 
-- `python3 build_index.py`로 검증(항목 수·필수 필드·카테고리·visual 형식)하고 `data/index.json`(트렌드 집계 포함)을 다시 만듭니다.
+### 작동 원리 도식 `diagram` (권장, 대부분의 뉴스에 작성)
+"어떻게 작동하나/무엇이 바뀌었나"를 상자와 화살표로 보여줍니다. 순수 투자·인사 소식처럼 구조가 없으면 생략합니다.
+노드: `{"label":"짧은 이름","sub":"한 줄 보충(모든 난이도에 표시)","detail":"전공자용 세부(Original에서만 표시)","kind":"input|proc|result|risk|actor"}`
+- kind 색: input=입력(하늘), proc=처리(라벤더), result=결과(민트), risk=문제·위험(코랄), actor=사람·주체(버터)
+- 네 가지 틀 중 하나:
+```json
+{"type":"flow","title":"…","nodes":[노드 3~6개],"caption":"한 줄 요약","cycle":false}
+{"type":"compare","title":"…","before":{"title":"기존","nodes":[1~4개]},"after":{"title":"새 방식","nodes":[1~4개]},"caption":"…"}
+{"type":"hub","title":"…","center":노드,"left":[1~4개],"right":[1~4개],"leftLabel":"왼쪽 묶음 이름","rightLabel":"오른쪽 묶음 이름","caption":"…"}
+{"type":"layers","title":"…","layers":[위→아래 2~6개],"caption":"…"}
+```
+- 고르는 기준: 단계·순서 → flow(되돌아오는 순환이면 cycle:true), 전후 비교 → compare, 가운데 중계·플랫폼 → hub, 계층·피라미드 → layers.
+- label은 12자 안팎으로 짧게, 숫자·사실은 출처에 있는 것만 씁니다. visual(숫자 카드)과 같은 숫자를 반복하지 않도록 합니다.
+
+- `python3 build_index.py`로 검증(항목 수·필수 필드·카테고리·visual·diagram 형식)하고 `data/index.json`(트렌드 집계 포함)을 다시 만듭니다.
 - 카테고리는 반드시 7개 중 하나: 모델 출시, 에이전트·개발도구, 인프라·하드웨어, 산업·비즈니스, 안전·정책, 연구, 사회·영향.
 
 ## 5. 게시

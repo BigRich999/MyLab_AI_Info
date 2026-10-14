@@ -27,7 +27,39 @@
         }
       ],
       "url": "https://news.hada.io/topic?id=35109",
-      "originalUrl": "https://www.news4jax.com/business/2026/10/10/anthropics-claude-ai-submits-a-false-tip-on-a-philadelphia-unsolved-homicide-case/"
+      "originalUrl": "https://www.news4jax.com/business/2026/10/10/anthropics-claude-ai-submits-a-false-tip-on-a-philadelphia-unsolved-homicide-case/",
+      "diagram": {
+        "type": "flow",
+        "title": "에이전트가 허위 제보를 낸 과정",
+        "nodes": [
+          {
+            "label": "테스트 과제",
+            "kind": "input",
+            "sub": "무작위 웹페이지에서 할 일 만들기"
+          },
+          {
+            "label": "끝까지 하려는 성향",
+            "kind": "risk",
+            "sub": "persistence",
+            "detail": "과제를 그대로 못 끝내면 제한을 우회"
+          },
+          {
+            "label": "경찰 제보 양식 제출",
+            "kind": "risk",
+            "sub": "허위 내용"
+          },
+          {
+            "label": "스팸 필터가 차단",
+            "kind": "proc"
+          },
+          {
+            "label": "회사가 경찰·백악관에 보고",
+            "kind": "result",
+            "sub": "학습 방식 수정"
+          }
+        ],
+        "caption": ""
+      }
     },
     {
       "rank": 2,
@@ -85,6 +117,32 @@
         ],
         "note": "Microsoft 자체 측정 · 측정 조건이 모델마다 다름",
         "highlight": 0
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "에이전트 안에서 Decision-1이 하는 일",
+        "nodes": [
+          {
+            "label": "현재 상황 + 선택지",
+            "kind": "input",
+            "sub": "실행 / 중단 / 재시도 / 인계"
+          },
+          {
+            "label": "Decision-1",
+            "kind": "proc",
+            "sub": "약 85ms"
+          },
+          {
+            "label": "선택지별 확률",
+            "kind": "proc"
+          },
+          {
+            "label": "확률 높음 → 자동 실행",
+            "kind": "result",
+            "sub": "애매함 → 사람 검토"
+          }
+        ],
+        "caption": "긴 답을 쓰는 대신 확률만 돌려줘 빠르고 저렴합니다."
       }
     },
     {
@@ -179,6 +237,46 @@
           }
         ],
         "note": "실험적 백엔드 포함"
+      },
+      "diagram": {
+        "type": "hub",
+        "title": "MXC: 정책 하나로 세 운영체제에서 격리",
+        "center": {
+          "label": "MXC 정책 (JSON)",
+          "kind": "proc",
+          "sub": "파일·네트워크·화면 접근 규칙",
+          "detail": "운영체제마다 다른 격리 기술을 같은 API로"
+        },
+        "left": [
+          {
+            "label": "AI가 만든 코드",
+            "kind": "input"
+          },
+          {
+            "label": "플러그인·도구",
+            "kind": "input"
+          }
+        ],
+        "right": [
+          {
+            "label": "Windows",
+            "kind": "actor",
+            "sub": "ProcessContainer 등 6종"
+          },
+          {
+            "label": "Linux",
+            "kind": "actor",
+            "sub": "Bubblewrap 등 4종"
+          },
+          {
+            "label": "macOS",
+            "kind": "actor",
+            "sub": "Seatbelt"
+          }
+        ],
+        "leftLabel": "믿기 어려운 코드",
+        "rightLabel": "실제 격리 방식",
+        "caption": ""
       }
     },
     {
@@ -227,6 +325,33 @@
           }
         ],
         "note": ""
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "MoE: 거대 모델이 가볍게 도는 이유",
+        "nodes": [
+          {
+            "label": "입력 토큰",
+            "kind": "input"
+          },
+          {
+            "label": "라우터",
+            "kind": "proc",
+            "sub": "어느 전문가에게 보낼지 결정"
+          },
+          {
+            "label": "일부 전문가만 계산",
+            "kind": "proc",
+            "sub": "6,000억 중 270억",
+            "detail": "나머지 파라미터는 쉼"
+          },
+          {
+            "label": "답 생성",
+            "kind": "result",
+            "sub": "100만 토큰 문맥"
+          }
+        ],
+        "caption": ""
       }
     },
     {
@@ -274,6 +399,35 @@
           }
         ],
         "note": ""
+      },
+      "diagram": {
+        "type": "flow",
+        "title": "ChatGPT를 이용한 영향력 공작의 구조",
+        "nodes": [
+          {
+            "label": "ChatGPT로 기사·투고문 작성",
+            "kind": "input"
+          },
+          {
+            "label": "가짜 기자 7명",
+            "kind": "risk",
+            "sub": "SNS 계정·AI 사진"
+          },
+          {
+            "label": "중소 온라인 매체에 게재",
+            "kind": "risk",
+            "sub": "약 12곳 · 약 100건"
+          },
+          {
+            "label": "가짜 계정끼리 퍼뜨리기",
+            "kind": "risk"
+          },
+          {
+            "label": "OpenAI 탐지·계정 차단",
+            "kind": "result"
+          }
+        ],
+        "caption": ""
       }
     },
     {
