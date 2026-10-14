@@ -47,7 +47,24 @@
   }]
 }
 ```
-- `python3 build_index.py`로 검증(항목 7개·필수 필드)하고 `data/index.json`을 다시 만듭니다.
+### 숫자 시각화 `visual` (선택, 가능하면 작성)
+원문에 비교할 만한 숫자가 있는 뉴스에만 붙입니다. 숫자가 없으면 넣지 않습니다(억지로 만들지 말 것).
+- 막대 비교(같은 단위 2~6개):
+```json
+"visual": {"type":"bars","title":"무엇을 비교하는지","unit":"초","better":"lower|higher|neutral",
+  "items":[{"label":"Git","value":426,"display":"7.1분"},{"label":"Scion","value":5.1,"display":"5.1초"}],
+  "highlight":1, "note":"측정 조건·출처(예: 회사 자체 측정)"}
+```
+  - `value`는 같은 단위의 숫자(그래프 길이), `display`는 화면에 보일 글자. 단위가 다른 값은 한 막대 차트에 섞지 않습니다.
+  - `highlight`는 강조할 막대 번호(0부터, 생략 시 전체 강조).
+- 숫자 카드(핵심 수치 1~4개):
+```json
+"visual": {"type":"kpi","title":"한눈에 보기","stats":[{"value":"800+","label":"MCP 서버","sub":"보조 설명"}],"note":"출처"}
+```
+- 모든 숫자는 읽은 출처에 실제로 있는 값만 씁니다. 회사 자체 발표·추산이면 `note`에 밝힙니다.
+
+- `python3 build_index.py`로 검증(항목 수·필수 필드·카테고리·visual 형식)하고 `data/index.json`(트렌드 집계 포함)을 다시 만듭니다.
+- 카테고리는 반드시 7개 중 하나: 모델 출시, 에이전트·개발도구, 인프라·하드웨어, 산업·비즈니스, 안전·정책, 연구, 사회·영향.
 
 ## 5. 게시
 - `git add -A && git commit && git push origin main` → GitHub Pages가 자동 반영합니다.

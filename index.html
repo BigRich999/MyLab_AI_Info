@@ -194,6 +194,88 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
   .c-head{gap:10px}
   .card.top .c-title{font-size:19px}
 }
+/* ===== visuals ===== */
+.trend-btn{width:100%;display:flex;align-items:center;gap:8px;border:1px solid var(--rule-2);background:var(--paper);border-radius:14px;padding:10px 12px;cursor:pointer;font-weight:700;font-size:14px;margin-bottom:16px;color:var(--ink-2)}
+.trend-btn svg{color:var(--orig)}
+.trend-btn[aria-current="true"]{border-color:var(--orig);background:var(--orig-soft);color:var(--orig)}
+@media (max-width:900px){.trend-btn{width:auto;margin-bottom:10px}}
+.daymap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:22px;align-items:center;margin:4px 0 16px;padding:14px 16px;background:var(--bg);border-radius:16px}
+@media (max-width:640px){.daymap{grid-template-columns:1fr;justify-items:center}}
+.donut-wrap{display:flex;align-items:center;gap:16px}
+.donut{width:132px;height:132px;flex:0 0 auto}
+.donut path{cursor:pointer;transition:opacity .15s}
+.donut:hover path{opacity:.55}.donut path:hover{opacity:1}
+.donut .c1{font-weight:900;font-size:26px;fill:var(--ink)}.donut .c2{font-size:11px;fill:var(--ink-3)}
+.legend{list-style:none;margin:0;padding:0;display:grid;gap:3px;font-size:13px}
+.legend button{border:0;background:transparent;padding:2px 6px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:7px;color:var(--ink-2);width:100%;text-align:left}
+.legend button:hover,.legend button[aria-pressed="true"]{background:var(--paper)}
+.legend .sw{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
+.legend b{color:var(--ink);margin-left:auto;padding-left:8px}
+.kw h4{margin:0 0 8px;font-size:12px;color:var(--ink-3);font-weight:700}
+.kw .chips{display:flex;flex-wrap:wrap;gap:6px}
+.kw button{border:1px solid var(--rule-2);background:var(--paper);border-radius:999px;padding:3px 11px;font-size:12.5px;cursor:pointer;color:var(--ink-2)}
+.kw button:hover{border-color:var(--orig);color:var(--orig)}
+.kw .top3line{margin-top:12px;font-size:13px;color:var(--ink-2);display:grid;gap:4px}
+.kw .top3line a{text-decoration:none;color:inherit;display:flex;gap:8px;align-items:baseline}
+.kw .top3line a:hover{color:var(--ink)}
+.kw .top3line .n{font-weight:900;color:var(--accent);min-width:12px}
+
+.viz{margin-top:14px;border:1px solid var(--rule);border-radius:16px;padding:14px 16px;background:linear-gradient(180deg,var(--cs2,var(--chip)) 0,var(--paper) 70%)}
+.viz-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.viz-h .t{font-size:13.5px;font-weight:800;color:var(--ink)}
+.viz-h .hint{font-size:11.5px;color:var(--ink-3);margin-left:auto;white-space:nowrap}
+.viz-h .ico{width:18px;height:18px;border-radius:6px;display:grid;place-items:center;background:var(--paper);color:var(--cc2,var(--ink-3))}
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:minmax(90px,34%) minmax(0,1fr);gap:10px;align-items:center;font-size:13px;cursor:default}
+.bar .lab{color:var(--ink-2);line-height:1.35}
+.bar.hl .lab{color:var(--ink);font-weight:700}
+.bar .track{position:relative;height:22px;display:flex;align-items:center}
+.bar .fill{height:14px;border-radius:0 4px 4px 0;background:var(--bar-muted);min-width:3px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.bar.hl .fill{background:var(--cc2)}
+.bar .val{margin-left:8px;font-size:12.5px;font-weight:700;color:var(--ink);white-space:nowrap}
+.bar:hover .fill{filter:brightness(.95)}
+.bar:hover .lab{color:var(--ink)}
+@media (max-width:520px){.bar{grid-template-columns:1fr;gap:2px}}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.kpi{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:10px 12px;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--cc2,var(--accent))}
+.kpi .v{font-size:20px;font-weight:900;letter-spacing:-.02em;line-height:1.25;color:var(--ink)}
+.card:not(.top) .kpi .v{font-size:18px}
+.kpi .l{font-size:12.5px;color:var(--ink-2);margin-top:2px;font-weight:600}
+.kpi .s{font-size:11.5px;color:var(--ink-3);margin-top:2px}
+.viz-note{margin-top:8px;font-size:11.5px;color:var(--ink-3)}
+
+.tip{position:fixed;z-index:60;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.5;padding:7px 10px;border-radius:10px;max-width:280px;box-shadow:0 8px 24px -8px rgba(0,0,0,.4);opacity:0;transition:opacity .12s}
+.tip.on{opacity:1}
+
+/* trend view */
+.trend-head{background:var(--hero);border-radius:20px;padding:20px 22px;margin-bottom:20px}
+.trend-head h2{margin:4px 0 6px;font-size:clamp(21px,2.8vw,28px);font-weight:900;letter-spacing:-.02em}
+.trend-head p{margin:0;color:var(--ink-2);font-size:14px}
+.trend-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.trend-stats .kpi{min-width:120px}
+.panel{background:var(--paper);border:1px solid var(--rule);border-radius:20px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:18px}
+.panel h3{margin:0 0 4px;font-size:16px;font-weight:800}
+.panel .sub{margin:0 0 14px;font-size:12.5px;color:var(--ink-3)}
+.heat{overflow-x:auto}
+.heat table{border-collapse:separate;border-spacing:3px;font-size:12.5px;min-width:480px;width:100%}
+.heat th{font-weight:600;color:var(--ink-3);font-size:12px;padding:2px 4px;white-space:nowrap}
+.heat th.row{text-align:left;color:var(--ink-2);padding-right:10px}
+.heat th.row .sw{display:inline-block;vertical-align:middle;margin-right:6px}
+.heat td{height:34px;border-radius:8px;text-align:center;font-weight:800;cursor:pointer;transition:transform .12s}
+.heat td.z{cursor:default;background:var(--chip);color:transparent}
+.heat td:not(.z):hover{transform:scale(1.08)}
+.heat .total{color:var(--ink-3);font-weight:700;background:transparent;cursor:default}
+.scale{display:flex;align-items:center;gap:4px;font-size:11.5px;color:var(--ink-3);margin-top:10px}
+.scale i{width:22px;height:12px;border-radius:4px;display:inline-block}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:1000px){.grid2{grid-template-columns:1fr}}
+.panel .bar{grid-template-columns:minmax(110px,38%) minmax(0,1fr)}
+.panel .bar .fill{background:var(--cc2,var(--orig))}
+:root{--bar-muted:#d9d2e6}
+:root[data-theme="dark"]{--bar-muted:#4a445a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bar-muted:#4a445a}}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -231,6 +313,7 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
 
 <main class="wrap">
   <nav class="rail" aria-label="날짜별 뉴스">
+    <button class="trend-btn" id="trendBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>트렌드 흐름 보기</button>
     <h2>발간일</h2>
     <ul class="dates" id="dates"></ul>
     <div class="rail-foot">
@@ -244,6 +327,7 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
 
 <footer>단축키: <span class="kbd">1</span> <span class="kbd">2</span> <span class="kbd">3</span> 난이도 · <span class="kbd">←</span> <span class="kbd">→</span> 날짜 이동 · <span class="kbd">/</span> 검색</footer>
 
+<div class="tip" id="tip" role="tooltip"></div>
 <div class="search" id="search" role="dialog" aria-modal="true" aria-label="전체 뉴스 검색">
   <div class="search-box">
     <input id="q" type="search" placeholder="모든 날짜에서 검색 (예: 에이전트, Gemini, 보안)" autocomplete="off">
@@ -276,11 +360,56 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
   }
   const CAT = {
     '모델 출시':['#c95c53','#fde8e5'], '에이전트·개발도구':['#3f72c4','#e5eefd'], '인프라·하드웨어':['#a8740f','#fff1d6'],
-    '산업·비즈니스':['#2f8f67','#e2f5ec'], '안전·정책':['#7c55c4','#f0e9fc'], '연구':['#c04a86','#ffe6f1'], '사회·영향':['#2b8697','#e3f4f7']
+    '산업·비즈니스':['#2f8f67','#e2f5ec'], '안전·정책':['#7c55c4','#f0e9fc'], '연구':['#c04a86','#ffe6f1'], '사회·영향':['#0f8aa6','#e3f4f7']
   };
   const catStyle = c => CAT[c] ? `style="--cc:${CAT[c][0]};--cs:${CAT[c][1]}"` : '';
   const WEEK = ['일','월','화','수','목','금','토'];
   const fmtDay = d => { const [y,m,dd]=d.split('-').map(Number); const w=new Date(Date.UTC(y,m-1,dd)).getUTCDay(); return {md:`${m}.${dd}`, w:WEEK[w]+'요일', full:`${y}년 ${m}월 ${dd}일 (${WEEK[w]})`}; };
+
+  const CAT_ORDER = ['모델 출시','에이전트·개발도구','인프라·하드웨어','산업·비즈니스','안전·정책','연구','사회·영향'];
+  const catColor = c => (CAT[c]||['#9a94a8','#f3eefa'])[0];
+
+  // ----- tooltip (any element with data-tip) -----
+  const tip = document.getElementById('tip');
+  function placeTip(x,y){ const r=tip.getBoundingClientRect(); let L=x+14, T=y+14;
+    if (L+r.width>innerWidth-8) L=x-r.width-14; if (T+r.height>innerHeight-8) T=y-r.height-14; tip.style.left=Math.max(8,L)+'px'; tip.style.top=Math.max(8,T)+'px'; }
+  document.addEventListener('pointermove', e => { const t=e.target.closest('[data-tip]');
+    if(!t){ tip.classList.remove('on'); return; } tip.innerHTML=t.dataset.tip; tip.classList.add('on'); placeTip(e.clientX,e.clientY); });
+  document.addEventListener('focusin', e => { const t=e.target.closest('[data-tip]'); if(!t) return; const r=t.getBoundingClientRect(); tip.innerHTML=t.dataset.tip; tip.classList.add('on'); placeTip(r.left,r.bottom); });
+  document.addEventListener('focusout', () => tip.classList.remove('on'));
+  document.addEventListener('scroll', () => tip.classList.remove('on'), {passive:true});
+
+  // ----- donut -----
+  function arc(cx,cy,r0,r1,a0,a1){ const p=(r,a)=>[cx+r*Math.sin(a), cy-r*Math.cos(a)]; const big=(a1-a0)>Math.PI?1:0;
+    const [x0,y0]=p(r1,a0),[x1,y1]=p(r1,a1),[x2,y2]=p(r0,a1),[x3,y3]=p(r0,a0);
+    return `M${x0} ${y0}A${r1} ${r1} 0 ${big} 1 ${x1} ${y1}L${x2} ${y2}A${r0} ${r0} 0 ${big} 0 ${x3} ${y3}Z`; }
+  function donutSVG(parts,total,center){ let a=0; const gap=parts.length>1?0.035:0;
+    const paths=parts.map(p=>{ const a0=a+gap/2, a1=a+p.value/total*Math.PI*2-gap/2; a+=p.value/total*Math.PI*2;
+      const full = parts.length===1 ? `<circle cx="66" cy="66" r="52" fill="none" stroke="${p.color}" stroke-width="24"/>` : '';
+      return full || `<path d="${arc(66,66,40,64,a0,a1)}" fill="${p.color}" data-cat="${esc(p.label)}" data-tip="${esc(p.tip)}"></path>`; }).join('');
+    return `<svg class="donut" viewBox="0 0 132 132" role="img" aria-label="${esc(center.aria)}">${paths}<text x="66" y="68" text-anchor="middle" class="c1">${center.big}</text><text x="66" y="86" text-anchor="middle" class="c2">${esc(center.small)}</text></svg>`; }
+
+  // ----- number visual -----
+  const fmtNum = v => Number(v).toLocaleString('ko-KR',{maximumFractionDigits:1});
+  function vizHTML(v, cat){
+    if(!v) return '';
+    const cc = catColor(cat), cs = (CAT[cat]||[])[1]||'var(--chip)';
+    const ico = v.type==='bars' ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="14" height="4" rx="1.5"/><rect x="3" y="10" width="18" height="4" rx="1.5"/><rect x="3" y="16" width="9" height="4" rx="1.5"/></svg>'
+                                : '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>';
+    let body='', hint='';
+    if (v.type==='bars'){
+      const max = Math.max(...v.items.map(x=>x.value)) || 1;
+      const hl = (v.highlight===undefined) ? -1 : v.highlight;
+      hint = v.better==='lower' ? '짧을수록 좋음' : v.better==='higher' ? '길수록 좋음' : '';
+      body = '<div class="bars">' + v.items.map((x,i)=>{ const disp = x.display || (fmtNum(x.value)+(v.unit?' '+v.unit:''));
+        const w = Math.max(1.5, x.value/max*100);
+        return `<div class="bar ${hl===-1||hl===i?'hl':''}" data-tip="<b>${esc(x.label)}</b><br>${esc(disp)}"><div class="lab">${esc(x.label)}</div><div class="track"><div class="fill" style="width:0" data-w="${w}%"></div><span class="val">${esc(disp)}</span></div></div>`; }).join('') + '</div>';
+    } else {
+      body = '<div class="kpis">' + v.stats.map(x=>`<div class="kpi"><div class="v">${esc(x.value)}</div><div class="l">${esc(x.label)}</div>${x.sub?`<div class="s">${esc(x.sub)}</div>`:''}</div>`).join('') + '</div>';
+    }
+    return `<div class="viz" style="--cc2:${cc};--cs2:${cs}"><div class="viz-h"><span class="ico">${ico}</span><span class="t">${esc(v.title)}</span>${hint?`<span class="hint">${hint}</span>`:''}</div>${body}${v.note?`<div class="viz-note">${esc(v.note)}</div>`:''}</div>`;
+  }
+  function growBars(root){ requestAnimationFrame(()=>requestAnimationFrame(()=>root.querySelectorAll('.fill[data-w]').forEach(f=>f.style.width=`calc((100% - 78px) * ${parseFloat(f.dataset.w)/100})`))); }
 
   let index = null, current = null, level = 'easy', filter = '전체';
   const cache = {};
@@ -302,6 +431,7 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
   document.querySelectorAll('.seg button').forEach(b => b.onclick = () => setLevel(b.dataset.l));
 
   function syncHash(){ if(current) history.replaceState(null,'',`#${current}/${level}`); }
+  document.getElementById('trendBtn').onclick = () => showTrend();
 
   async function loadDay(date){
     if (cache[date]) return cache[date];
@@ -319,6 +449,7 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
       li.querySelector('button').onclick = () => show(d.date, true);
       ul.appendChild(li);
     });
+    $('#trendBtn').setAttribute('aria-current', current==='trend');
     if (index.updated) $('#updated').textContent = '마지막 갱신: ' + index.updated.replace('T',' ').slice(0,16);
   }
 
@@ -339,6 +470,7 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
         <div class="c-meta"><span class="cat" ${catStyle(it.category)}>${esc(it.category)}</span></div>
         <h3 class="c-title">${esc(it.title)}</h3></div></div>
       <p class="why"><b>왜 중요?</b> ${esc(it.why)}</p>
+      ${vizHTML(it.visual, it.category)}
       <div class="body"></div>
       ${terms ? `<div class="terms">${terms}</div>` : ''}
       <div class="c-foot">
@@ -365,6 +497,21 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
     return el;
   }
 
+  function dayMapHTML(items){
+    const counts = {}; items.forEach(i=>counts[i.category]=(counts[i.category]||0)+1);
+    const parts = CAT_ORDER.filter(c=>counts[c]).map(c=>({label:c,value:counts[c],color:catColor(c),
+      tip:`<b>${esc(c)} · ${counts[c]}건</b><br>`+items.filter(i=>i.category===c).map(i=>'· '+esc(i.title)).join('<br>')}));
+    const tagCount = {}; items.forEach(i=>(i.tags||[]).forEach(t=>tagCount[t]=(tagCount[t]||0)+1));
+    const tags = Object.entries(tagCount).sort((a,b)=>b[1]-a[1]).slice(0,10).map(x=>x[0]);
+    const top = items.filter(i=>i.rank<=3);
+    return `<div class="daymap">
+      <div class="donut-wrap">${donutSVG(parts, items.length, {big:items.length, small:'오늘의 뉴스', aria:'카테고리별 뉴스 수: '+parts.map(p=>p.label+' '+p.value+'건').join(', ')})}
+        <ul class="legend">${parts.map(p=>`<li><button data-c="${esc(p.label)}" aria-pressed="${filter===p.label}"><span class="sw" style="background:${p.color}"></span>${esc(p.label)}<b>${p.value}</b></button></li>`).join('')}</ul></div>
+      <div class="kw"><h4>오늘의 키워드</h4><div class="chips">${tags.map(t=>`<button data-k="${esc(t)}">#${esc(t)}</button>`).join('')}</div>
+        <div class="top3line">${top.map(i=>`<a href="#" data-id="${i.id}"><span class="n">${i.rank}</span>${esc(i.title)}</a>`).join('')}</div></div>
+    </div>`;
+  }
+
   function renderDay(data){
     const f = fmtDay(data.date);
     const items = [...data.items].sort((a,b)=>a.rank-b.rank);
@@ -377,6 +524,7 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
       <div class="dayhead">
         <div class="meta"><span>${f.full}</span><span>수집 구간: ${esc(data.window||'')}</span></div>
         <h2>${esc(data.headline||'')}</h2>
+        ${dayMapHTML(items)}
         <div class="nav">
           <div class="filters">${cats.map(c=>`<button class="fchip" ${catStyle(c)} aria-pressed="${c===filter}" data-c="${esc(c)}">${esc(c)}</button>`).join('')}</div>
           <span class="spacer"></span>
@@ -386,6 +534,11 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
       </div>
       <div id="cards"></div>`;
     day.querySelectorAll('.fchip').forEach(b=>b.onclick=()=>{filter=b.dataset.c; renderDay(data);});
+    const toggleCat = c => { filter = (filter===c ? '전체' : c); renderDay(data); };
+    day.querySelectorAll('.legend button').forEach(b=>b.onclick=()=>toggleCat(b.dataset.c));
+    day.querySelectorAll('.donut path').forEach(pth=>pth.onclick=()=>toggleCat(pth.dataset.cat));
+    day.querySelectorAll('.kw .chips button').forEach(b=>b.onclick=()=>{ openSearch(); q.value=b.dataset.k; setTimeout(()=>q.oninput(),300); });
+    day.querySelectorAll('.top3line a').forEach(a=>a.onclick=(e)=>{ e.preventDefault(); if(filter!=='전체'){filter='전체'; renderDay(data);} const el=document.getElementById('n'+a.dataset.id); el?.scrollIntoView({behavior:'smooth',block:'start'}); el?.classList.remove('flash'); void el?.offsetWidth; el?.classList.add('flash'); });
     if(prev) $('#prevDay').onclick=()=>show(prev.date,true);
     if(next) $('#nextDay').onclick=()=>show(next.date,true);
     const shown = items.filter(it => filter==='전체' || it.category===filter);
@@ -393,6 +546,50 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
     const wrap = $('#cards');
     if (top.length){ wrap.insertAdjacentHTML('beforeend','<div class="section-label">오늘의 Top 3</div><div class="top3"></div>'); top.forEach(it=>wrap.querySelector('.top3').appendChild(cardEl(it,true))); }
     if (rest.length){ wrap.insertAdjacentHTML('beforeend','<div class="section-label">함께 볼 뉴스</div><div class="rest"></div>'); rest.forEach(it=>wrap.querySelector('.rest').appendChild(cardEl(it,false))); }
+    growBars(wrap);
+  }
+
+  // ----- trend view -----
+  const HEAT = ['#ece4fa','#d3c2f2','#b59be6','#9670d6','#6f48b3'];
+  function showTrend(){
+    current = 'trend'; renderRail(); history.replaceState(null,'','#trend/'+level);
+    const ds = [...index.dates].reverse(); // oldest -> newest
+    const cats = index.categories || CAT_ORDER;
+    const totals = {}; cats.forEach(c=>totals[c]=0);
+    ds.forEach(d=>Object.entries(d.catCounts||{}).forEach(([c,n])=>totals[c]=(totals[c]||0)+n));
+    const nNews = Object.values(totals).reduce((a,b)=>a+b,0);
+    const max = Math.max(1,...ds.flatMap(d=>Object.values(d.catCounts||{})));
+    const cell = n => { if(!n) return ['var(--chip)','transparent']; const k=Math.min(HEAT.length-1, Math.round((n/max)*(HEAT.length-1))); return [HEAT[k], k>=3?'#fff':'#2f2b3a']; };
+    const head = ds.map(d=>`<th>${fmtDay(d.date).md}</th>`).join('');
+    const rows = cats.map(c=>`<tr><th class="row"><span class="sw" style="width:10px;height:10px;border-radius:3px;background:${catColor(c)}"></span>${esc(c)}</th>${
+      ds.map(d=>{ const n=(d.catCounts||{})[c]||0; const [bg,fg]=cell(n);
+        return n ? `<td style="background:${bg};color:${fg}" tabindex="0" data-d="${d.date}" data-c="${esc(c)}" data-tip="<b>${fmtDay(d.date).full}</b><br>${esc(c)} ${n}건 · 클릭하면 이동">${n}</td>` : `<td class="z" data-tip="${fmtDay(d.date).md} · ${esc(c)} 없음">0</td>`; }).join('')
+    }<td class="total">${totals[c]}</td></tr>`).join('');
+    const catMax = Math.max(1,...Object.values(totals));
+    const catBars = cats.filter(c=>totals[c]).sort((a,b)=>totals[b]-totals[a]).map(c=>`<div class="bar hl" style="--cc2:${catColor(c)}" data-tip="<b>${esc(c)}</b><br>${totals[c]}건 · 전체의 ${Math.round(totals[c]/nNews*100)}%"><div class="lab">${esc(c)}</div><div class="track"><div class="fill" style="width:0" data-w="${totals[c]/catMax*100}%"></div><span class="val">${totals[c]}건 · ${Math.round(totals[c]/nNews*100)}%</span></div></div>`).join('');
+    const tagCount = {}; const tagDates = {};
+    ds.forEach(d=>(d.tags||[]).forEach(t=>{ tagCount[t]=(tagCount[t]||0)+1; (tagDates[t]=tagDates[t]||new Set()).add(fmtDay(d.date).md); }));
+    const topTags = Object.entries(tagCount).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,12);
+    const tagMax = Math.max(1,...topTags.map(x=>x[1]));
+    const tagBars = topTags.map(([t,n])=>`<div class="bar hl" style="--cc2:var(--orig)" data-tip="<b>#${esc(t)}</b><br>${n}회 · ${[...tagDates[t]].join(', ')}"><div class="lab">#${esc(t)}</div><div class="track"><div class="fill" style="width:0" data-w="${n/tagMax*100}%"></div><span class="val">${n}회</span></div></div>`).join('');
+    const span = `${fmtDay(ds[0].date).md} ~ ${fmtDay(ds[ds.length-1].date).md}`;
+    const lead = cats.filter(c=>totals[c]).sort((a,b)=>totals[b]-totals[a])[0];
+    $('#day').innerHTML = `
+      <div class="trend-head"><span class="kicker">Trend · ${span}</span><h2>그동안 AI 뉴스는 어디에 몰렸을까?</h2>
+        <p>발간된 모든 날짜의 뉴스를 카테고리와 키워드로 모아 봤습니다. 칸을 누르면 그날의 해당 뉴스로 이동합니다.</p>
+        <div class="trend-stats"><div class="kpi" style="--cc2:var(--accent)"><div class="v">${ds.length}일</div><div class="l">발간일</div></div>
+          <div class="kpi" style="--cc2:var(--normal)"><div class="v">${nNews}건</div><div class="l">누적 뉴스</div></div>
+          <div class="kpi" style="--cc2:${catColor(lead)}"><div class="v">${esc(lead)}</div><div class="l">가장 많이 다룬 분야</div><div class="s">${totals[lead]}건 · ${Math.round(totals[lead]/nNews*100)}%</div></div></div></div>
+      <div class="panel"><h3>날짜별 카테고리 지도</h3><p class="sub">색이 진할수록 그날 해당 분야 뉴스가 많았다는 뜻입니다.</p>
+        <div class="heat"><table><thead><tr><th></th>${head}<th>합계</th></tr></thead><tbody>${rows}</tbody></table></div>
+        <div class="scale">적음 ${HEAT.map(c=>`<i style="background:${c}"></i>`).join('')} 많음</div></div>
+      <div class="grid2">
+        <div class="panel"><h3>분야별 누적 비중</h3><p class="sub">${span} · 총 ${nNews}건</p><div class="bars">${catBars}</div></div>
+        <div class="panel"><h3>자주 등장한 키워드</h3><p class="sub">태그 기준 상위 ${topTags.length}개 · 막대에 올리면 등장한 날짜</p><div class="bars">${tagBars}</div></div>
+      </div>`;
+    $('#day').querySelectorAll('.heat td[data-d]').forEach(td=>{ const go=()=>{ filter=td.dataset.c; show(td.dataset.d,true); }; td.onclick=go; td.onkeydown=e=>{ if(e.key==='Enter') go(); }; });
+    growBars($('#day'));
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 
   let focusId = null;
@@ -429,6 +626,7 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
     if (e.key==='1') setLevel('easy'); else if (e.key==='2') setLevel('normal'); else if (e.key==='3') setLevel('original');
     else if (e.key==='/'){ e.preventDefault(); openSearch(); }
     else if (e.key==='ArrowLeft' || e.key==='ArrowRight'){
+      if (current==='trend') return;
       const i = index.dates.findIndex(d=>d.date===current); const t = index.dates[i + (e.key==='ArrowLeft'?1:-1)]; if(t) show(t.date,true);
     }
   });
@@ -439,6 +637,7 @@ footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;color:var(--ink-3);fon
     const [hDate,hLevel,hItem] = decodeURIComponent(location.hash.slice(1)).split('/');
     if (hItem && /^n\d+$/.test(hItem)) focusId = hItem.slice(1);
     setLevel(LEVELS[hLevel] ? hLevel : (LEVELS[store.get('level')] ? store.get('level') : 'easy'), false);
+    if (hDate==='trend'){ showTrend(); return; }
     const start = index.dates.some(d=>d.date===hDate) ? hDate : index.dates[0]?.date;
     if (start) show(start,false); else $('#day').innerHTML='<div class="state">아직 발간된 뉴스가 없습니다.</div>';
   }
