@@ -1,0 +1,28 @@
+[AI 트렌드 데일리] 10월 14일 (수)
+AI가 코드를 너무 많이 써서 Git이 버티지 못하고, 거대 모델과 추론 하드웨어 경쟁은 더 뜨거워진 하루
+
+웹에서 보기: https://bigrich999.github.io/MyLab_AI_Info/#2026-10-14/easy
+
+■ 오늘의 Top 3
+1. Anthropic, AI 코딩으로 늘어난 변경량에 대응해 Git을 자체 버전 관리 시스템 Scion으로 교체 [에이전트·개발도구]
+  왜 중요? AI가 코드를 쓰는 속도가 개발 도구의 한계를 넘어서기 시작했다는 첫 대형 사례입니다.
+  학교 반 전체가 한 공책에 숙제를 쓰는데, 갑자기 로봇 친구들이 하루에 숙제를 열 배씩 써 내기 시작했다고 생각해 보세요. 공책이 금방 꽉 차고 서로 기다리느라 난리가 나겠죠? Anthropic은 AI가 코드를 너무 많이 써서 기존 도구(Git)가 버티지 못하자, 아예 새 공책 시스템 'Scion'을 직접 만들었어요. 덕분에 코드를 내려받는 시간이 몇 분에서 몇 초로 줄었답니다.
+  → https://bigrich999.github.io/MyLab_AI_Info/#2026-10-14/easy/n35309
+
+2. Google, Gemini 4 Argon 정식 출시 - 긴 추론과 대규모 코드 작업 지원 [모델 출시]
+  왜 중요? '한 번에 길게, 오래 생각하는' 추론 모델 경쟁의 최신판이자 Google의 새 플래그십입니다.
+  Google이 아주 오래, 깊게 생각할 수 있는 새 AI 'Gemini 4 Argon'을 내놓았어요. 책 수백 권 분량을 한 번에 읽고 답을 쓸 수 있을 정도로 기억력이 크답니다. 크롬 브라우저의 아주 오래된 코드를 정리하거나, 과학 실험을 돕고, 게임 영상을 보고 로봇을 움직이는 데까지 써 봤다고 해요.
+  → https://bigrich999.github.io/MyLab_AI_Info/#2026-10-14/easy/n35306
+
+3. AI 캐릭터 챗봇 Character.ai, 파산보호 신청하고 매각 추진 [산업·비즈니스]
+  왜 중요? 한때 가장 인기 있던 소비자 AI 서비스도 수익 구조가 없으면 무너질 수 있음을 보여줍니다.
+  좋아하는 캐릭터와 대화하는 AI 앱으로 유명했던 Character.ai가 돈이 바닥나서 '파산보호'를 신청했어요. 가게 문을 닫기 전에 법원의 도움을 받아 회사를 정리하고 팔려는 거예요. 사용자가 많아도 돈을 벌지 못하면 AI 회사도 버티기 어렵다는 걸 보여주는 소식이에요.
+  → https://bigrich999.github.io/MyLab_AI_Info/#2026-10-14/easy/n35307
+
+■ 함께 볼 뉴스
+4. Intel D270 - 최대 480GB LPDDR5X를 탑재한 AI 추론용 GPU → https://bigrich999.github.io/MyLab_AI_Info/#2026-10-14/easy/n35288
+5. AI 모델은 임의의 능력을 숨길 수 있으며, 이를 이론적으로 증명할 수 있음 → https://bigrich999.github.io/MyLab_AI_Info/#2026-10-14/easy/n35287
+6. Linus Torvalds, Claude Code로 Linux 커널의 대폭 개선 작업 진행 중 → https://bigrich999.github.io/MyLab_AI_Info/#2026-10-14/easy/n35265
+7. Minions - 유휴 Mac의 GPU를 모아 머신러닝 추론 작업을 분산하는 Apple의 시스템 → https://bigrich999.github.io/MyLab_AI_Info/#2026-10-14/easy/n35312
+
+매일 새벽 4시경 새 뉴스가 발간됩니다. 출처: GeekNews

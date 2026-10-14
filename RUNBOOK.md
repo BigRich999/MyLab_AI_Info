@@ -53,7 +53,9 @@
 - `git add -A && git commit && git push origin main` → GitHub Pages가 자동 반영합니다.
 - 1~2분 뒤 `https://bigrich999.github.io/MyLab_AI_Info/data/D.json`이 열리는지 확인합니다.
 
-## 6. 안내 메일
-- 받는 사람: dr.jimi99@gmail.com (Gmail 커넥터 send_message)
-- 제목: `[AI 트렌드 데일리] M월 D일 — {1위 제목 요약}`
-- 본문(HTML): 그날 headline, Top 3(제목 + why + Easy 설명 1~2문장), 웹 링크 `https://bigrich999.github.io/MyLab_AI_Info/#D/easy`, 나머지 4개 제목 목록.
+## 6. 안내 메일 (웹 요약 화면과 동기화)
+- `python3 build_email.py D` 를 실행합니다. 웹과 같은 `data/D.json`·같은 파스텔 디자인으로 `email/D.html`(본문), `email/D.txt`(텍스트 대체본), `email/D.subject.txt`(제목)를 만듭니다.
+- 메일 내용을 손으로 쓰지 말고, 생성된 파일 내용을 그대로 보냅니다. 그래야 메일이 웹 화면과 항상 일치합니다.
+- Gmail 커넥터 send_message: to=dr.jimi99@gmail.com, subject=email/D.subject.txt, htmlBody=email/D.html, body=email/D.txt.
+- 메일의 각 항목 링크(`#D/easy/n{id}`)는 웹의 해당 카드로 바로 이동합니다.
+- `email/` 폴더도 함께 커밋합니다(발송 기록).
