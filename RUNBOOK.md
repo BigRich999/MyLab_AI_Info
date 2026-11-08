@@ -8,8 +8,14 @@
 - `data/D.json`이 이미 있으면 덮어씁니다(재실행 안전).
 
 ## 1. 수집
-- WebFetch로 `https://news.hada.io/rss/news`(Atom)를 읽고, `published`가 구간 안에 있는 항목만 고릅니다.
-- RSS에 구간 시작 이전 글이 다 안 나오면 `https://news.hada.io/past?day=D-1`(필요 시 &page=2,3)로 보충합니다.
+- **1순위: 아카이브·최신글 페이지.** WebFetch로 다음을 읽어 구간 안의 글을 모읍니다.
+  - `https://news.hada.io/past?day=YYYY-MM-DD`(&page=2,3): 수집 구간에 걸친 날짜마다(직전 발간일부터 D까지)
+  - `https://news.hada.io/new`(&page=2): 아직 아카이브에 정리되지 않은 당일 글 보충
+  - 아카이브는 같은 글이 여러 페이지에 겹쳐 나오므로 topic id 기준으로 중복을 제거합니다.
+- **2순위(보조): RSS.** `https://news.hada.io/rss/news`(Atom, feedburner로 리다이렉트)를 읽어 빠진 글이 있는지 확인합니다.
+  - **신선도 검사**: 피드의 `<updated>`(또는 가장 최근 `published`)가 D-1 00:00(KST)보다 오래됐으면 피드가 멈춘 것으로 보고 RSS는 쓰지 않습니다. (2026-11-08 기준 피드가 2026-10-27에 멈춰 있었음)
+  - 신선하면 `published`가 구간 안에 있는 항목만 후보에 더합니다.
+- 웹 읽기(WebFetch)가 권한·접근 오류로 전부 실패하면, 사실을 지어내지 말고 발간을 중단한 뒤 알림을 보냅니다. 다음 실행이 직전 발간 이후 구간 전체를 수집해 빈 날을 메웁니다.
 - 셸(curl)은 news.hada.io에 접근할 수 없습니다. 반드시 WebFetch를 씁니다.
 - 이미 이전 날짜 파일에 실린 topic id는 제외합니다(중복 방지).
 
