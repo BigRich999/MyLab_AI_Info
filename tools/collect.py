@@ -1,208 +1,167 @@
-"""GeekNews 수집기 (GitHub Actions에서 실행).
+"""GeekNews 수집기 (GitHub Actions에서 매시간 실행).
 
-클라우드 예약 작업은 news.hada.io에 직접 접근할 수 없으므로, GitHub 서버가 먼저
-아카이브·최신글·RSS·토픽 페이지를 받아 raw/D.json 으로 저장합니다.
-예약 작업은 이 파일만 읽고 선별·작성합니다.
+- 클라우드 예약 작업은 news.hada.io에 접근할 수 없고, GeekNews는 GitHub 서버의 HTML 페이지 접근을 403으로 막습니다
+  (2026-11-20 확인). RSS(Atom, 최근 20개)는 열리므로 RSS를 매시간 읽어 누적합니다.
+- 글은 게시 시각 기준으로 발간 묶음에 넣습니다: (D-1 03:00, D 03:00] KST 에 게시된 글 → raw/D.json
+- HTML(최신글·토픽 페이지)은 열릴 때만 보조로 씁니다.
 
-사용: python3 tools/collect.py [YYYY-MM-DD]   (생략 시 오늘, Asia/Seoul)
-종료 코드: 0 정상, 2 차단·수집 실패(파일은 status와 함께 저장됨)
+사용: python3 tools/collect.py
+종료 코드: 0 정상, 2 RSS 실패
 """
-import glob, html, json, re, sys, time, urllib.request, urllib.error
+import glob, html, json, os, re, sys, time, urllib.request, urllib.error
 from datetime import datetime, timedelta, timezone
 
 KST = timezone(timedelta(hours=9))
 BASE = "https://news.hada.io"
-UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
-      "Chrome/124.0 Safari/537.36 ai-trend-daily-collector")
+UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
+CUTOFF_H = 3  # 발간 묶음 경계(KST 03:00)
 AI_KW = [
-    "ai", "a.i", "llm", "gpt", "openai", "anthropic", "claude", "gemini", "deepmind", "llama",
-    "mistral", "deepseek", "qwen", "copilot", "cursor", "mcp", "agent", "rag", "embedding",
-    "transformer", "diffusion", "nvidia", "gpu", "tpu", "cuda", "hugging", "inference",
-    "prompt", "chatbot", "grok", "xai", "codex", "perplexity", "midjourney", "sora",
+    "ai", "llm", "gpt", "openai", "anthropic", "claude", "gemini", "deepmind", "llama",
+    "mistral", "deepseek", "qwen", "copilot", "cursor", "mcp", "agent", "agents", "agentic", "rag",
+    "embedding", "transformer", "diffusion", "nvidia", "gpu", "tpu", "cuda", "hugging face", "inference",
+    "prompt", "chatbot", "grok", "xai", "codex", "perplexity", "midjourney", "sora", "ml",
     "인공지능", "에이전트", "모델", "생성형", "머신러닝", "딥러닝", "학습", "추론", "챗봇",
-    "프롬프트", "데이터센터", "반도체", "로봇", "자율주행", "벡터", "파인튜닝", "바이브",
+    "프롬프트", "데이터센터", "반도체", "로봇", "자율주행", "벡터", "파인튜닝", "바이브", "토큰",
 ]
-BLOCK_MARKERS = ["cf-chl", "challenge-platform", "Just a moment", "브라우저 확인",
-                 "Checking your browser", "captcha"]
 
 
 def fetch(url, log):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "ko,en;q=0.8"})
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
-            body = r.read().decode("utf-8", "replace")
-            code = r.status
+            body, code = r.read().decode("utf-8", "replace"), r.status
     except urllib.error.HTTPError as e:
-        body, code = e.read().decode("utf-8", "replace"), e.code
-    except Exception as e:  # 네트워크 오류
+        body, code = "", e.code
+    except Exception as e:
         log.append({"url": url, "status": "error", "detail": str(e)[:200]})
         return None
-    blocked = code != 200 or any(m.lower() in body.lower() for m in BLOCK_MARKERS)
-    log.append({"url": url, "status": "blocked" if blocked else "ok", "http": code, "bytes": len(body)})
+    ok = code == 200 and "cf-chl" not in body and "Just a moment" not in body
+    log.append({"url": url, "status": "ok" if ok else "blocked", "http": code})
     time.sleep(1.0)
-    return None if blocked else body
+    return body if ok else None
 
 
 def text(s):
+    s = re.sub(r"<!\[CDATA\[([\s\S]*?)\]\]>", r"\1", s or "")
+    if "&lt;" in s:
+        s = html.unescape(s)
     s = re.sub(r"<(script|style)[\s\S]*?</\1>", " ", s, flags=re.I)
-    s = re.sub(r"<br\s*/?>|</p>|</li>|</h\d>|</div>", "\n", s, flags=re.I)
+    s = re.sub(r"<br\s*/?>|</p>|</li>|</h\d>|</div>|</ul>", "\n", s, flags=re.I)
     s = re.sub(r"<li[^>]*>", "\n- ", s, flags=re.I)
     s = html.unescape(re.sub(r"<[^>]+>", " ", s))
-    s = re.sub(r"[ \t\u00a0]+", " ", s)
+    s = re.sub(r"[ \t ]+", " ", s)
     return re.sub(r"\n\s*\n+", "\n", s).strip()
 
 
-def parse_list(body, where):
-    """아카이브/최신글 목록에서 글 정보를 뽑습니다."""
-    out = {}
-    chunks = re.split(r"class=['\"]?topic_row", body)
-    chunks = chunks[1:] if len(chunks) > 1 else [body]
-    for ch in chunks:
-        ids = re.findall(r"topic\?id=(\d+)", ch)
-        if not ids:
+def tag(e, name):
+    m = re.search(rf"<{name}\b[^>]*>([\s\S]*?)</{name}>", e)
+    return m.group(1) if m else None
+
+
+def bucket(dt):
+    """게시 시각 → 발간일 D. (D-1 03:00, D 03:00] KST."""
+    k = dt.astimezone(KST) - timedelta(hours=CUTOFF_H, microseconds=1)
+    return (k.date() + timedelta(days=1)).isoformat()
+
+
+def is_ai(it):
+    s = f"{it.get('title') or ''} {(it.get('content') or '')[:400]}".lower()
+    for k in AI_KW:
+        if k.isascii():
+            if re.search(r"(?<![a-z])" + re.escape(k) + r"(?![a-z])", s):
+                return True
+        elif k in s:
+            return True
+    return False
+
+
+def parse_rss(body):
+    out = []
+    for e in re.findall(r"<entry>([\s\S]*?)</entry>", body):
+        link = re.search(r"topic\?id=(\d+)", e)
+        pub = tag(e, "published") or tag(e, "updated")
+        if not link or not pub:
             continue
-        if len(chunks) == 1:  # 구조를 못 찾으면 id만 수집
-            for i in dict.fromkeys(ids):
-                out.setdefault(int(i), {"id": int(i), "seenOn": [where]})
-            break
-        tid = int(ids[0])
-        h1 = re.search(r"<h1[^>]*>([\s\S]*?)</h1>", ch)
-        desc = re.search(r"class=['\"]?topicdesc[^>]*>([\s\S]*?)</div>", ch)
-        pts = re.search(r"id=['\"]?tp\d+['\"]?[^>]*>(\d+)", ch)
-        cmt = re.search(r"댓글\s*(\d+)", ch)
-        orig = re.search(r"class=['\"]?topictitle[^>]*>\s*<a[^>]*href=['\"]?([^'\" >]+)", ch)
-        info = re.search(r"class=['\"]?topicinfo[^>]*>([\s\S]*?)</div>", ch)
-        out[tid] = {
-            "id": tid,
-            "title": text(h1.group(1)) if h1 else None,
-            "listDesc": text(desc.group(1))[:300] if desc else None,
-            "points": int(pts.group(1)) if pts else None,
-            "comments": int(cmt.group(1)) if cmt else 0,
-            "originalUrl": html.unescape(orig.group(1)) if orig else None,
-            "info": text(info.group(1))[:120] if info else None,
-            "seenOn": [where],
-        }
+        try:
+            dt = datetime.fromisoformat(pub.strip().replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        content = text(tag(e, "content") or tag(e, "summary") or "")
+        orig = re.search(r"href=['\"]?(https?://(?!news\.hada\.io)[^'\" >]+)", html.unescape(tag(e, "content") or ""))
+        out.append({
+            "id": int(link.group(1)),
+            "title": text(tag(e, "title")),
+            "url": f"{BASE}/topic?id={link.group(1)}",
+            "publishedAt": dt.astimezone(KST).isoformat(timespec="seconds"),
+            "author": text(tag(e, "name") or ""),
+            "originalUrl": orig.group(1) if orig else None,
+            "content": content[:6000],
+            "via": "rss",
+            "_dt": dt,
+        })
     return out
-
-
-def parse_topic(body):
-    t = re.search(r"<title>([\s\S]*?)</title>", body)
-    title = re.sub(r"\s*\|\s*GeekNews\s*$", "", text(t.group(1))) if t else None
-    ogd = re.search(r"<meta[^>]+property=['\"]og:description['\"][^>]+content=['\"]([^'\"]*)", body)
-    orig = re.search(r"class=['\"]?topictitle[^>]*>\s*<a[^>]*href=['\"]?([^'\" >]+)", body)
-    m = re.search(r"(id|class)=['\"]?topic_contents", body)
-    if m:
-        seg = body[m.start():]
-        end = re.search(r"class=['\"]?(comment_thread|commentTD|comment_row)|id=['\"]?comment", seg)
-        seg = seg[: end.start()] if end else seg[:60000]
-        content = text("<x " + seg)
-    else:
-        content = text(body)
-    when = re.search(r"(20\d\d-\d\d-\d\d[ T]\d\d:\d\d(:\d\d)?)", body)
-    return {
-        "title": title,
-        "ogDescription": html.unescape(ogd.group(1)) if ogd else None,
-        "originalUrl": html.unescape(orig.group(1)) if orig else None,
-        "postedAt": when.group(1) if when else None,
-        "content": content[:6000],
-    }
-
-
-def is_ai(item):
-    s = " ".join(str(item.get(k) or "") for k in ("title", "listDesc")).lower()
-    return any(re.search(r"(?<![a-z])" + re.escape(k) + r"(?![a-z])", s) if k.isascii() else k in s for k in AI_KW)
 
 
 def main():
     now = datetime.now(KST)
-    D = sys.argv[1] if len(sys.argv) > 1 else now.strftime("%Y-%m-%d")
-    d = datetime.strptime(D, "%Y-%m-%d").date()
-    used, pubs = set(), []
+    used = set()
     for f in glob.glob("data/20??-??-??.json"):
-        j = json.load(open(f, encoding="utf-8"))
-        if j["date"] >= D:
-            continue
-        pubs.append(j["date"])
-        used |= {it["id"] for it in j["items"]}
-    last = max(pubs) if pubs else None
-    # 결정(2026-11-20): 긴 공백은 메우지 않음 → 직전 발간일과 D-1 중 늦은 날부터 수집
-    start = max(datetime.strptime(last, "%Y-%m-%d").date(), d - timedelta(days=1)) if last else d - timedelta(days=1)
-    days = [(start + timedelta(days=i)).isoformat() for i in range((d - start).days + 1)]
+        used |= {it["id"] for it in json.load(open(f, encoding="utf-8"))["items"]}
 
-    log, items = [], {}
-    pages = [(f"{BASE}/past?day={day}" + (f"&page={p}" if p > 1 else ""), f"past:{day}")
-             for day in days for p in (1, 2, 3)]
-    pages += [(f"{BASE}/new", "new"), (f"{BASE}/new?page=2", "new")]
-    for url, where in pages:
-        body = fetch(url, log)
-        if not body:
-            continue
-        got = parse_list(body, where)
-        if not got and "&page=" in url:
-            continue
-        for tid, it in got.items():
-            if tid in items:
-                items[tid]["seenOn"] = sorted(set(items[tid]["seenOn"] + it["seenOn"]))
-                for k, v in it.items():
-                    if items[tid].get(k) in (None, "") and v:
-                        items[tid][k] = v
-            else:
-                items[tid] = it
+    log = []
+    body = fetch(f"{BASE}/rss/news", log)
+    if not body:
+        print(json.dumps({"status": "rss_failed", "log": log}, ensure_ascii=False))
+        sys.exit(2)
+    upd = tag(body, "updated")
+    entries = parse_rss(body)
 
-    # RSS(보조): 신선도만 기록, 신선하면 제목 보충
-    rss = fetch(f"{BASE}/rss/news", log)
-    rss_info = {"updated": None, "fresh": False}
-    if rss:
-        u = re.search(r"<updated>([^<]+)</updated>", rss)
-        rss_info["updated"] = u.group(1) if u else None
-        try:
-            upd = datetime.fromisoformat(rss_info["updated"].replace("Z", "+00:00"))
-            rss_info["fresh"] = upd >= datetime.combine(d - timedelta(days=1), datetime.min.time(), KST)
-        except Exception:
-            pass
-        if rss_info["fresh"]:
-            for e in re.findall(r"<entry>([\s\S]*?)</entry>", rss):
-                i = re.search(r"topic\?id=(\d+)", e)
-                t = re.search(r"<title[^>]*>([\s\S]*?)</title>", e)
-                if i and int(i.group(1)) not in items:
-                    items[int(i.group(1))] = {"id": int(i.group(1)), "title": text(t.group(1)) if t else None,
-                                              "seenOn": ["rss"]}
+    # 보조: 토픽 페이지가 열리면 본문 보강(현재 GitHub 서버에서는 403)
+    html_ok = None
+    for it in entries[:1]:
+        html_ok = fetch(it["url"], log) is not None
 
-    cands = [it for tid, it in sorted(items.items()) if tid not in used]
-    for it in cands:
-        it["url"] = f"{BASE}/topic?id={it['id']}"
-        it["aiGuess"] = is_ai(it) if it.get("title") else True
-    for it in cands:
-        if not it["aiGuess"]:
-            continue
-        body = fetch(it["url"], log)
-        if body:
-            tp = parse_topic(body)
-            it["topic"] = tp
-            it["title"] = it.get("title") or tp["title"]
-            it["originalUrl"] = it.get("originalUrl") or tp["originalUrl"]
-            it["aiGuess"] = is_ai(it)
-    list_ok = sum(1 for l in log if l["status"] == "ok" and "/topic?" not in l["url"] and "/rss/" not in l["url"])
-    status = "ok" if list_ok and cands else ("blocked" if any(l["status"] != "ok" for l in log) else "empty")
-    out = {
-        "date": D,
-        "collectedAt": now.isoformat(timespec="seconds"),
-        "lastPublished": last,
-        "days": days,
-        "window": f"{days[0]} 00:00 ~ {now.strftime('%Y-%m-%d %H:%M')} (KST, 아카이브 날짜 기준)",
-        "status": status,
-        "rss": rss_info,
-        "counts": {"listed": len(items), "excludedUsed": len(items) - len(cands), "candidates": len(cands),
-                   "aiGuess": sum(1 for c in cands if c["aiGuess"]),
-                   "topicFetched": sum(1 for c in cands if "topic" in c)},
-        "fetchLog": log,
-        "items": cands,
-    }
-    import os
     os.makedirs("raw", exist_ok=True)
-    json.dump(out, open(f"raw/{D}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print(json.dumps({k: out[k] for k in ("date", "status", "window", "rss", "counts")}, ensure_ascii=False))
-    sys.exit(0 if status == "ok" else 2)
+    by_d = {}
+    for it in entries:
+        by_d.setdefault(bucket(it.pop("_dt")), []).append(it)
+    oldest = min((e["publishedAt"] for e in entries), default=None)
+    newest = max((e["publishedAt"] for e in entries), default=None)
+    summary = {}
+    for D, items in sorted(by_d.items()):
+        p = f"raw/{D}.json"
+        cur = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else None
+        d = datetime.strptime(D, "%Y-%m-%d").date()
+        if not cur or "runs" not in cur:  # 새 형식으로 시작(구 형식 파일은 덮어씀)
+            cur = {"date": D, "window": f"{d - timedelta(days=1)} 03:00 ~ {d} 03:00 (KST, 게시 시각 기준)",
+                   "source": "GeekNews RSS (GitHub Actions 매시간 누적)", "runs": [], "items": []}
+        have = {x["id"]: x for x in cur["items"]}
+        added = 0
+        for it in items:
+            it["aiGuess"] = is_ai(it)
+            it["alreadyPublished"] = it["id"] in used
+            if it["id"] in have:
+                have[it["id"]].update({k: v for k, v in it.items() if v})
+            else:
+                have[it["id"]] = it
+                added += 1
+        cur["items"] = sorted(have.values(), key=lambda x: x["publishedAt"])
+        cur["runs"].append({"at": now.isoformat(timespec="seconds"), "rssUpdated": upd, "entries": len(items),
+                            "added": added, "rssOldest": oldest, "rssNewest": newest, "htmlOk": html_ok})
+        cur["runs"] = cur["runs"][-48:]
+        # 빈틈 감지: 직전 실행의 최신 글보다 이번 RSS의 가장 오래된 글이 더 새로우면 놓친 글이 있을 수 있음
+        prev = [r for r in cur["runs"][:-1] if r.get("rssNewest")]
+        if prev and oldest and oldest > prev[-1]["rssNewest"]:
+            cur.setdefault("gaps", []).append({"between": [prev[-1]["rssNewest"], oldest]})
+        cur["updatedAt"] = now.isoformat(timespec="seconds")
+        cur["counts"] = {"items": len(cur["items"]),
+                         "candidates": sum(1 for x in cur["items"] if not x["alreadyPublished"]),
+                         "aiGuess": sum(1 for x in cur["items"] if x["aiGuess"] and not x["alreadyPublished"])}
+        cur["status"] = "ok"
+        json.dump(cur, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        summary[D] = {"added": added, **cur["counts"]}
+    print(json.dumps({"status": "ok", "rssUpdated": upd, "entries": len(entries), "files": summary,
+                      "htmlOk": html_ok}, ensure_ascii=False))
 
 
 if __name__ == "__main__":

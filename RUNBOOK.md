@@ -4,19 +4,20 @@
 
 ## 0. 날짜와 구간
 - 발간일 D = 오늘(KST, `TZ=Asia/Seoul date +%F`).
-- 수집 구간은 `raw/D.json`의 `window`를 그대로 씁니다(직전 발간일과 D-1 중 늦은 날 00:00 ~ 수집 시각, 아카이브 날짜 기준).
-  - 결정(2026-11-20): 긴 공백이 생겨도 소급해 메우지 않습니다. 최대 D-1부터만 다룹니다.
-- 이전 날짜 파일에 이미 실린 topic id는 제외합니다(수집기가 이미 제외해 둠). `window` 필드에는 실제 수집 구간을 적습니다.
+- 수집 구간은 고정입니다: **D-1 03:00 ~ D 03:00 (KST, 게시 시각 기준)** = `raw/D.json`의 `window`.
+  - 결정(2026-11-20): 발간이 빠진 날이 있어도 소급해 메우지 않습니다.
+- 이전 날짜 파일에 이미 실린 topic id(`alreadyPublished: true`)는 제외합니다. `window` 필드에는 raw의 `window`를 적습니다.
 - `data/D.json`이 이미 있으면 덮어씁니다(재실행 안전).
 
-## 1. 수집 — GitHub Actions가 먼저 받아 둡니다
-클라우드 예약 작업 환경은 news.hada.io 접근이 막혀 있고(셸 403), 날짜를 넣은 WebFetch 주소는 승인이 필요해 무인 실행에서 실패합니다(2026-11-09~20 발간 중단 원인).
-그래서 수집은 `.github/workflows/collect.yml`이 매일 02:30 KST에 `tools/collect.py`로 하고 `raw/D.json`을 커밋합니다.
+## 1. 수집 — GitHub Actions가 매시간 RSS를 누적해 둡니다
+2026-11-09~20 발간 중단 원인: 클라우드 예약 작업 환경은 news.hada.io가 막혀 있고(셸 403), 날짜를 넣은 WebFetch 주소는 승인이 필요해 무인 실행에서 실패했습니다.
+또 GeekNews는 GitHub 서버의 HTML 페이지(아카이브·최신글·토픽) 접근을 403으로 막고, RSS만 허용합니다(2026-11-20 확인).
+그래서 `.github/workflows/collect.yml`이 매시간 :17분에 `tools/collect.py`로 RSS(최근 20개)를 읽어 게시 시각별로 `raw/D.json`에 누적·커밋합니다.
 - 예약 작업은 `git pull` 후 `raw/D.json`만 읽습니다. news.hada.io를 WebFetch·curl로 다시 읽지 않습니다.
-- `raw/D.json` 구조: `status`(ok|blocked|empty), `window`, `rss`(updated·fresh), `counts`, `fetchLog`, `items[]`.
-  - `items[]`: `id`, `title`, `listDesc`, `points`, `comments`, `originalUrl`, `url`, `aiGuess`(키워드 추정), `topic`(AI 추정 글만: `title`·`ogDescription`·`originalUrl`·`postedAt`·`content` 최대 6000자).
-- 파일이 없으면(Actions 지연) 5분 간격으로 최대 3회 `git pull` 재확인합니다. 그래도 없거나 `status`가 ok가 아니면 발간을 중단하고 원인(`fetchLog` 요약)을 알림으로 보냅니다. 사실을 지어내지 않습니다.
-- 수동 재수집: GitHub 저장소 Actions → "GeekNews 수집" → Run workflow(날짜 입력 가능).
+- `raw/D.json` 구조: `status`, `window`, `source`, `counts`, `runs[]`(매시간 실행 기록), `gaps[]`(있으면 RSS 사이 놓친 구간 가능성), `items[]`.
+  - `items[]`: `id`, `title`, `url`, `publishedAt`, `author`, `originalUrl`, `content`(RSS 본문 요약, 최대 6000자), `aiGuess`(키워드 추정), `alreadyPublished`.
+- 파일이 없거나 `items`가 비면 발간을 중단하고 원인을 알림으로 보냅니다(사실을 지어내지 않음). `runs`의 마지막 실행이 3시간 넘게 오래됐으면 알림에 함께 적습니다. `gaps`가 있으면 그대로 발간하되 알림 없이 3줄 요약에만 적습니다.
+- 수동 재수집: GitHub 저장소 Actions → "GeekNews 수집" → Run workflow.
 
 ## 2. 선별 (7개)
 - AI·ML 관련 글만 후보로 둡니다.
@@ -26,8 +27,8 @@
 - 1~3위가 메인 Top 3입니다.
 
 ## 3. 심화
-- 각 후보의 `topic.content`(GeekNews 본문 요약)를 1차 출처로 읽습니다. `aiGuess`가 false라도 제목상 AI 글이면 후보로 쓸 수 있으나, `topic`이 없으면 제목·`listDesc`·WebSearch 원 출처로만 씁니다.
-- 수치·맥락 보강은 WebSearch로 찾은 원 출처를 씁니다(검색 결과에 나온 주소만 WebFetch). 실패해도 `topic.content`만으로 작성할 수 있습니다.
+- 각 후보의 `content`(GeekNews RSS 본문 요약)를 1차 출처로 읽습니다. `aiGuess`는 참고용이며, false여도 내용상 AI 글이면 후보로 씁니다.
+- 수치·맥락 보강은 WebSearch로 찾은 원 출처를 씁니다(검색 결과에 나온 주소만 WebFetch). 실패해도 `content`만으로 작성할 수 있습니다.
 - 사실·수치는 반드시 읽은 출처에 근거합니다. 원문 문장을 그대로 옮기지 않고 새로 씁니다.
 
 ## 4. 작성 — `data/D.json` 스키마
