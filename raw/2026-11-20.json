@@ -11,6 +11,15 @@
    "rssOldest": "2026-11-19T22:32:47+09:00",
    "rssNewest": "2026-11-20T09:04:58+09:00",
    "htmlOk": true
+  },
+  {
+   "at": "2026-11-20T09:43:32+09:00",
+   "rssUpdated": "2026-11-20T09:04:58+09:00",
+   "entries": 5,
+   "added": 0,
+   "rssOldest": "2026-11-19T22:32:47+09:00",
+   "rssNewest": "2026-11-20T09:04:58+09:00",
+   "htmlOk": null
   }
  ],
  "items": [
@@ -75,7 +84,7 @@
    "alreadyPublished": false
   }
  ],
- "updatedAt": "2026-11-20T09:41:06+09:00",
+ "updatedAt": "2026-11-20T09:43:32+09:00",
  "counts": {
   "items": 5,
   "candidates": 5,
