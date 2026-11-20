@@ -2,7 +2,7 @@ name: GeekNews 수집
 
 on:
   schedule:
-    - cron: "17 * * * *"   # 매시간 RSS(최근 20개)를 읽어 raw/D.json 에 누적
+    - cron: "7 0,6,12,18 * * *"   # 6시간 간격: 09:07·15:07·21:07·03:07 KST. 03:57 발간 작업도 시작할 때 한 번 직접 실행함
   workflow_dispatch:
 
 permissions:

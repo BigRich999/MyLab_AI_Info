@@ -1,4 +1,4 @@
-"""GeekNews 수집기 (GitHub Actions에서 매시간 실행).
+"""GeekNews 수집기 (GitHub Actions에서 6시간 간격 + 발간 직전 실행).
 
 - 클라우드 예약 작업은 news.hada.io에 접근할 수 없고, GeekNews는 봇 UA의 HTML 페이지 접근을 403으로 막습니다
   (2026-11-20 확인). RSS(Atom, 최근 20개)는 열리므로 RSS를 매시간 읽어 누적합니다.
@@ -25,12 +25,17 @@ AI_KW = [
 ]
 
 
-def fetch(url, log):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "ko,en;q=0.8"})
+def fetch(url, log, extra=None, meta=None):
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "ko,en;q=0.8", **(extra or {})})
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
             body, code = r.read().decode("utf-8", "replace"), r.status
+            if meta is not None:
+                meta.update({"etag": r.headers.get("ETag"), "lastModified": r.headers.get("Last-Modified")})
     except urllib.error.HTTPError as e:
+        if e.code == 304:  # 변경 없음
+            log.append({"url": url, "status": "not_modified", "http": 304})
+            return ""
         body, code = "", e.code
     except Exception as e:
         log.append({"url": url, "status": "error", "detail": str(e)[:200]})
@@ -109,22 +114,41 @@ def main():
         used |= {it["id"] for it in json.load(open(f, encoding="utf-8"))["items"]}
 
     log = []
-    body = fetch(f"{BASE}/rss/news", log)
+    sp = "raw/_state.json"
+    state = json.load(open(sp, encoding="utf-8")) if os.path.exists(sp) else {}
+    cond = {}  # 조건부 요청: 바뀐 게 없으면 서버가 304만 돌려줌
+    if state.get("etag"):
+        cond["If-None-Match"] = state["etag"]
+    if state.get("lastModified"):
+        cond["If-Modified-Since"] = state["lastModified"]
+    meta = {}
+    body = fetch(f"{BASE}/rss/news", log, cond, meta)
+    if body == "":
+        print(json.dumps({"status": "not_modified"}, ensure_ascii=False))
+        return
     if not body:
         print(json.dumps({"status": "rss_failed", "log": log}, ensure_ascii=False))
         sys.exit(2)
     upd = tag(body, "updated")
     entries = parse_rss(body)
-
-    # HTML 페이지는 봇 UA를 403으로 거르므로(사이트 정책) 읽지 않습니다. RSS만 사용.
-    html_ok = None
+    html_ok = None  # HTML 페이지는 봇 UA를 403으로 거르므로(사이트 정책) 읽지 않습니다. RSS만 사용.
+    known = set()
+    for f in glob.glob("raw/20??-??-??.json"):
+        known |= {x["id"] for x in json.load(open(f, encoding="utf-8")).get("items", [])}
+    entries_all = entries
+    entries = [e for e in entries if e["id"] not in known]
+    if not entries:  # 새 글 없음 → 파일을 건드리지 않아 커밋도 생기지 않음
+        print(json.dumps({"status": "no_new", "rssUpdated": upd}, ensure_ascii=False))
+        return
 
     os.makedirs("raw", exist_ok=True)
     by_d = {}
     for it in entries:
         by_d.setdefault(bucket(it.pop("_dt")), []).append(it)
-    oldest = min((e["publishedAt"] for e in entries), default=None)
-    newest = max((e["publishedAt"] for e in entries), default=None)
+    oldest = min((e["publishedAt"] for e in entries_all), default=None)
+    newest = max((e["publishedAt"] for e in entries_all), default=None)
+    # 빈틈 감지: 지난 수집의 최신 글보다 이번 RSS의 가장 오래된 글이 더 새로우면 그 사이 글을 놓쳤을 수 있음
+    gap = [state["lastNewest"], oldest] if state.get("lastNewest") and oldest and oldest > state["lastNewest"] else None
     summary = {}
     for D, items in sorted(by_d.items()):
         p = f"raw/{D}.json"
@@ -132,7 +156,7 @@ def main():
         d = datetime.strptime(D, "%Y-%m-%d").date()
         if not cur or "runs" not in cur:  # 새 형식으로 시작(구 형식 파일은 덮어씀)
             cur = {"date": D, "window": f"{d - timedelta(days=1)} 03:00 ~ {d} 03:00 (KST, 게시 시각 기준)",
-                   "source": "GeekNews RSS (GitHub Actions 매시간 누적)", "runs": [], "items": []}
+                   "source": "GeekNews RSS (GitHub Actions 6시간 간격 누적)", "runs": [], "items": []}
         have = {x["id"]: x for x in cur["items"]}
         added = 0
         for it in items:
@@ -147,10 +171,8 @@ def main():
         cur["runs"].append({"at": now.isoformat(timespec="seconds"), "rssUpdated": upd, "entries": len(items),
                             "added": added, "rssOldest": oldest, "rssNewest": newest, "htmlOk": html_ok})
         cur["runs"] = cur["runs"][-48:]
-        # 빈틈 감지: 직전 실행의 최신 글보다 이번 RSS의 가장 오래된 글이 더 새로우면 놓친 글이 있을 수 있음
-        prev = [r for r in cur["runs"][:-1] if r.get("rssNewest")]
-        if prev and oldest and oldest > prev[-1]["rssNewest"]:
-            cur.setdefault("gaps", []).append({"between": [prev[-1]["rssNewest"], oldest]})
+        if gap:
+            cur.setdefault("gaps", []).append({"between": gap})
         cur["updatedAt"] = now.isoformat(timespec="seconds")
         cur["counts"] = {"items": len(cur["items"]),
                          "candidates": sum(1 for x in cur["items"] if not x["alreadyPublished"]),
@@ -158,6 +180,9 @@ def main():
         cur["status"] = "ok"
         json.dump(cur, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         summary[D] = {"added": added, **cur["counts"]}
+    state.update({"etag": meta.get("etag"), "lastModified": meta.get("lastModified"), "lastNewest": newest,
+                  "lastRunAt": now.isoformat(timespec="seconds")})
+    json.dump(state, open(sp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(json.dumps({"status": "ok", "rssUpdated": upd, "entries": len(entries), "files": summary,
                       "htmlOk": html_ok}, ensure_ascii=False))
 

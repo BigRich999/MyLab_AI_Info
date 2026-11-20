@@ -9,14 +9,17 @@
 - 이전 날짜 파일에 이미 실린 topic id(`alreadyPublished: true`)는 제외합니다. `window` 필드에는 raw의 `window`를 적습니다.
 - `data/D.json`이 이미 있으면 덮어씁니다(재실행 안전).
 
-## 1. 수집 — GitHub Actions가 매시간 RSS를 누적해 둡니다
+## 1. 수집 — GitHub Actions가 6시간마다 RSS를 누적해 둡니다
 2026-11-09~20 발간 중단 원인: 클라우드 예약 작업 환경은 news.hada.io가 막혀 있고(셸 403), 날짜를 넣은 WebFetch 주소는 승인이 필요해 무인 실행에서 실패했습니다.
 또 GeekNews는 봇의 HTML 페이지(아카이브·최신글·토픽) 접근을 403으로 거르고 RSS는 허용합니다(2026-11-20 확인). 브라우저로 위장해 HTML을 읽지 않습니다.
-그래서 `.github/workflows/collect.yml`이 매시간 :17분에 `tools/collect.py`로 RSS(최근 20개)를 읽어 게시 시각별로 `raw/D.json`에 누적·커밋합니다.
+그래서 `.github/workflows/collect.yml`이 6시간마다(03:07·09:07·15:07·21:07 KST) `tools/collect.py`로 RSS(최근 20개)를 읽어 게시 시각별로 `raw/D.json`에 누적·커밋합니다.
+- 부담 최소화(2026-11-20 결정): 하루 4회, 조건부 요청(ETag/Last-Modified → 변경 없으면 304), 새 글이 있을 때만 커밋. 상태는 `raw/_state.json`.
+- RSS 20개는 평소 약 10시간 분량이라 6시간 간격이면 대개 충분하지만, 글이 몰리는 날엔 빈틈이 생길 수 있습니다 → `gaps`에 기록. 자주 생기면 간격을 줄입니다.
+- **발간 작업 시작 시 수집을 한 번 직접 실행합니다**: GitHub MCP `actions_run_trigger`(run_workflow, workflow_id=collect.yml, ref=main) → 약 2분 뒤 `git pull`. 03:07 예약 실행이 GitHub 쪽에서 늦어져도 03:00 직전 글까지 확보하기 위함입니다. 트리거가 실패하면 있는 파일로 진행합니다.
 - 예약 작업은 `git pull` 후 `raw/D.json`만 읽습니다. news.hada.io를 WebFetch·curl로 다시 읽지 않습니다.
-- `raw/D.json` 구조: `status`, `window`, `source`, `counts`, `runs[]`(매시간 실행 기록), `gaps[]`(있으면 RSS 사이 놓친 구간 가능성), `items[]`.
+- `raw/D.json` 구조: `status`, `window`, `source`, `counts`, `runs[]`(새 글이 있었던 수집 기록), `gaps[]`(있으면 RSS 사이 놓친 구간 가능성), `items[]`.
   - `items[]`: `id`, `title`, `url`, `publishedAt`, `author`, `originalUrl`, `content`(RSS 본문 요약, 최대 6000자), `aiGuess`(키워드 추정), `alreadyPublished`.
-- 파일이 없거나 `items`가 비면 발간을 중단하고 원인을 알림으로 보냅니다(사실을 지어내지 않음). `runs`의 마지막 실행이 3시간 넘게 오래됐으면 알림에 함께 적습니다. `gaps`가 있으면 그대로 발간하되 알림 없이 3줄 요약에만 적습니다.
+- 파일이 없거나 `items`가 비면 발간을 중단하고 원인을 알림으로 보냅니다(사실을 지어내지 않음). `raw/_state.json`의 `lastRunAt`이 12시간 넘게 오래됐으면 알림에 함께 적습니다. `gaps`가 있으면 그대로 발간하되 알림 없이 3줄 요약에만 적습니다.
 - 수동 재수집: GitHub 저장소 Actions → "GeekNews 수집" → Run workflow.
 
 ## 2. 선별 (7개)
