@@ -11,7 +11,7 @@
 
 ## 1. 수집 — GitHub Actions가 매시간 RSS를 누적해 둡니다
 2026-11-09~20 발간 중단 원인: 클라우드 예약 작업 환경은 news.hada.io가 막혀 있고(셸 403), 날짜를 넣은 WebFetch 주소는 승인이 필요해 무인 실행에서 실패했습니다.
-또 GeekNews는 GitHub 서버의 HTML 페이지(아카이브·최신글·토픽) 접근을 403으로 막고, RSS만 허용합니다(2026-11-20 확인).
+또 GeekNews는 봇의 HTML 페이지(아카이브·최신글·토픽) 접근을 403으로 거르고 RSS는 허용합니다(2026-11-20 확인). 브라우저로 위장해 HTML을 읽지 않습니다.
 그래서 `.github/workflows/collect.yml`이 매시간 :17분에 `tools/collect.py`로 RSS(최근 20개)를 읽어 게시 시각별로 `raw/D.json`에 누적·커밋합니다.
 - 예약 작업은 `git pull` 후 `raw/D.json`만 읽습니다. news.hada.io를 WebFetch·curl로 다시 읽지 않습니다.
 - `raw/D.json` 구조: `status`, `window`, `source`, `counts`, `runs[]`(매시간 실행 기록), `gaps[]`(있으면 RSS 사이 놓친 구간 가능성), `items[]`.

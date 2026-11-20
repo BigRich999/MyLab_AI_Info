@@ -1,9 +1,9 @@
 """GeekNews 수집기 (GitHub Actions에서 매시간 실행).
 
-- 클라우드 예약 작업은 news.hada.io에 접근할 수 없고, GeekNews는 GitHub 서버의 HTML 페이지 접근을 403으로 막습니다
+- 클라우드 예약 작업은 news.hada.io에 접근할 수 없고, GeekNews는 봇 UA의 HTML 페이지 접근을 403으로 막습니다
   (2026-11-20 확인). RSS(Atom, 최근 20개)는 열리므로 RSS를 매시간 읽어 누적합니다.
 - 글은 게시 시각 기준으로 발간 묶음에 넣습니다: (D-1 03:00, D 03:00] KST 에 게시된 글 → raw/D.json
-- HTML(최신글·토픽 페이지)은 열릴 때만 보조로 씁니다.
+- HTML 페이지는 봇 접근을 거르는 사이트 정책을 존중해 읽지 않습니다(RSS는 기계용으로 공개된 경로).
 
 사용: python3 tools/collect.py
 종료 코드: 0 정상, 2 RSS 실패
@@ -13,7 +13,7 @@ from datetime import datetime, timedelta, timezone
 
 KST = timezone(timedelta(hours=9))
 BASE = "https://news.hada.io"
-UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
+UA = "AI-Trend-Daily-RSS/1.0 (+https://github.com/BigRich999/MyLab_AI_Info)"  # 정직한 봇 UA. 브라우저 위장 금지
 CUTOFF_H = 3  # 발간 묶음 경계(KST 03:00)
 AI_KW = [
     "ai", "llm", "gpt", "openai", "anthropic", "claude", "gemini", "deepmind", "llama",
@@ -116,10 +116,8 @@ def main():
     upd = tag(body, "updated")
     entries = parse_rss(body)
 
-    # 보조: 토픽 페이지가 열리면 본문 보강(현재 GitHub 서버에서는 403)
+    # HTML 페이지는 봇 UA를 403으로 거르므로(사이트 정책) 읽지 않습니다. RSS만 사용.
     html_ok = None
-    for it in entries[:1]:
-        html_ok = fetch(it["url"], log) is not None
 
     os.makedirs("raw", exist_ok=True)
     by_d = {}
