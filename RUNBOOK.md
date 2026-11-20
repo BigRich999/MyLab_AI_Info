@@ -3,21 +3,20 @@
 이 파일은 매일 04:00 KST(실제 시작 03:57) 예약 작업이 따르는 절차입니다.
 
 ## 0. 날짜와 구간
-- 발간일 D = 오늘(KST). 수집 구간 = 직전 발간 이후 ~ 실행 시점(대략 D-1 04:00 ~ D 04:00 KST).
-- 이전 날짜 파일에 이미 실린 topic id는 제외해 빈틈과 중복을 막습니다. `window` 필드에는 실제 수집 구간을 적습니다.
+- 발간일 D = 오늘(KST, `TZ=Asia/Seoul date +%F`).
+- 수집 구간은 `raw/D.json`의 `window`를 그대로 씁니다(직전 발간일과 D-1 중 늦은 날 00:00 ~ 수집 시각, 아카이브 날짜 기준).
+  - 결정(2026-11-20): 긴 공백이 생겨도 소급해 메우지 않습니다. 최대 D-1부터만 다룹니다.
+- 이전 날짜 파일에 이미 실린 topic id는 제외합니다(수집기가 이미 제외해 둠). `window` 필드에는 실제 수집 구간을 적습니다.
 - `data/D.json`이 이미 있으면 덮어씁니다(재실행 안전).
 
-## 1. 수집
-- **1순위: 아카이브·최신글 페이지.** WebFetch로 다음을 읽어 구간 안의 글을 모읍니다.
-  - `https://news.hada.io/past?day=YYYY-MM-DD`(&page=2,3): 수집 구간에 걸친 날짜마다(직전 발간일부터 D까지)
-  - `https://news.hada.io/new`(&page=2): 아직 아카이브에 정리되지 않은 당일 글 보충
-  - 아카이브는 같은 글이 여러 페이지에 겹쳐 나오므로 topic id 기준으로 중복을 제거합니다.
-- **2순위(보조): RSS.** `https://news.hada.io/rss/news`(Atom, feedburner로 리다이렉트)를 읽어 빠진 글이 있는지 확인합니다.
-  - **신선도 검사**: 피드의 `<updated>`(또는 가장 최근 `published`)가 D-1 00:00(KST)보다 오래됐으면 피드가 멈춘 것으로 보고 RSS는 쓰지 않습니다. (2026-11-08 기준 피드가 2026-10-27에 멈춰 있었음)
-  - 신선하면 `published`가 구간 안에 있는 항목만 후보에 더합니다.
-- 웹 읽기(WebFetch)가 권한·접근 오류로 전부 실패하면, 사실을 지어내지 말고 발간을 중단한 뒤 알림을 보냅니다. 다음 실행이 직전 발간 이후 구간 전체를 수집해 빈 날을 메웁니다.
-- 셸(curl)은 news.hada.io에 접근할 수 없습니다. 반드시 WebFetch를 씁니다.
-- 이미 이전 날짜 파일에 실린 topic id는 제외합니다(중복 방지).
+## 1. 수집 — GitHub Actions가 먼저 받아 둡니다
+클라우드 예약 작업 환경은 news.hada.io 접근이 막혀 있고(셸 403), 날짜를 넣은 WebFetch 주소는 승인이 필요해 무인 실행에서 실패합니다(2026-11-09~20 발간 중단 원인).
+그래서 수집은 `.github/workflows/collect.yml`이 매일 02:30 KST에 `tools/collect.py`로 하고 `raw/D.json`을 커밋합니다.
+- 예약 작업은 `git pull` 후 `raw/D.json`만 읽습니다. news.hada.io를 WebFetch·curl로 다시 읽지 않습니다.
+- `raw/D.json` 구조: `status`(ok|blocked|empty), `window`, `rss`(updated·fresh), `counts`, `fetchLog`, `items[]`.
+  - `items[]`: `id`, `title`, `listDesc`, `points`, `comments`, `originalUrl`, `url`, `aiGuess`(키워드 추정), `topic`(AI 추정 글만: `title`·`ogDescription`·`originalUrl`·`postedAt`·`content` 최대 6000자).
+- 파일이 없으면(Actions 지연) 5분 간격으로 최대 3회 `git pull` 재확인합니다. 그래도 없거나 `status`가 ok가 아니면 발간을 중단하고 원인(`fetchLog` 요약)을 알림으로 보냅니다. 사실을 지어내지 않습니다.
+- 수동 재수집: GitHub 저장소 Actions → "GeekNews 수집" → Run workflow(날짜 입력 가능).
 
 ## 2. 선별 (7개)
 - AI·ML 관련 글만 후보로 둡니다.
@@ -27,8 +26,8 @@
 - 1~3위가 메인 Top 3입니다.
 
 ## 3. 심화
-- 각 토픽 페이지 `https://news.hada.io/topic?id=N`을 WebFetch로 읽습니다.
-- '브라우저 확인' 화면이 나오면, RSS 요약과 WebSearch로 찾은 원 출처 기사를 대신 읽습니다.
+- 각 후보의 `topic.content`(GeekNews 본문 요약)를 1차 출처로 읽습니다. `aiGuess`가 false라도 제목상 AI 글이면 후보로 쓸 수 있으나, `topic`이 없으면 제목·`listDesc`·WebSearch 원 출처로만 씁니다.
+- 수치·맥락 보강은 WebSearch로 찾은 원 출처를 씁니다(검색 결과에 나온 주소만 WebFetch). 실패해도 `topic.content`만으로 작성할 수 있습니다.
 - 사실·수치는 반드시 읽은 출처에 근거합니다. 원문 문장을 그대로 옮기지 않고 새로 씁니다.
 
 ## 4. 작성 — `data/D.json` 스키마
@@ -94,7 +93,8 @@
 
 ## 5. 게시
 - `git add -A && git commit && git push origin main` → GitHub Pages가 자동 반영합니다.
-- 1~2분 뒤 `https://bigrich999.github.io/MyLab_AI_Info/data/D.json`이 열리는지 확인합니다.
+- push 전 `git pull --rebase`(Actions가 raw/를 커밋했을 수 있음).
+- 1~2분 뒤 GitHub MCP `actions_list`로 이 커밋의 `pages-build-deployment` 실행이 success인지 확인합니다(최대 3회, 2분 간격). github.io는 셸·WebFetch로 확인하지 않습니다.
 
 ## 6. 안내 메일 (웹 요약 화면과 동기화)
 - `python3 build_email.py D` 를 실행합니다. 웹과 같은 `data/D.json`·같은 파스텔 디자인으로 `email/D.html`(본문), `email/D.txt`(텍스트 대체본), `email/D.subject.txt`(제목)를 만듭니다.
