@@ -29,6 +29,15 @@
    "rssOldest": "2026-11-20T09:59:44+09:00",
    "rssNewest": "2026-11-20T23:32:17+09:00",
    "htmlOk": null
+  },
+  {
+   "at": "2026-11-21T03:57:51+09:00",
+   "rssUpdated": "2026-11-21T03:02:53+09:00",
+   "entries": 8,
+   "added": 8,
+   "rssOldest": "2026-11-20T17:35:11+09:00",
+   "rssNewest": "2026-11-21T02:55:44+09:00",
+   "htmlOk": null
   }
  ],
  "items": [
@@ -451,13 +460,109 @@
    "via": "rss",
    "aiGuess": false,
    "alreadyPublished": false
+  },
+  {
+   "id": 37529,
+   "title": "Anthropic 수학자, Claude와 리만 가설 및 일반화 리만 가설을 증명했다고 발표 [pdf]",
+   "url": "https://news.hada.io/topic?id=37529",
+   "publishedAt": "2026-11-21T00:34:01+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Anthropic의 수학자 Levent Alpöge 가 Claude와 함께 리만 가설과 일반화 리만 가설(GRH)의 증명을 발견했다 고 발표함. 확장 리만 가설에도 적용할 수 있을 것으로 기대하지만, 이 부분은 아직 전망임\n- 리만 가설은 소수의 분포가 평균에서 얼마나 벗어나는지에 관한 난제 로, 1859년 제기된 클레이 밀레니엄 문제 중 하나임\n- 논증을 추가 가정 없이 Lean으로 형식화했다 고 밝히며, 자료를 14개 분할 파일로 공개함. 사람이 읽고 이해할 수 있는 정식 해설은 앞으로 작성할 계획임\n- 공개 PDF는 4쪽짜리 발표문과 기술적 진행 개요 임. 시험 삼아\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37530,
+   "title": "Signal은 사용자의 프라이버시 보호에 진지함",
+   "url": "https://news.hada.io/topic?id=37530",
+   "publishedAt": "2026-11-21T01:37:14+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Signal 이 모바일 운영체제에 내장된 AI 에이전트의 대화 데이터 수집을 막기 위해, iOS 27과 AI 비서의 화면 접근을 감지할 수 있는 Android 환경에 스크린샷 차단 조치를 적용함\n- 운영체제의 화면 읽기 기반 AI 기능 은 Signal 데이터를 수집해 로컬 데이터베이스나 원격 서버에서 활용할 수 있으며, 수집 이후에는 Signal이 통제하거나 대화 참여자의 프라이버시를 독립적으로 보장할 수 없음\n- 스크린샷 차단은 불완전한 방어책 으로, 파일시스템을 통한 데이터 접근까지 막지는 못하며 사용자가 보호를 해제하면 자신과 대화 상대의 콘텐츠가 AI에 노출될 수 있음\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37531,
+   "title": "Jujutsu 입문: Git 사용자에게 익숙하면서도 다른 버전 관리 방식",
+   "url": "https://news.hada.io/topic?id=37531",
+   "publishedAt": "2026-11-21T01:40:15+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Jujutsu( jj ) 는 Git 저장소에서 Git과 함께 사용할 수 있는 버전 관리 시스템으로, 자동 리베이스와 실행 취소를 조합해 커밋 그래프 중심으로 작업함\n- 작업 사본도 커밋 으로 관리하며 별도 스테이징 영역이 없음. 파일 편집 후 jj 명령으로 자동 스냅샷을 만들고, 커밋 ID가 바뀌어도 논리적 변경의 change ID 는 유지됨\n- 이전 커밋을 수정하면 후손 커밋을 자동 리베이스 하며, 충돌이 발생해도 즉시 해결하도록 강제하지 않음. 충돌 상태를 기록한 채 현재 작업을 이어갈 수 있음\n- 작업 이력과 실행 취소 를 바탕으로 변경을 이동, 병합, 삭\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37533,
+   "title": "다시는 Framework 하드웨어를 사지 않겠다",
+   "url": "https://news.hada.io/topic?id=37533",
+   "publishedAt": "2026-11-21T02:43:43+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 개발자용으로 구매한 약 3,000유로짜리 Framework Laptop 16 에서 개봉 직후 입력 모듈 오류가 발생했고, 3개월 넘게 지원과 부품 교체를 거쳐도 해결되지 않아 구매 기업이 향후 Framework 구매를 중단하기로 함\n- 첫 키보드는 운영체제 설치 전부터 숫자 키패드로 잘못 식별됐으며, 직원이 Framework 자체 도구로 키보드 결함을 좁혀냈지만 지원팀은 먼저 미드플레이트를 교체함\n- 뒤늦게 받은 교체 키보드는 인식됐으나 C 키를 누르면 c 와 Delete 시퀀스가 함께 출력 되는 다른 오류가 있었고, 외장 키보드에서는 같은 문제가 없었음\n- 수리센\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37534,
+   "title": "코드 작성을 멈추면 코드 리뷰 실력도 떨어진다",
+   "url": "https://news.hada.io/topic?id=37534",
+   "publishedAt": "2026-11-21T02:46:44+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 코드를 직접 쓰지 않고 지시와 리뷰만으로 전문성을 유지하거나 높이기는 어려우며, 직접 연습하는 과정 이 개발 역량 유지와 향상에 필요함\n- 쟁점은 AI가 만든 코드의 단기적인 품질 이 아니라, 직접 작업하는 개발자와 그렇지 않은 개발자의 숙련도 변화 에 있음\n- 소프트웨어 엔지니어링이 코드 작성보다 넓은 활동이더라도, 코드의 작동 방식과 좋은 코드의 특성, 변경하기 쉬운 구조를 이해하려면 Claude가 만든 코드를 리뷰하는 것만으로는 부족함 \n- 코드에 직접 관여하는 정도는 달라질 수 있지만, 모든 엔지니어에게 문제 해결 연습 은 필\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37535,
+   "title": "Synology 보안 권고: DSM과 BeeStation OS의 치명적 취약점",
+   "url": "https://news.hada.io/topic?id=37535",
+   "publishedAt": "2026-11-21T02:49:44+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Synology가 원격 공격자의 임의 파일 읽기/쓰기와 서비스 거부 공격 을 허용하는 CVE-2026-120382에 대응하는 보안 업데이트를 공개함\n- 취약점은 DSM의 OAuth API 에서 명령어 인자 구분자를 적절히 무력화하지 못하는 문제로, 심각도는 Critical이며 CVSS 3.1 점수는 9.8 임\n- DSM 7.4와 7.3 은 수정 버전이 제공되며, 각각 7.4.1-90080-2와 7.3.2-86009-6 이상으로 업그레이드해야 함\n- BeeStation OS 1.5와 DSM 일부 이전 버전 은 수정 작업이 진행 중이며, DSM 7.2.1과 7.2.2는 수정된 DSM 7.3 버전 이상으로 업그레이드할 것을 권고함\n- 완화 조\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37536,
+   "title": "Postgres 19 REPACK: 더 빠른 내장 테이블 비대화 정리",
+   "url": "https://news.hada.io/topic?id=37536",
+   "publishedAt": "2026-11-21T02:52:44+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Postgres 19는 확장 없이 테이블을 재구축하는 REPACK SQL 명령을 추가함. CONCURRENTLY 를 사용하면 대부분의 작업 동안 읽기와 쓰기를 유지하며, 마지막 파일 교체 시에만 짧게 잠금을 획득함\n- 일반 VACUUM 이 죽은 튜플의 공간을 내부 재사용 가능 상태로 만드는 것과 달리, REPACK은 테이블을 다시 작성해 디스크 공간을 OS에 반환 함\n- 온라인 재구축은 트리거 대신 WAL 기반 논리 디코딩 으로 동시 변경을 반영함. 테스트에서는 VACUUM FULL보다 오래 걸렸지만, 전체 작업 동안 테이블을 잠그지 않는 이점이 있음\n- USING INDEX 로 행을 인덱\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37537,
+   "title": "IEA, 건물 냉방 에너지 수요가 난방을 추월하고 있음",
+   "url": "https://news.hada.io/topic?id=37537",
+   "publishedAt": "2026-11-21T02:55:44+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- IEA의 World Energy Outlook 2026 에 따르면 건물 냉방이 역사상 처음으로 난방을 추월하는 변화가 진행 중임. 다만 이는 제공되는 에너지 서비스 기준이며, 실제 소비하는 연료와 전력은 여전히 난방이 더 많음\n- 소득 증가와 기온 상승 이 냉방 수요를 끌어올림. 중국을 제외한 신흥국과 개발도상국에서는 가구의 85%가 연중 일정 기간 고온에 노출되지만, 에어컨 보유율은 20% 미만임\n- 정부가 발표한 정책을 반영한 주요 시나리오에서 세계 냉방 전력 사용량은 2035년까지 1,700TWh 증가 함. 증가분만 현재 인도의 전체 전력 수요와 비슷함\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
   }
  ],
- "updatedAt": "2026-11-21T00:21:16+09:00",
+ "updatedAt": "2026-11-21T03:57:51+09:00",
  "counts": {
-  "items": 35,
-  "candidates": 35,
-  "aiGuess": 14
+  "items": 43,
+  "candidates": 43,
+  "aiGuess": 17
  },
  "status": "ok"
 }
