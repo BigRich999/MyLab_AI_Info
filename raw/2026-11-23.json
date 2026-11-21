@@ -1,0 +1,61 @@
+{
+ "date": "2026-11-23",
+ "window": "2026-11-22 03:00 ~ 2026-11-23 03:00 (KST, 게시 시각 기준)",
+ "source": "GeekNews RSS (GitHub Actions 6시간 간격 누적)",
+ "runs": [
+  {
+   "at": "2026-11-22T04:07:34+09:00",
+   "rssUpdated": "2026-11-22T03:41:45+09:00",
+   "entries": 3,
+   "added": 3,
+   "rssOldest": "2026-11-21T18:34:13+09:00",
+   "rssNewest": "2026-11-22T03:41:45+09:00",
+   "htmlOk": null
+  }
+ ],
+ "items": [
+  {
+   "id": 37590,
+   "title": "GnuPG의 원격 코드 실행(RCE) 취약점",
+   "url": "https://news.hada.io/topic?id=37590",
+   "publishedAt": "2026-11-22T03:35:45+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- GPGME 2.3.1 이 조작된 OpenPGP 키로 이중 해제를 유발하는 치명적 보안 취약점 CVE-2026-129975 를 수정함\n- 매우 긴 사용자 ID가 포함된 키로 애플리케이션의 데이터를 유출 할 수 있으며, 원격 코드 실행 가능성도 배제할 수 없어 즉시 업데이트를 권고함\n- 버퍼 재할당 후 오류 등으로 함수가 일찍 반환하면 컨텍스트에 해제된 메모리의 포인터 가 남고, 이후 컨텍스트 정리 과정에서 같은 메모리를 다시 해제함\n- GPGME 2.3.0 미만 을 공유 라이브러리, DLL 또는 정적 링크로 사용하는 모든 소프트웨어가 영향을 받으며, 2.3.0은 공개 배포된 적\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37591,
+   "title": "그럼에도 지구는 돈다",
+   "url": "https://news.hada.io/topic?id=37591",
+   "publishedAt": "2026-11-22T03:38:45+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Anthropic이 리만 가설을 해결한 것으로 보인다 는 소식은 필자에게 축하보다 상실감을 안겨줌. 증명의 존재 자체는 경이롭지만, 인간이 직접 이룬 발견과는 다르게 느껴짐\n- 리만 가설 을 전제로 참임이 증명된 수많은 추측이 있어, 그 증명은 수학의 광대한 영역을 열어줄 수 있음\n- 뮤지컬 Galileo 에서 떠올린 과학의 혁명성은 자연에 올바르게 질문해 진실을 알아낼 수 있다는 데 있음\n- 기계가 찾아낸 답은 필자에게 책 뒤의 정답을 확인한 것 같은 씁쓸함 을 줌. 기대했던 인간적 성취의 절정과는 거리가 있음\n- 인간이 직접 발견할 기회의 창\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37592,
+   "title": "GIMP에 UI 테스트 도입",
+   "url": "https://news.hada.io/topic?id=37592",
+   "publishedAt": "2026-11-22T03:41:45+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- GIMP가 실제 프로그램을 실행하고 메뉴와 버튼을 조작하는 GUI 테스트 플랫폼 을 도입함. 기여자의 변경 사항을 병합할 때마다 자동 실행해 인터페이스 문제를 조기에 찾음\n- 기존 단위 테스트는 실제 창을 열지 않았고, 코어 코드에 직접 개입하는 GUI 테스트도 탐지하지 못하는 버그 유형이 있었음. 새 테스트는 실제 인터페이스 를 통해 프로그램 전체를 확인함\n- 현재 13개 테스트 로 창 표시, 이미지 생성과 내보내기, 색상과 레이어 조작, 실행 취소와 다시 실행 등 기본 동작을 검증함\n- 화면 픽셀 대신 접근성 정보 로 UI 요소를 찾으며, 숨\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  }
+ ],
+ "updatedAt": "2026-11-22T04:07:34+09:00",
+ "counts": {
+  "items": 3,
+  "candidates": 3,
+  "aiGuess": 1
+ },
+ "status": "ok"
+}
