@@ -1,0 +1,97 @@
+{
+ "date": "2026-11-24",
+ "window": "2026-11-23 03:00 ~ 2026-11-24 03:00 (KST, 게시 시각 기준)",
+ "source": "GeekNews RSS (GitHub Actions 6시간 간격 누적)",
+ "runs": [
+  {
+   "at": "2026-11-23T04:30:31+09:00",
+   "rssUpdated": "2026-11-23T04:01:31+09:00",
+   "entries": 6,
+   "added": 6,
+   "rssOldest": "2026-11-22T20:56:14+09:00",
+   "rssNewest": "2026-11-23T04:01:31+09:00",
+   "htmlOk": null
+  }
+ ],
+ "items": [
+  {
+   "id": 37648,
+   "title": "Open Social Web Alliance - 개방형 소셜 웹의 공동 거버넌스와 인프라 구축을 위한 연합",
+   "url": "https://news.hada.io/topic?id=37648",
+   "publishedAt": "2026-11-23T03:43:13+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Open Social Web Alliance 는 시민사회, 연구, 기업, 미디어, 문화, 공공 부문을 연결해 개방형 소셜 웹의 핵심 인프라를 구축하고 운영하려는 연합임\n- Open Social Web(OSW) 은 이메일처럼 서비스가 달라도 소통할 수 있는 분산형 공익 인프라를 지향하며, 사용자가 콘텐츠와 알고리듬, 애플리케이션을 직접 선택하는 환경을 목표로 함\n- 기존 대안인 Fediverse 와 ATmosphere 에는 이미 다양한 서비스와 커뮤니티가 있지만, 이용자 전환을 확대하려면 인프라, 거버넌스, 자금, 매력도, 공적 책무라는 다섯 과제를 해결해야 함\n- 로드맵은 독일 \n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37649,
+   "title": "퍼플렉시티와 지능",
+   "url": "https://news.hada.io/topic?id=37649",
+   "publishedAt": "2026-11-23T03:46:13+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- OpenAI는 퍼플렉시티(perplexity) 를 모델 개발사 간 진전 비교와 공동 안전 기준에 활용하자고 제안하며, 내부 사전학습 평가 수치를 공개함\n- 사전학습의 예측 성능이 높아지면서 대화, 추론, 수학 등 새로운 능력이 나타났지만, 능력 출현의 임계점 은 사전에 알 수 없었음\n- 로그 퍼플렉시티 약 0.76 모델에서 수학 미해결 문제에 대한 획기적 결과를 관찰했으며, 사전학습 알고리듬 연구에서도 이르면 2027년 에 유사한 급격한 발전이 일어날 가능성이 있음\n- 퍼플렉시티와 다른 측정값을 토대로 공동 개발 한계선 을 정하고, AI 행동 이해와\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37650,
+   "title": "Show HN: OpenComputer - Devin의 오픈소스 대안",
+   "url": "https://news.hada.io/topic?id=37650",
+   "publishedAt": "2026-11-23T03:49:13+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- OpenComputer 는 Slack 스레드에서 @Computer 에 작업을 맡기면 자체 컴퓨터에서 코딩하고 결과를 풀 리퀘스트로 만드는 에이전트로, 팀이 진행 과정을 지켜보고 방향을 조정할 수 있음\n- 컴퓨팅 계층부터 오픈소스 로 공개되어 전체 시스템을 자체 클라우드 계정에서 운영하거나 OpenComputer Cloud를 이용할 수 있음\n- 게이트웨이 Calvin 이 설정에 따라 Claude Code, Codex, OpenCode 세션을 시작하며, 각 세션은 rootless Podman 으로 격리됨\n- 자체 벤치마크에서 CI를 통과한 PR 4개를 모두 여는 데 56초 가 걸렸으며, Devin의 185초보다 3.3배 \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37651,
+   "title": "성인만 사는 가구, 2026년 상반기 장난감 매출의 55% 차지",
+   "url": "https://news.hada.io/topic?id=37651",
+   "publishedAt": "2026-11-23T03:52:14+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 장난감 업체들이 성인 대상 Lego 세트와 봉제 인형 을 매장에 채우고 있으며, 이러한 흐름에 힘입어 미국 장난감 산업이 가장 높은 연간 성장세를 기록할 가능성이 있음\n- Nordstrom 뉴욕 플래그십 매장 은 연말 쇼윈도에 고급 코트나 디자이너 핸드백 대신 피클과 가고일 모양의 봉제 인형 등을 전시함\n- 매장을 찾은 33세 Rachel Ellicott 은 집에 모아 둔 Jellycat 컬렉션에 추가하고 싶은 상품으로 45달러짜리 작은 핫초코 모양 인형 을 눈여겨봄\n- Ellicott은 친구들의 아이에게 줄 선물에 대체로 더 많은 돈을 쓰지만, 자신을 위한 봉제 인형 \n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37652,
+   "title": "AI 공급망 보안: 카나리 토큰이 발견한 것들",
+   "url": "https://news.hada.io/topic?id=37652",
+   "publishedAt": "2026-11-23T03:55:14+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Dragos가 2026년 7~11월 약 200만 건의 프롬프트 에 추적 가능한 비밀 정보를 심어 조사한 결과, AI 제공업체 침해 정황과 리셀러의 프롬프트 탈취, 개인정보 보호 설정 위반을 확인함\n- AI 호스팅 제공업체 3곳 에서 유출된 테스트 자격 증명이 AWS 접근 시도에 사용됐으며, 일부는 모델 실행 전에 거부된 요청이나 데이터 무보관 요청에 포함돼 있었음\n- 추론 마켓플레이스의 일부 리셀러는 취약점 공격 없이 기본 요청 로깅 기능 만으로 고객 프롬프트를 확보하고, 그 안의 비밀번호와 AWS 키를 직접 사용함\n- 데이터 무보관(ZDR) 설정에도 프롬\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37653,
+   "title": "Mojang을 위한 포트 스캐닝",
+   "url": "https://news.hada.io/topic?id=37653",
+   "publishedAt": "2026-11-23T04:01:31+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Minecraft 서버 검색 서비스 slowstack 운영자는 Mojang의 API 문제 해결을 도운 뒤, Mojang이 자신의 데이터를 서버 차단에 활용하고 있다고 판단함\n- Mojang 계정의 검색 로그에서 부적절한 서버 설명을 찾는 검색어 를 확인했으며, 공개 차단 목록과 스캔 데이터를 대조해 해당 설명을 가진 서버들의 차단을 확인함\n- 다른 위반 가능성을 배제하려고 친구들에게 다소 부적절한 설명을 넣은 비공개 화이트리스트 서버 를 만들도록 했고, 운영자의 실험에서는 이 서버들도 일주일 안에 차단됨\n- Mojang은 Java Edition만 스캔하던 운영자에게 Be \n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  }
+ ],
+ "updatedAt": "2026-11-23T04:30:31+09:00",
+ "counts": {
+  "items": 6,
+  "candidates": 6,
+  "aiGuess": 3
+ },
+ "status": "ok"
+}
