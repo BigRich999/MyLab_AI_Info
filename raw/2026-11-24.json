@@ -11,6 +11,15 @@
    "rssOldest": "2026-11-22T20:56:14+09:00",
    "rssNewest": "2026-11-23T04:01:31+09:00",
    "htmlOk": null
+  },
+  {
+   "at": "2026-11-23T16:26:07+09:00",
+   "rssUpdated": "2026-11-23T15:42:22+09:00",
+   "entries": 20,
+   "added": 20,
+   "rssOldest": "2026-11-23T09:36:35+09:00",
+   "rssNewest": "2026-11-23T15:32:38+09:00",
+   "htmlOk": null
   }
  ],
  "items": [
@@ -85,13 +94,261 @@
    "via": "rss",
    "aiGuess": false,
    "alreadyPublished": false
+  },
+  {
+   "id": 37678,
+   "title": "Alessandro Masullo 원고의 Lean 형식화 진행 현황 지도",
+   "url": "https://news.hada.io/topic?id=37678",
+   "publishedAt": "2026-11-23T09:36:35+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "Alessandro Masullo 원고의 Lean 형식화 진행 현황 지도",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37679,
+   "title": "Automated System 장애로 애틀랜타 경유 델타항공 전 항공편 지연",
+   "url": "https://news.hada.io/topic?id=37679",
+   "publishedAt": "2026-11-23T09:39:35+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "Automated System 장애로 애틀랜타 경유 델타항공 전 항공편 지연",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37680,
+   "title": "이제 우리는 모두 주니어 인재다",
+   "url": "https://news.hada.io/topic?id=37680",
+   "publishedAt": "2026-11-23T09:40:02+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- AI의 가치는 같은 일을 더 빨리 처리하는 효율화 보다, 기업이 할 수 있는 일 자체를 재구상 하는 데 있음\n- AI와 일하는 방식이 빠르게 바뀌면서 경력자도 새로 배워야 함 . 오래 쌓은 경험만으로 주니어와 시니어를 구분하기보다, 새로운 환경에 필요한 것을 얼마나 빠르게 익히는지가 중요해짐\n- 새로운 업무 구상에서 모델은 두뇌 , Codex나 Claude Code 같은 하네스 는 스킬과 도구, 실행 환경을 제공하는 외골격에 해당함\n- 에이전트가 시스템 갱신을 맡으면 사람은 사람과 일하는 데 집중하고, 각 직무는 에이전트 관리자 역할을 더하게 됨\n- 누\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37681,
+   "title": "Nyx, 세계에서 가장 오래된 인터넷 서비스 제공업체",
+   "url": "https://news.hada.io/topic?id=37681",
+   "publishedAt": "2026-11-23T09:42:35+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Nyx 는 무료 공개 접속 ISP로, 이메일과 웹 호스팅, Linux 셸 계정 등을 제공함\n- 계정에는 가입비나 월 이용료가 없으며 , 세금 공제가 가능한 기부를 받음\n- Nyx Net 은 자원봉사자만으로 운영되고 기부금으로 유지되는 501(c)(3) 비영리 단체 임\n- 검열하지 않는 전체 Usenet 뉴스 피드 와 일반적인 Unix/Linux 프로그래밍 및 개발 도구를 제공함\n- 2026년 5월 10일 공지에 따르면 시스템 업데이트로 SSH 호스트 키 와 허용되는 알고리듬이 변경됨\n 무료 서비스와 운영 방식\n- Nyx 는 세계에서 가장 오래된 인터넷 서비스 제공업체이며, 무료 공개 접속 \n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37682,
+   "title": "P vs. NP 해결에 도전하는 AI 에이전트 군집",
+   "url": "https://news.hada.io/topic?id=37682",
+   "publishedAt": "2026-11-23T09:45:36+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 여러 AI 에이전트가 협업 해 P vs. NP 문제를 탐구하며, 보조정리와 증명 시도, 검증 결과를 실시간으로 공개함\n- 문제는 여전히 미해결 상태이며, 검증된 보조정리 수는 P = NP 또는 P ≠ NP의 확률이나 최종 증명을 뜻하지 않음\n- 현재 주요 탐구 대상은 퍼머넌트(permanent)가 일정하게 유지되는 행렬 공간의 차원 상한 이며, 목표 추측 자체가 거짓일 가능성도 열어둠\n- 해당 탐구의 두 행인 경우 에는 지면상 증명이 있지만, 고정해 사용하는 라이브러리에 필요한 도구가 없어 아직 검증하지 못했고 초등적 증명을 찾고 있음\n- 공개 기록은 검증 \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37683,
+   "title": "HUMAN.md",
+   "url": "https://news.hada.io/topic?id=37683",
+   "publishedAt": "2026-11-23T09:50:01+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- AI 시대에 창작자가 지켜야 할 태도를 정리한 선언문 . 인간의 가치는 안목뿐 아니라 의도적인 규칙 파괴, 뜻밖의 경험에서 얻는 영감, 사람을 위한 판단에 있음\n- 창작의 기준은 정확성이나 요구사항 충족에 그치지 않고, 받는 사람의 감정적 울림 과 즐거움, 인류에 어떤 좋은 일을 하는지까지 포함해야 함\n- 확신에 찬 의견보다 작동하는 스케치와 실험 을 우선하고, 아이디어를 생각하는 능력과 직접 만드는 능력을 함께 길러야 함\n- AI는 모두를 같게 만들기보다 사용하는 사람의 차이를 증폭함 . 도구 선택부터 결과물 공개까지 사람이 책임지\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37684,
+   "title": "디자이너와 함께 일하기",
+   "url": "https://news.hada.io/topic?id=37684",
+   "publishedAt": "2026-11-23T10:00:03+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 디자이너는 엔지니어가 상상하지 못한 방식으로 UI를 개선 하며, 엔지니어와의 문화적 차이는 협업에서 장점이 될 수 있음\n- 디자이너가 동시에 여러 명 참여하면 서로 다른 취향 때문에 재설계와 수정 번복이 반복될 수 있음\n- 디자인 시스템 은 대규모 제품의 UI 일관성을 유지하는 데 유용하지만, 아름다운 공용 컴포넌트를 만들려는 팀과 까다로운 고객 요구를 충족해야 하는 제품 팀 사이에 갈등이 생김\n- 프레임워크와 버전의 불일치 때문에 디자이너가 구상한 화면을 그대로 구현하기 어려우며, 컴포넌트 재구현과 CSS 우회 수정이 엔지니\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37685,
+   "title": "Alibaba에서 구한 RISC-V 보드에 NixOS 구동하기",
+   "url": "https://news.hada.io/topic?id=37685",
+   "publishedAt": "2026-11-23T10:03:04+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Zhihe Computing A210 을 NixOS 빌드 서버로 구성하면서 사운드, HDMI, Bluetooth/Wi-Fi, 이더넷, GPU 동작을 확인함. 다만 공개한 구성이 다른 환경에서도 동일하게 동작한다는 보장은 없음\n- Nix 크로스 컴파일 로 1,000개 넘는 패키지를 빌드하면서 만난 패키지 문제는 두 건이었고, 둘 다 RISC-V 고유 문제는 아니었음\n- 부팅을 막은 핵심 문제는 OpenSBI의 벡터 명령 실행 과 사용하지 않는 클록을 끄는 커널 동작이었음. 컴파일 대상 설정을 바꾸고 clk_ignore_unused 를 적용해 NixOS 사용자 공간까지 진입함\n- 소스 없는 GPU 커널 모듈 은 A\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37686,
+   "title": "Nespresso의 캡슐당 커피 중량 감축 프로젝트",
+   "url": "https://news.hada.io/topic?id=37686",
+   "publishedAt": "2026-11-23T10:32:51+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 공개된 내부 문서에 따르면, Nespresso의 Project Olympus 는 분쇄와 로스팅 공정을 조정해 일부 Vertuo 캡슐에 들어가는 커피 중량을 줄이는 프로젝트임\n- Nespresso는 중량을 줄여도 맛, 컵당 커피 용량, 카페인 수준 을 유지하며, 관능 평가로 맛과 만족도가 떨어지지 않는지 검증했다고 밝힘\n- 문서상 변경은 2026년 1~3분기 에 순차 적용할 계획이며, 1차 대상 6개와 2차 대상 8개 제품이 명시돼 있음\n- 2026년 9월 Reddit에서 프로젝트가 공개된 뒤 소비자 반발 이 이어졌으며, 일부 이용자는 Nespresso 대신 다른 커피로 전환하는 것을 진지\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37687,
+   "title": "에이전트 시대의 Postgres 데이터베이스",
+   "url": "https://news.hada.io/topic?id=37687",
+   "publishedAt": "2026-11-23T10:50:02+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 사람이 소수의 데이터베이스를 오래 운영하던 방식에서, AI 에이전트가 작업에 필요한 데이터베이스를 대량으로 만들고 폐기하는 방식 으로 활용이 넓어지고 있음\n- 관리형 클라우드는 운영 부담을 줄였고, 서버리스 Postgres 는 빠른 생성과 사용량 기반 과금을 가능하게 했지만, 개발 과정에서 프로덕션 데이터를 다루는 문제는 남아 있음\n- Databricks는 2025년 5월 Neon 인수 발표 당시 , Neon에서 생성되는 데이터베이스의 80% 이상을 AI 에이전트가 만들었다고 밝힘. Supabase도 월 400만 개 이상의 신규 데이터베이스 중 약 70%가 에이전트나 AI 도구로 생성된다고 전함\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37689,
+   "title": "GL.iNet 보안 공지 2026-11-20: 라우터와 KVM 악성코드 감염 대응",
+   "url": "https://news.hada.io/topic?id=37689",
+   "publishedAt": "2026-11-23T11:39:15+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- GL.iNet의 클라우드 원격 관리 서비스 취약점 을 악용한 공격자가 일부 라우터와 KVM 장치에 접근해 악성코드를 설치함\n- 공격 경로는 차단 됐지만, 클라우드 측 수정만으로 이미 감염된 장치의 악성코드가 제거되지는 않음\n- 최신 안정판 보안 펌웨어 는 이번 사고에서 확인된 악성코드를 공장 초기화 없이 제거하며, 기존 설정도 유지할 수 있음\n- 실행 중인 프로세스의 crond -i /tmp/.log 문자열로 감염 징후를 확인할 수 있지만, 공식 간이 검사만으로 모든 피해 장치를 탐지할 수는 없음 \n- 피해 범위는 조사 중 이며, 감염된 KVM에 연결된 컴퓨\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37690,
+   "title": "Internet Archive의 잊힌 영상으로 만든 무료 대안 TV 네트워크",
+   "url": "https://news.hada.io/topic?id=37690",
+   "publishedAt": "2026-11-23T12:31:18+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- SPELUNKR 는 Internet Archive의 잊힌 영상으로 구성한 무료 대안 TV 네트워크임\n- 24시간 연중무휴 동기화 방송 을 내세우며, 항상 방송 중인 TV 형태로 운영됨\n- 홈페이지 기준 37개 채널 , 4,360시간 분량의 영상을 갖추고 있으며 계속 늘어나는 중임\n- SATURDAY MORNING , PRIMETIME 등의 채널에서 과거 만화 편성과 시트콤 연속 방송을 제공함\n- SYNDICATE 에는 Unsolved Mysteries와 The Lone Gunmen이, WAKU WAKU 에는 MXC와 Ninja Warrior가 편성돼 있음\n 서비스와 방송 방식\n- SPELUNKR 는 Internet Archive의 잊힌 영상을 바탕으로 만든 무료 대안 \n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37691,
+   "title": "Masullo의 리만 가설 증명 시도",
+   "url": "https://news.hada.io/topic?id=37691",
+   "publishedAt": "2026-11-23T13:35:49+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Alessandro Masullo가 일반화 리만 가설 을 증명하려는 940쪽짜리 원고를 공개했으며, 현재는 검증과 대규모 수정이 진행 중인 초안임\n- 핵심 전략은 대각합 공식(trace formula) 으로 L-함수의 영점과 소수를 연결하고, 새로운 계산 방식으로 특정 영역에 영점이 없음을 보이는 것임\n- 증명의 성패는 새로운 대각합 공식의 타당성과 극한 과정의 균일 유계성 에 달려 있음\n- 공개 검토에서 소수 2에 대한 계산 과 함수해석학의 기저 관련 논리에 오류 가능성이 드러났지만, 해당 문제를 수정할 수 있거나 반론 자체가 잘못됐을 가능성도 남아 있음\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37692,
+   "title": "사람들이 내 블로그 글에 관심 없다고 가정하라",
+   "url": "https://news.hada.io/topic?id=37692",
+   "publishedAt": "2026-11-23T13:38:49+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 다른 사람을 위한 글이라면 누구를 대상으로 하는지 먼저 밝혀 , 독자가 계속 읽을지 판단할 수 있게 해야 함\n- Snowflake에서는 이메일 첫 문장에 읽지 않아도 되는 조건 을 알리는 관행이 있었음\n- 독자를 위해 쓰려면 독자의 필요를 우선 하고, 글이 차지하는 분량도 신경 써야 함\n- Slack/Teams에서는 3~5줄로 주제를 소개 하고, 자세한 내용은 스레드 안에서 찾아볼 수 있게 함\n- 모두에게 해당하지 않는 내용을 2,000단어에 걸쳐 장황하게 쓰면 독자에게 불필요한 읽기 부담을 주므로, 독자를 배려해 간결하게 써야 함\n 읽을 필요가 있는지 먼저\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37693,
+   "title": "Show GN: HMAC Picker - HMAC기법과 SHA256방식 점수 해시화로 투명한 추첨과 누구나 검증이 가능한 추첨 도구",
+   "url": "https://news.hada.io/topic?id=37693",
+   "publishedAt": "2026-11-23T14:27:01+09:00",
+   "author": "popop098",
+   "originalUrl": null,
+   "content": "HMAC + SHA256으로 해시화된 점수를 산출해내어 순위를 매겨 당첨자를 선정하는 기술을 접목한 프로젝트입니다.\n 보통의 경우에는 단순 랜덤함수를 사용하는 경우가 있는데 이러면 예측이 가능하다는 허점이 존재하기에 이런 점을 보강하였습니다.\n 결과발표 이후에는 해시화된 자료와 개별적으로 다운받을수있는 검증용 코드나 자체 검증기로 조작여부를 파악할수있게 하여 투명한 추첨임을 약속하도록 하였습니다.\n 지원하는 방식은 아래와 같습니다.\n- XLSX, CSV파일 불러오기로 이벤트 참여 명단 작성\n- 자체폼으로 이벤트 참여 유도(유튜브\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37694,
+   "title": "쓸모없는 지식의 유용성 [pdf] (1939)",
+   "url": "https://news.hada.io/topic?id=37694",
+   "publishedAt": "2026-11-23T14:34:43+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 호기심에서 출발한 탐구 는 당장의 용도를 겨냥하지 않아도 예상치 못한 실용적 성과로 이어질 수 있으며, 교육기관은 즉각적인 응용 가능성보다 자유로운 탐구를 장려해야 함\n- 무선통신의 토대가 된 Maxwell과 Hertz의 연구처럼, 눈에 띄는 발명 뒤에는 실용 목적 없이 축적한 이론과 발견 이 있음\n- 모든 연구가 결국 쓸모 있어진다는 뜻은 아니며, 지적 탐구와 예술이 주는 만족 자체 만으로도 그 활동과 이를 지원하는 기관은 존재할 이유가 있음\n- 기초연구와 응용은 일방통행 관계가 아님. 실용적 난제가 새로운 이론을 촉발 하기도 하고, 축\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37695,
+   "title": "Show GN: 오분만 - 약속 시간에서 거꾸로 계산해 깨워 주는 알람 앱",
+   "url": "https://news.hada.io/topic?id=37695",
+   "publishedAt": "2026-11-23T14:39:57+09:00",
+   "author": "molmoty",
+   "originalUrl": null,
+   "content": "약속 시각, 도착지, 이동수단을 넣으면 가는 시간과 준비 시간을 거꾸로 계산해 알람을 맞추는 iOS, Android 앱을 만들었습니다.\n- 길찾기로 이동 시간을 재고, 머리 말리기나 화장 같은 준비 항목을 쌓은 만큼 알람이 앞당겨짐\n- 알람을 끄지 않으면 도보, 대중교통, 차량 순으로 더 빠른 수단 기준 시각에 다시 울림. 더 빨라지지 않는 수단은 건너뜀\n- 뭘 타도 늦는 시각이 되면 지각 확정이라고 알려 줌\n- 화면을 3초 누르거나 폰을 3초 흔들어야 꺼짐\n- 약속을 링크로 공유하면 친구는 자기 출발지, 이동수단, 준비 시간 기준 알람을 따로 받고\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37696,
+   "title": "GitHub Actions는 유효하지 않은 YAML도 허용함",
+   "url": "https://news.hada.io/topic?id=37696",
+   "publishedAt": "2026-11-23T15:01:20+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- GitHub Actions 가 여러 유효하지 않은 YAML 구문을 허용해, 일부 실제 액션과 워크플로 정의는 표준을 준수하는 YAML 파서로 파싱할 수 없음\n- 여러 줄 작은따옴표 문자열 에서 닫는 줄의 들여쓰기가 부족한 워크플로를 GitHub Actions는 받아들이지만 zizmor는 거부함\n- YAML 1.2.2 는 블록 형태의 부모 컬렉션 안에 있는 흐름 형태 노드를 부모보다 최소 한 칸 더 들여쓰도록 요구하며, 해당 사례는 공백 한 칸을 추가하면 유효해짐\n- 이 구문을 허용하도록 만든 tree-sitter-yaml 수정 은 잘못된 수정이었으며, 이를 되돌리는 풀 리퀘스트가 열\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37699,
+   "title": "Show GN: 나라니 - 계약서를 읽고 상대에게 보낼 조건 제안을 준비하는 도구",
+   "url": "https://news.hada.io/topic?id=37699",
+   "publishedAt": "2026-11-23T15:22:07+09:00",
+   "author": "chunbak",
+   "originalUrl": null,
+   "content": "외주 계약서에 ‘검수 완료 후 잔금 지급’이라고 적혀 있는데 검수를 언제까지 끝내는지는 빠져 있습니다. 계약서를 처음부터 읽으며 이런 부분을 하나씩 찾아내기도 번거롭습니다. 막상 찾아도 먼저 꺼냈다가 까다롭게 보일까 신경 쓰입니다. 나라니는 그런 순간에 쓰려고 만들었습니다.\n 계약서를 올리면 내 AI가 먼저 읽고 확인할 조항과 빠진 조건을 찾아 줍니다. 말을 꺼내기 어려운 조건은 ‘납품 후 5일 안에 검수를 마치는 걸로 정해도 될까요?’처럼 상대에게 보낼 제안으로 다듬어 줍니다. 보낼 내용은 내가 고릅니다. 상대는 함께 보는 대화방에서 동의하거나 다른 조건을 제안할 수 있습니다.\n 디자인이나 개발 외주를 앞두고 수정 횟수, 선금, 잔금 날짜 같은 조건을 정할 때 써 보세요. 첫 화면에서 디자인 외주 계약 예시를 로그인 없이 볼 수 있습니다. 내 계약을 검토해 보고 싶다면 무료 AI 대화로 시작할 수 있습니다.\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37700,
+   "title": "XNU Linux: Linux에서 완전한 OS X GUI 사용자 공간 실행",
+   "url": "https://news.hada.io/topic?id=37700",
+   "publishedAt": "2026-11-23T15:32:38+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- xnulinux 는 Apple의 공개 소스로 빌드한 XNU를 수정하지 않은 arm64 Linux의 커널 모듈로 로드해, macOS 데스크톱과 앱을 실행함\n- XNU가 CPU와 MMU를 직접 제어 하며, macOS와 Linux 프로세스 사이에 하이퍼바이저를 두지 않음. Linux는 작은 인터페이스 모듈을 통해 메모리, 타이머, 파일, 네트워크, GPU를 제공함\n- Apple Silicon Mac의 Linux VM에서 macOS 27.2.1 데스크톱 부팅에 31~48초 가 걸렸으며, 30분간 앱 실행과 파일 시스템 작업을 반복한 테스트에서 패닉이나 충돌 보고서가 발생하지 않음\n- Metal을 Vulkan으로 연결하는 GPU 브리 \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
   }
  ],
- "updatedAt": "2026-11-23T04:30:31+09:00",
+ "updatedAt": "2026-11-23T16:26:07+09:00",
  "counts": {
-  "items": 6,
-  "candidates": 6,
-  "aiGuess": 3
+  "items": 26,
+  "candidates": 26,
+  "aiGuess": 10
  },
- "status": "ok"
+ "status": "ok",
+ "gaps": [
+  {
+   "between": [
+    "2026-11-23T04:01:31+09:00",
+    "2026-11-23T09:36:35+09:00"
+   ]
+  }
+ ]
 }
