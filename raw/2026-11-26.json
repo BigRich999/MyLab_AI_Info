@@ -1,0 +1,37 @@
+{
+ "date": "2026-11-26",
+ "window": "2026-11-25 03:00 ~ 2026-11-26 03:00 (KST, 게시 시각 기준)",
+ "source": "GeekNews RSS (GitHub Actions 6시간 간격 누적)",
+ "runs": [
+  {
+   "at": "2026-11-25T03:57:41+09:00",
+   "rssUpdated": "2026-11-25T03:33:15+09:00",
+   "entries": 1,
+   "added": 1,
+   "rssOldest": "2026-11-24T14:55:30+09:00",
+   "rssNewest": "2026-11-25T03:33:15+09:00",
+   "htmlOk": null
+  }
+ ],
+ "items": [
+  {
+   "id": 37790,
+   "title": "22개 조직의 Check Point 서버를 침해한 사이버 공격 캠페인",
+   "url": "https://news.hada.io/topic?id=37790",
+   "publishedAt": "2026-11-25T03:33:15+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- GreyNoise가 전 세계 최소 22개 조직 의 Check Point Security Management Server를 침해한 GT13 캠페인을 발견함\n- 공격자는 99개 IP 주소 와 침해한 서버를 중계 거점으로 활용해 피해 시스템을 조작하고, Check Point 관리 서버 24대의 명령 결과와 탈취 데이터를 저장함\n- SmartConsole 인증 우회 취약점 과 Chisel 터널을 이용해 관리 작업을 실행했으며, 방화벽 데이터베이스와 내부 인증기관 파일 복사, 인증서 발급, 보안 정책 해제 등을 수행함\n- 최초 Check Point 침입 시점과 방법은 확인되지 않았으며 , 기존 위협 그룹이나 특정 국가와\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  }
+ ],
+ "updatedAt": "2026-11-25T03:57:41+09:00",
+ "counts": {
+  "items": 1,
+  "candidates": 1,
+  "aiGuess": 0
+ },
+ "status": "ok"
+}
