@@ -11,6 +11,15 @@
    "rssOldest": "2026-11-24T14:55:30+09:00",
    "rssNewest": "2026-11-25T03:33:15+09:00",
    "htmlOk": null
+  },
+  {
+   "at": "2026-11-25T07:20:48+09:00",
+   "rssUpdated": "2026-11-25T06:37:09+09:00",
+   "entries": 5,
+   "added": 5,
+   "rssOldest": "2026-11-24T20:01:20+09:00",
+   "rssNewest": "2026-11-25T06:37:09+09:00",
+   "htmlOk": null
   }
  ],
  "items": [
@@ -25,13 +34,73 @@
    "via": "rss",
    "aiGuess": false,
    "alreadyPublished": false
+  },
+  {
+   "id": 37791,
+   "title": "Jetty Pro - macOS Dock을 보완하거나 대체하는 맞춤형 팔레트 앱",
+   "url": "https://news.hada.io/topic?id=37791",
+   "publishedAt": "2026-11-25T04:35:31+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Jetty Pro 는 Mac 화면 가장자리에 Dock과 비슷한 부동 팔레트를 만드는 앱으로, 파일, 폴더, 앱, 볼륨, 단축어, 휴지통 등을 원하는 조합으로 배치할 수 있음\n- 팔레트의 모양과 아이콘뿐 아니라 클릭 동작 , 실행 중인 앱과 알림 배지의 표시 여부를 조정할 수 있으며, 디스플레이별 배치도 설정 가능함\n- Mac App Store 밖에서 배포하는 비샌드박스 앱 으로, 비공개 API와 여러 특별 권한을 활용하지만 Dock만 가능한 기능도 남아 있음\n- AI 코딩 에이전트로 하루 이틀 만에 개인용 폴더 팔레트를 만들려던 작업이 3개월 반의 개발 로 이어지며 \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37792,
+   "title": "Anthropic 직원들이 ‘세계 장악’을 공개적으로 이야기한다고 Max Tegmark가 주장",
+   "url": "https://news.hada.io/topic?id=37792",
+   "publishedAt": "2026-11-25T04:38:31+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- MIT 교수 Max Tegmark 는 Anthropic 직원들과 술을 몇 잔 마신 뒤 대화하면 미국 정부 전복과 세계 장악에 관한 이야기가 자주 나온다고 주장함\n- Tegmark에 따르면 직원들은 쿠데타나 정부 전복이라는 말 대신 ‘ 통제 없는 정렬(alignment without control) ’이라는 표현을 사용하며, 이는 인간의 직접 통제 대신 특정 가치를 주입해 AI를 제어하는 구상임\n- 그는 이런 구상이 Anthropic의 ‘기계 신’이 지구를 운영 하고 나머지 사람들은 그 존재가 선하기만을 바라야 하는 미래로 이어질 수 있다고 경고함\n- Tegmark는 AI 기업들이 정부 감독 \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37793,
+   "title": "Anthropic 주가, 공모가 83달러 아래로 하락",
+   "url": "https://news.hada.io/topic?id=37793",
+   "publishedAt": "2026-11-25T05:32:07+09:00",
+   "author": "neo",
+   "originalUrl": "https://www.bloomberg.com/quote/ANT:US",
+   "content": "- Anthropic 주가가 상장 후 네 번째 거래일에 공모가 83달러 를 밑돌며, 지난주 상장 당시 투자자들이 얻었던 상승분을 반납함\n- 장중 주가는 공모가 대비 거의 9% 낮은 수준 까지 떨어짐\n- 이후 낙폭을 줄여 뉴욕 시간 오후 1시 18분 기준 81.04달러 에 거래됐으며, 하락률은 2.4% 였음\n- 공모가를 처음 밑돈 시점은 개장 전 거래 였으며, 당시 주가는 81.28달러 까지 내려감\n- 이번 하락은 주 초반 급등했던 주식시장 전반이 후퇴 하는 가운데 발생함\n 공모가 하회와 장중 주가 흐름\n- Anthropic PBC 는 지난주 기록적인 규모로 상장했으나, 네 번째 거래일 \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37794,
+   "title": "Ask HN: Anthropic이 우리 회사가 모델 증류를 한다고 하는데, 아니라는 걸 어떻게 입증할 수 있을까요?",
+   "url": "https://news.hada.io/topic?id=37794",
+   "publishedAt": "2026-11-25T06:34:08+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Anthropic API를 증류에 사용했다는 의심 을 받고 있으나, 자체 모델을 학습하지 않으며 이를 하지 않았음을 입증할 시간으로 24시간 을 받은 상황임\n- 의심을 살 만한 사용 방식으로 짐작하는 것은 AI 설정 변경 시 자동으로 실행하는 회귀 벤치마크 뿐이며, 이것이 정책 위반인지도 의문임\n- 비슷한 일을 겪은 경험과, 사용자 개인정보를 침해하지 않고 Anthropic 모델을 증류하지 않았음을 입증할 방법을 찾고 있음\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37795,
+   "title": "Windows에서 실행되는 GTA 6",
+   "url": "https://news.hada.io/topic?id=37795",
+   "publishedAt": "2026-11-25T06:37:09+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- GTA 6가 PC에서 실행 중 이라고 주장하는 짧은 게시물이 올라옴\n- “ 컴퓨터 ”라는 말을 반복하며 PC에서 구동된다는 점을 강조함\n- 게시물에 따르면 셰이더도 거의 완성된 상태 임\n- 실행 상황에 대해 “ 이게 벌어지고 있다 ”, “정말 미쳤다”라는 흥분된 반응을 보임\n- 본문 끝에는 광대 이모지 🤡 세 개 가 붙어 있음\n 게시물 내용과 확인 범위\n- 게시물에 따르면 GTA 6가 PC에서 구동되며 셰이더도 거의 완성된 상태 임 \n- 컴퓨터에서 실행된다는 점을 거듭 강조함\n- Windows 는 Hacker News 제목에 등장하며, 제공된 본문에는 운영체제 이름이나 구체적인\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
   }
  ],
- "updatedAt": "2026-11-25T03:57:41+09:00",
+ "updatedAt": "2026-11-25T07:20:48+09:00",
  "counts": {
-  "items": 1,
-  "candidates": 1,
-  "aiGuess": 0
+  "items": 6,
+  "candidates": 6,
+  "aiGuess": 4
  },
  "status": "ok"
 }
