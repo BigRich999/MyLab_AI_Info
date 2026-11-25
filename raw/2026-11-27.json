@@ -1,0 +1,97 @@
+{
+ "date": "2026-11-27",
+ "window": "2026-11-26 03:00 ~ 2026-11-27 03:00 (KST, 게시 시각 기준)",
+ "source": "GeekNews RSS (GitHub Actions 6시간 간격 누적)",
+ "runs": [
+  {
+   "at": "2026-11-26T06:36:57+09:00",
+   "rssUpdated": "2026-11-26T05:46:13+09:00",
+   "entries": 6,
+   "added": 6,
+   "rssOldest": "2026-11-25T17:37:36+09:00",
+   "rssNewest": "2026-11-26T05:46:13+09:00",
+   "htmlOk": null
+  }
+ ],
+ "items": [
+  {
+   "id": 37847,
+   "title": "1Password 보안 사고",
+   "url": "https://news.hada.io/topic?id=37847",
+   "publishedAt": "2026-11-26T03:32:24+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 공격자가 직원의 업무용 GitHub 계정 을 통해 소스 코드에 접근하고 백엔드 서비스에 악성 코드를 삽입해, 일부 고객의 이름과 이메일 주소 등 계정 정보를 복사함\n- 보관함 내용과 보호 키 는 영향받지 않았으며, 공격자가 보관함 내용에 접근할 수 있었던 시점도 없었음\n- 유출된 계정 기록에는 식별자, 로그인 시각, 공개 키와 일부 초대/계정 복구 링크 토큰 이 포함되며, 해당 토큰만으로는 계정에 접근할 수 없음\n- 1Password는 공격자의 접근을 차단하고 영향을 받은 서비스를 정상 버전으로 복원했으며, 노출 가능성이 있는 내부 자격 증명 \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37848,
+   "title": "Lean으로 Clojure 코어를 검사해 미보고 버그 17개를 발견함",
+   "url": "https://news.hada.io/topic?id=37848",
+   "publishedAt": "2026-11-26T04:03:06+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Lean 모델 검증과 차등 테스트 로 Clojure 코어를 검사해, JIRA와 ask.clojure.org에서 기존 보고를 찾지 못한 버그 17개를 발견함\n- vector-of 의 무한 반복 은 다음 청크 위치를 계산하는 비트 마스크가 상위 비트까지 지우기 때문에 발생하며, 원소 65,505개 이상에서 drop 후 reduce 로 재현됨\n- HAMT 충돌 노드 에서는 같은 값이지만 해시가 다른 키로 삭제한 뒤 삽입하면, 다른 키가 출력에는 나타나지만 조회되지 않을 수 있음\n- Java 함수형 인터페이스 호출 은 컴파일러가 타입을 아는지에 따라 반환값 변환이 달라져, 같은 removeIf 호출이\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37849,
+   "title": "GitHub 제품 전반의 서비스 저하 조사",
+   "url": "https://news.hada.io/topic?id=37849",
+   "publishedAt": "2026-11-26T04:31:24+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- GitHub의 Actions, Webhooks 등 8개 서비스 에서 성능 또는 가용성 저하가 발생했으며, 최종적으로 장애가 해결됨\n- 장애 대응 중 높은 데이터베이스 부하로 인한 실패 증가 를 확인하고, 부하를 줄여 서비스를 복구하는 조치를 진행함\n- 데이터베이스 부하 분산을 조정 한 뒤 복구 징후가 나타났으며, 서비스별로 장애 완화와 안정성 모니터링을 진행함\n- 2026년 11월 25일 15:55 UTC에 조사 공지 를 시작하고, 16:52 UTC에 해결 을 공지함\n- 상세 근본 원인 분석 은 준비되는 대로 공유할 예정이며, 제공된 장애 기록에는 아직 포함되지 않음\n 영향 범\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37850,
+   "title": "세상에, 세상에, 세상에, 세상에: 지금 벌어지는 일의 엄청난 규모",
+   "url": "https://news.hada.io/topic?id=37850",
+   "publishedAt": "2026-11-26T05:40:13+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- OpenAI가 행렬 곱셈 지수 ω = 9/4 를 증명했다고 발표함. 기존 상한과 일치하는 하한까지 확보했다는 것으로, Scott Aaronson은 특히 ω > 2의 하한 증명에 큰 충격을 느낌\n- 또 다른 OpenAI 논문은 푸리에 변환에 필요한 선형 게이트 수 가 N(log N)^(1/2+o(1)) 임을 증명함. 기존 FFT보다 개선된 상한뿐 아니라 그에 맞는 하한까지 얻은 결과임\n- AI를 활용한 수학 연구 의 성과가 빠르게 쏟아지면서, 과거라면 그해 최고의 복잡도 연구로 꼽혔을 결과도 쉽게 묻히고 있음. Aaronson은 이를 새로운 수학적 진실의 대륙이 열리는 변화로 받아들임\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37851,
+   "title": "똑똑하고 진심으로 책임지는 사람들은 도구를 쓴다",
+   "url": "https://news.hada.io/topic?id=37851",
+   "publishedAt": "2026-11-26T05:43:13+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- LLM은 사용자의 기존 태도를 증폭함 . 호기심과 책임감이 강한 엔지니어는 구현과 검증의 범위를 넓힐 수 있지만, 무책임한 엔지니어는 생성된 코드를 이해하지 않은 채 더 빠르게 배포할 수 있음\n- 책임감 있는 엔지니어에게 부족했던 것은 의지보다 시간 이었으며, 모델은 TLA+ 명세, 시뮬레이터, 경계 조건 테스트 등 미뤄뒀던 엄밀한 작업을 수행할 여지를 줌\n- 검증 없는 코드 배포와 이해 부족 은 실제 위험임. 특히 초급 엔지니어가 직접 버그와 씨름하지 않으면 판단력을 기르기 어렵고, 모델의 자신감 있는 오류는 이런 위험을 키움\n- 현\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37852,
+   "title": "여섯 가지 사실로 보는 거시경제사",
+   "url": "https://news.hada.io/topic?id=37852",
+   "publishedAt": "2026-11-26T05:46:13+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 1인당 GDP 가 높은 나라일수록 평균적으로 삶의 만족도와 기대수명이 높고, 영아 사망률과 노동시간은 낮음. 다만 이는 상관관계이지 인과관계는 아님 \n- 인류는 오랫동안 가난했고, 산업혁명 이전에는 임금이 올라도 인구 증가로 다시 생계 수준에 내려가는 맬서스적 정체 에 머물렀음\n- 산업혁명 이후 성장이 가속했지만 모든 나라에서 동시에 일어나지는 않았음. 기술 선도국을 대표하는 미국의 1인당 GDP는 지난 약 150년간 대체로 연 2% 의 꾸준한 성장 추세를 보임\n- 국가 간 소득 격차는 막대하지만 고정되어 있지는 않음. 일본과 한국의 추 \n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  }
+ ],
+ "updatedAt": "2026-11-26T06:36:57+09:00",
+ "counts": {
+  "items": 6,
+  "candidates": 6,
+  "aiGuess": 4
+ },
+ "status": "ok"
+}
