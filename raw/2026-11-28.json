@@ -11,6 +11,15 @@
    "rssOldest": "2026-11-26T16:49:27+09:00",
    "rssNewest": "2026-11-27T03:40:29+09:00",
    "htmlOk": null
+  },
+  {
+   "at": "2026-11-27T06:25:36+09:00",
+   "rssUpdated": "2026-11-27T06:02:12+09:00",
+   "entries": 5,
+   "added": 5,
+   "rssOldest": "2026-11-26T19:48:36+09:00",
+   "rssNewest": "2026-11-27T05:32:13+09:00",
+   "htmlOk": null
   }
  ],
  "items": [
@@ -37,6 +46,66 @@
    "via": "rss",
    "aiGuess": false,
    "alreadyPublished": false
+  },
+  {
+   "id": 37913,
+   "title": "CIA 비기밀 시스템, 사이버공격으로 침해당해",
+   "url": "https://news.hada.io/topic?id=37913",
+   "publishedAt": "2026-11-27T03:43:29+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 사건을 아는 익명 소식통에 따르면 CIA의 공개출처정보 수집/분석 시스템 이 사이버공격으로 침해당함\n- 같은 소식통은 기밀정보는 관련되지 않았으며 , 해당 문제는 해결됐다고 밝힘\n- 침해된 구체적인 정보와 공격 주체 는 확인되지 않음\n- 이번 사건은 NSA 통신망 중단과 FBI 데이터베이스 해킹 의심 사건 등 잇따른 장애 속에서 드러나, 주요 인프라와 디지털 시스템의 취약성 에 관심이 쏠림\n- Trump 행정부는 일련의 장애가 조직적인 사이버공격은 아니라고 밝혔으며 , 국가정보국장은 상당수가 AI를 활용하는 해커에 대응하기 위한 긴급 패치와\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37914,
+   "title": "재미로 AWS Lambda에서 Qwen 서빙하기, 비용은 80배 넘게",
+   "url": "https://news.hada.io/topic?id=37914",
+   "publishedAt": "2026-11-27T03:46:29+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 자체 호스팅 모델의 추론을 5,600개의 AWS Lambda 로 분산하는 실험에 성공했지만, 비교 대상인 호스팅 모델보다 비용이 80배 이상 높았음\n- 실험에는 Qwen3.5-4B를 미세 조정한 H2O-Lightning 을 사용함. 문서를 읽고 선택지 하나를 고르는 의사결정 모델이라 단 한 번의 순전파에 집중할 수 있었음\n- Lambda 메모리를 3GB로 제한 하고, 전체 모델 대신 레이어와 토큰 블록 단위로 작업을 나눔. 각 작업은 S3에서 입력을 읽고 계산 결과를 다시 저장함\n- 4,000토큰 문서 처리에 17초와 3.4센트가 들었음. 100만 토큰당 비용은 8.40달러로, Gemini\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37915,
+   "title": "AI가 완치한 질병 추적하기",
+   "url": "https://news.hada.io/topic?id=37915",
+   "publishedAt": "2026-11-27T03:49:29+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- AI가 발견한 치료법으로 완치한 질병은 0개 로 집계됐으며, 2026년 11월 26일 기준 AI 발견 신약의 FDA 또는 EMA 승인도 없음\n- 집계에 포함되려면 AI가 표적과 분자를 모두 선정하거나 설계 하고, 임상 3상과 규제기관 승인을 거쳐 실제로 질병을 제거하거나 지속적으로 되돌려야 함\n- 영상 판독, 단백질 구조 예측, 연구 효율 개선 은 완치와 구분하며, 임상시험 중인 후보물질도 집계하지 않음\n- 가장 앞선 사례로 꼽는 Rentosertib 은 폐섬유증 대상 임상 3상에 진입했지만, 성공하더라도 우선 치료제이지 완치제는 아니라는 한계가 있음\n- AI 기\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37916,
+   "title": "미증명 가정 없이 준지수 시간에 정수 소인수분해",
+   "url": "https://news.hada.io/topic?id=37916",
+   "publishedAt": "2026-11-27T04:31:43+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 모든 정수 $N \\ge 2$의 완전한 소인수분해 를 수행하는, 미증명 수론 가정에 의존하지 않는 고전적 확률 알고리듬을 구성함\n- 오류 없는 Las Vegas 알고리듬 으로, 최악의 경우 기대 실행 시간은 $L_N[1/3, 105]$, 결정론적 작업 공간 상한은 $L_N[1/3, 40]$임\n- 출력한 각 소인수는 Agrawal–Kayal–Saxena 소수 판정 으로 결정론적으로 검증하고, 직접 곱셈으로 원래 정수 $N$과 일치하는지 확인함\n- 전체 증명의 Lean 4 v4.35.0 형식화 도 Mathlib만 사용해 완료했으며, 별도의 동반 제출물로 공개할 예정임\n- 논문과 형식화는 Gemini 4 기반 Coge \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37917,
+   "title": "Llama.cpp용 AMD 특화 패치",
+   "url": "https://news.hada.io/topic?id=37917",
+   "publishedAt": "2026-11-27T05:32:13+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- llama-cpp-rdna-boosts 는 llama.cpp에 소규모 AMD 특화 패치를 적용해 프리필과 토큰 생성 속도를 높이는 프로젝트임\n- 노트북에 eGPU로 연결한 AMD R9700 테스트에서 프리필은 약 700→1,300토큰/초, 토큰 생성은 약 35→55토큰/초로 향상됐으며, 환경에 따라 결과가 달라질 수 있음\n- 특정 llama.cpp 커밋을 기반으로 패치를 적용하고, 최신 버전에도 변경 사항을 계속 재적용하는 방식으로 작은 변경 범위 를 유지함\n- 비교 대상인 Strata 는 속도를 높이기 위해 원래 선택될 전문가 대신 VRAM에 이미 올라온 전문가를 우선하는 등, 하드웨어 \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
   }
  ],
  "gaps": [
@@ -47,11 +116,11 @@
    ]
   }
  ],
- "updatedAt": "2026-11-27T03:57:48+09:00",
+ "updatedAt": "2026-11-27T06:25:36+09:00",
  "counts": {
-  "items": 2,
-  "candidates": 2,
-  "aiGuess": 1
+  "items": 7,
+  "candidates": 7,
+  "aiGuess": 6
  },
  "status": "ok"
 }
