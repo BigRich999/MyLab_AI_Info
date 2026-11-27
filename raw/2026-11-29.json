@@ -1,0 +1,85 @@
+{
+ "date": "2026-11-29",
+ "window": "2026-11-28 03:00 ~ 2026-11-29 03:00 (KST, 게시 시각 기준)",
+ "source": "GeekNews RSS (GitHub Actions 6시간 간격 누적)",
+ "runs": [
+  {
+   "at": "2026-11-28T06:08:02+09:00",
+   "rssUpdated": "2026-11-28T05:39:52+09:00",
+   "entries": 5,
+   "added": 5,
+   "rssOldest": "2026-11-27T17:34:27+09:00",
+   "rssNewest": "2026-11-28T05:39:52+09:00",
+   "htmlOk": null
+  }
+ ],
+ "items": [
+  {
+   "id": 37966,
+   "title": "뉴욕과 캘리포니아, 새해부터 연령 기반 접근 제한 규칙 시행",
+   "url": "https://news.hada.io/topic?id=37966",
+   "publishedAt": "2026-11-28T03:33:55+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 2027년 1월 , 캘리포니아와 뉴욕에서 소셜미디어의 개인화 피드와 야간 알림 등을 연령과 동의 여부에 따라 제한하는 법률과 규정이 시행될 예정임\n- 캘리포니아는 18세 미만 에게 알고리듬 피드와 야간 알림을 제공하려면 검증 가능한 부모 동의를 요구하며, 16세 미만 에게는 부모 동의가 있어도 개인화 추천, 자동 재생, 무한 스크롤 등을 금지함\n- 뉴욕에서는 연령을 확인하지 않거나 18세 미만으로 추정된 이용자 가 개인화 추천과 야간 알림이 없는 계정으로 제한되거나 서비스 접근 자체를 차단당할 수 있음\n- 두 주의 규칙은 성인을 미성년 \n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37967,
+   "title": "인기 쇼핑 사이트에서 WebRTC를 이용한 신용카드 정보 탈취 스크립트 발견",
+   "url": "https://news.hada.io/topic?id=37967",
+   "publishedAt": "2026-11-28T04:35:50+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 블랙 프라이데이 직전 Lascana, Samsonite, American Tourister, Revolve, FWRD 온라인 매장에서 카드 정보 탈취 스크립트가 발견됐으며, 신고 이후 11월 24~25일 모두 제거됨\n- 공격은 WebRTC 데이터 채널 로 탈취 코드를 받아 실행하고 카드 정보를 외부로 전송함. 일반 웹 요청보다 감시가 덜한 통신 경로를 이용하려 했을 가능성이 있음\n- Lascana 결제 페이지 에서는 테스트 카드 정보의 외부 전송이 실제로 확인됐지만, 실제 고객 피해 여부와 규모는 확인되지 않음\n- 공격은 모바일 결제 화면 을 겨냥한 것으로 보이며, 데스크톱 검사나 홈\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37968,
+   "title": "나는 AI가 두렵다",
+   "url": "https://news.hada.io/topic?id=37968",
+   "publishedAt": "2026-11-28T04:38:51+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- AI에 생각을 맡길 때마다 머리가 나빠지는 듯한 느낌 이 들어 불안함\n- 해킹 증가로 인한 세계 경제 붕괴나 핵전쟁도 두렵지만, 스스로 어쩔 수 없는 위협보다 자기 뇌에 미치는 영향 이 더 직접적인 걱정임\n- 모든 일에 드는 노력이 줄어드는 것은 좋아 보이지만, 그만큼 성취감도 느끼지 못하고 있음 \n- 힘든 일을 해냈을 때의 보상이 사라지고, 쓰지 않는 능력을 잃듯 생각하는 능력을 잃어가는 기분 이 듦\n- 비슷한 경험을 하는 사람이 더 있을 것이라 생각하며, 독자들에게 해결 조언과 각자의 생각 을 요청함\n 편해진 작업과 사라진 성취감\n- AI에 \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37969,
+   "title": "GPT 6.2 Astra, 역사적 미스터리를 풀다",
+   "url": "https://news.hada.io/topic?id=37969",
+   "publishedAt": "2026-11-28T05:36:52+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- GPT-6.2 Astra 가 최소한의 지시만으로 Yale 소장 1808년 익명 스케치북의 제작자 후보를 약 22분 만에 찾아냄. 이후 사람이 확보한 일기의 필체, 여정, 스케치 기록이 가설을 뒷받침함\n- 모델은 그림에 적힌 날짜와 여러 기록 속 이동 경로를 대조해 Chabot 를 지목하고, 가설 검증에 필요한 미공개 일기의 소장처까지 찾아냄\n- 새로 확보한 162쪽 분량의 일기 와 첨부 문서는 제작자 확인을 넘어 캐나다 모피 무역의 생활상, 사업 구조, 사료의 기원을 연구할 자료가 됨\n- 같은 지시를 받은 Fable 5.2 도 약 35분 만에 같은 인물을 지목했지만, 결\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37970,
+   "title": "“Claude의 퍼소나는 무엇일까?” 그리고 다른 질문들",
+   "url": "https://news.hada.io/topic?id=37970",
+   "publishedAt": "2026-11-28T05:39:52+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 모델마다 50회씩 동물 캐릭터 자아상인 퍼소나(fursona) 를 물은 실험에서 Claude는 까마귀과 조류나 문어, Gemini는 사이버네틱 캐릭터, GPT-6.2 Astra는 나방을 선호하는 패턴을 보임\n- Gemini의 기계적 미학 은 특히 일관적이었으며, 모든 Gemini 모델이 50회 중 최소 48회 기계 관련 요소를 사용함. Claude와 GPT-6.2는 같은 요소를 전혀 언급하지 않음\n- Claude는 외형보다 행동과 성격 으로 캐릭터를 묘사하는 경향이 있으며, 목도리, 열쇠, 조명, 뜨거운 음료 같은 소품도 반복됨\n- 대부분의 모델은 성중립적인 언어와 묘사 를 사용했지만,\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  }
+ ],
+ "updatedAt": "2026-11-28T06:08:02+09:00",
+ "counts": {
+  "items": 5,
+  "candidates": 5,
+  "aiGuess": 3
+ },
+ "status": "ok"
+}
