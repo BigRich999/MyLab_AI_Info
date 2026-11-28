@@ -11,6 +11,15 @@
    "rssOldest": "2026-11-27T17:34:27+09:00",
    "rssNewest": "2026-11-28T05:39:52+09:00",
    "htmlOk": null
+  },
+  {
+   "at": "2026-11-28T16:38:55+09:00",
+   "rssUpdated": "2026-11-28T16:31:38+09:00",
+   "entries": 17,
+   "added": 17,
+   "rssOldest": "2026-11-28T04:38:51+09:00",
+   "rssNewest": "2026-11-28T16:31:38+09:00",
+   "htmlOk": null
   }
  ],
  "items": [
@@ -73,13 +82,217 @@
    "via": "rss",
    "aiGuess": true,
    "alreadyPublished": false
+  },
+  {
+   "id": 37971,
+   "title": "Michael Nielsen, 자신의 신경망 책을 내림",
+   "url": "https://news.hada.io/topic?id=37971",
+   "publishedAt": "2026-11-28T06:34:47+09:00",
+   "author": "neo",
+   "originalUrl": "https://neuralnetworksanddeeplearning.com",
+   "content": "- Michael Nielsen 이 자신의 오래된 신경망 책을 내렸다고 밝힘\n- 내려진 책은 신경망 을 다루는 도서임\n- 대상은 Nielsen이 직접 자신의 책으로 지칭한 자료 임\n- 새로 나온 자료가 아니라 기존에 나온 오래된 책 임\n- 해당 책은 Neural Networks and Deep Learning 웹사이트에 연결돼 있음\n 내려진 신경망 책\n- Michael Nielsen 이 자신의 오래된 신경망 책을 내렸다고 밝히며 해당 책의 웹사이트 를 첨부함",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37972,
+   "title": "DART 소행성 궤도 변경 실험의 충돌 흔적을 담은 첫 이미지",
+   "url": "https://news.hada.io/topic?id=37972",
+   "publishedAt": "2026-11-28T06:37:47+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- ESA의 Hera 탐사선 이 DART 충돌 이후의 Dimorphos를 근접 관측해, 소행성 자체에 버금가는 거대한 충돌구와 달라진 형태를 확인함\n- 2022년 DART 충돌은 Dimorphos의 약 12시간 공전 주기를 33분 단축했으며, Hera 영상에서는 소행성이 공전하면서 자세도 심하게 뒤집히는 모습이 드러남\n- 두 소행성 주변에서 수백 개의 암석 덩어리 가 발견됐지만, DART 충돌로 튀어나왔는지 과거 Dimorphos 형성 과정에서 남았는지는 아직 확실하지 않음\n- 앞으로 6개월간 근접 관측과 소형 위성의 착륙 시도로 조성, 내부 구조, 질량 을 조사하고, 지구를 위협\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37973,
+   "title": "Convex 스킬, 사용자에게 알리지 않고 앱 아이디어를 원격 서버로 전송",
+   "url": "https://news.hada.io/topic?id=37973",
+   "publishedAt": "2026-11-28T07:32:40+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Anthropic의 claude-plugins-official 마켓플레이스에 등록된 Convex 플러그인에서, 사용자 아이디어의 무고지 전송과 원격 스크립트 실행 방식에 관한 문제가 제기됨\n- quickstart 는 사용자의 한 문장짜리 프로젝트 아이디어를 외부 호스트로 POST하며, 코드 주석은 이 요청을 텔레메트리로 표시함\n- add 는 원격 스크립트를 곧바로 Bash에 전달하고, labs-quickstart 는 안전 분류기의 차단을 피하도록 다운로드와 실행을 별도 호출로 나누라고 지시함\n- 제보자는 악의적 행위보다는 온보딩 안정화 를 위한 시도로 해석하지만, 사용자나 관리자가\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37974,
+   "title": "미국 주정부들, Grok의 비동의 성적 이미지 생성 및 유통 문제로 SpaceX 제소",
+   "url": "https://news.hada.io/topic?id=37974",
+   "publishedAt": "2026-11-28T08:40:25+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 버지니아주와 오리건주 법무장관이 SpaceX를 상대로 각각 소송을 제기 함. Grok의 비동의 성적 이미지 생성을 방치하면서도 X와 AI 도구의 안전성을 허위로 홍보했다는 혐의임\n- 소송에 따르면 Grok은 기존 사진 한 장만으로 당사자의 인지나 동의 없이 사실적인 나체 또는 성행위 이미지와 영상을 생성할 수 있었으며, 실제로 이를 생성함\n- 두 법무장관은 회사가 업계 표준 안전장치를 무시하고 성적 이미지 생성을 허용하는 ‘ spicy mode ’를 홍보했으며, X와의 통합 으로 해당 이미지가 광범위하게 생성되고 유통됐다고 비판함\n- CCDH 연구 추 \n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37975,
+   "title": "컴퓨터 검증을 통과한 거짓 증명",
+   "url": "https://news.hada.io/topic?id=37975",
+   "publishedAt": "2026-11-28T08:43:25+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 증명의 모든 단계를 검사한다는 프로그램에서도 건전성 버그(soundness bug) 가 보고됐으며, 거짓 명제를 통과시키는 데 실제로 악용할 수 있음이 입증된 사례도 많음\n- 신뢰 컴퓨팅 기반(TCB)의 복잡성 최소화 가 보안의 기본 접근법이지만, 검증 커널이 작다는 사실만으로 코드 검토의 충실도나 기반 프로그래밍 언어의 무결성을 보장하지는 못함\n- 여러 검증기로 같은 증명을 검사하면 한 프로그램의 버그를 보완할 수 있지만, 검증기들이 같은 버그를 공유 하는 경우도 있어 공격 방어 효과는 불확실함\n- HOL Light 복제 구현인 Candle 은 CPU\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37976,
+   "title": "머신러닝의 불확실성 입문",
+   "url": "https://news.hada.io/topic?id=37976",
+   "publishedAt": "2026-11-28T08:46:25+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 모델은 데이터가 드문 상황에서 어떤 결과가 가능하고 얼마나 그럴듯한지 를 자체 가정에 기대어 판단함. 그 가정이 틀리면 평소에 잘 맞는 모델도 중요한 상황에서 확신을 갖고 틀릴 수 있음\n- 인식적 불확실성 은 아직 배우지 못한 것에서, 우연적 불확실성 은 입력으로 관측하지 못하는 정보에서 발생함. 어떤 정보를 입력에 담는지에 따라 둘의 경계도 달라짐\n- 평균제곱오차로 학습한 단일 가우시안 모델은 좌회전과 우회전이 모두 가능한 갈림길에서 평균인 직진을 예측할 수 있음. 실제 분포를 표현할 수 없는 모델 은 데이터만 늘려서는 고칠 수 없음\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37978,
+   "title": "모두가 모든 것을 만들고 있다",
+   "url": "https://news.hada.io/topic?id=37978",
+   "publishedAt": "2026-11-28T09:10:02+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 개발 도구 업체들이 기존 제품을 버리는 피벗 대신, 다른 제품군으로의 확장 을 병행하고 있음\n- 인증을 제공하던 WorkOS는 사내 앱 플랫폼을, 빌드에 집중하던 Depot은 Git 호스팅을 출시함. 이슈 추적 도구 Linear는 AI 코딩과 코드 리뷰로, 터미널 Warp는 에이전트 호스팅으로 확장함\n- AI로 기능을 만들기 쉬워졌지만, 제품마다 지원, 온콜, 보안, SLA, 규제 준수 부담과 시장 진출 지원이 추가됨\n- 새 제품을 출시한 뒤에는 고객이 실제로 쓰게 만드는 일 이 더 어려움. Vercel이 CI를 추가할 수 있었던 건, 기존 고객이 이미 Vercel에서 앱\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37979,
+   "title": "Jolt - C와 대화하는 Clojure",
+   "url": "https://news.hada.io/topic?id=37979",
+   "publishedAt": "2026-11-28T09:30:02+09:00",
+   "author": "xguru",
+   "originalUrl": null,
+   "content": "- JVM 없이 Clojure를 실행 하고, C 라이브러리를 Clojure 함수처럼 직접 불러 쓰는 언어 구현체\n- SQLite, PostgreSQL, OpenSSL 등 기존 C 라이브러리와 연결 해 데이터베이스와 네트워크 기능을 활용\n- jolt build 로 앱과 런타임, 의존성을 실행 파일 하나에 묶어 배포 . 실행할 컴퓨터에 JVM이나 Chez Scheme을 따로 설치할 필요가 없음\n- Clojure 코드를 Scheme으로 변환해 컴파일하며, Chez 기반 네이티브 실행과 Gambit 기반 JavaScript 출력 을 지원\n- 불변 자료구조, 지연 시퀀스, 매크로, 멀티메서드 등 Clojure의 핵심 기능을 유지 하고, OS 스\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37980,
+   "title": "BUI: BlenderUI를 사용하는 세계 최대 2D 차트 라이브러리",
+   "url": "https://news.hada.io/topic?id=37980",
+   "publishedAt": "2026-11-28T09:31:35+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- BUI Charts 는 BUI용 차트 컴포넌트 모음으로, 차트 80종과 실행 가능한 예제 867개를 제공함\n- 차트를 rsx! 컴포넌트 로 작성하고 class 로 스타일을 지정하며, 연결한 상태의 시그널이 바뀌면 차트를 다시 그림\n- Dataset 을 구현한 데이터와 행의 값을 읽는 클로저를 사용하므로, 차트에 맞춰 데이터 구조를 바꿀 필요가 없음\n- 툴팁과 범례 상호작용을 지원하며, 축이 있는 차트에서는 휠/핀치 확대/축소 가 가능하고 적합한 경우 드래그로 범위를 선택할 수 있음\n- 활성 테마의 색상을 사용하고 레이아웃을 캐시 하며, 호버만으로는 레이아웃을 다\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37983,
+   "title": "“나는 두렵다”: 《Careless People》의 Sarah Wynn-Williams가 겪는 발언 금지 명령 아래의 삶",
+   "url": "https://news.hada.io/topic?id=37983",
+   "publishedAt": "2026-11-28T10:33:30+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 전직 Meta 직원 Sarah Wynn-Williams 는 폭로서 《Careless People》 출간 이후 Meta에 관한 공개 발언을 금지당했으며, 법적 대응과 파산에 대한 두려움 속에서 스스로 말을 검열하게 됨\n- 비밀유지계약(NDA) , 비방 금지 조항, 법원 명령과 막대한 소송 비용은 기업에 불편한 사실을 지우는 수단이 될 수 있으며, 한 사람을 공개적으로 침묵시키는 것만으로도 다른 사람들의 자기검열을 유도할 수 있음\n- 소수 기업에 권력이 집중된 첨단 AI 의 위험을 가장 가까이서 보는 연구자와 엔지니어들이 계약으로 발언을 제한받는 만큼, 내부자의 경고할 권리 를 보호해야 함\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37984,
+   "title": "Citroën 유압 시스템",
+   "url": "https://news.hada.io/topic?id=37984",
+   "publishedAt": "2026-11-28T11:34:19+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Citroën의 유압공압 서스펜션 은 압축 가능한 질소를 스프링으로, 유압유를 감쇠와 차고 조절 수단으로 사용해 부드러운 승차감과 차체 제어를 결합함\n- 엔진 구동 고압 펌프 가 자동 수평 유지와 차고 조절을 가능하게 하며, 차종에 따라 제동, 조향, 클러치와 변속까지 같은 유압 계통으로 작동함\n- 전자제어 방식인 Hydractive 는 센서 입력에 따라 부드러운 모드와 단단한 모드를 전환하고, Activa 는 유압 잭을 추가해 차체 롤을 억제함\n- 초기 DS는 씰과 수분을 흡수하는 유압유 때문에 누유와 산화 문제를 겪었으나, 1960년대 중반 LHM 광유 \n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37987,
+   "title": "Google DeepCrossAttention, 최대 3배 빠르게 동등한 모델 품질 달성",
+   "url": "https://news.hada.io/topic?id=37987",
+   "publishedAt": "2026-11-28T12:33:23+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- DeepCrossAttention(DCA) 는 이전 레이어의 출력을 토큰별로 선택하고 조합하는 구조로, 기존 잔차 연결의 정보 희석을 줄이고 동등한 모델 품질에 최대 3배 빠르게 도달함\n- 동적 레이어 라우팅 과 깊이 방향 교차 어텐션 을 결합해, 모든 이전 표현을 동일한 비중으로 더하는 대신 현재 입력에 필요한 특징을 선택적으로 가져옴\n- C4와 LM1B 언어 모델링 실험에서 표준 트랜스포머의 성능에 도달하는 훈련 스텝 수를 최대 5분의 1로 줄였으며 , 같은 훈련 예산에서는 더 낮은 퍼플렉시티를 달성함\n- 추가 파라미터는 전체의 0.2% 미만 이지만, 레\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37988,
+   "title": "Balatro 개발 연대기",
+   "url": "https://news.hada.io/topic?id=37988",
+   "publishedAt": "2026-11-28T13:34:24+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Balatro 는 2021년 12월 IT 직장인의 휴가 중 시작한 취미 프로젝트에서 출발해, 친구들의 반응과 공개 테스트를 거쳐 2024년 2월 정식 출시됨\n- 초기 목표는 수익이 아니라 만드는 즐거움 이었으며, 기존 설계를 따라가기보다 직접 시행착오를 겪으려고 다른 로그라이크 게임 플레이도 의도적으로 피함\n- 스트리머의 입소문 과 Playstack의 퍼블리싱 지원이 상업화의 전환점이 됐고, Steam 위시리스트는 첫 공개 베타 직후 48개에서 출시 당일 20만 8,401개로 늘어남\n- 피드백을 반영해 데모를 횟수 제한에서 콘텐츠 제한 으로 바꾸고 현지화와 콘\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37989,
+   "title": ".php 최상위 도메인 신청에 대한 반대 의견, ICANN 사이트에 공개",
+   "url": "https://news.hada.io/topic?id=37989",
+   "publishedAt": "2026-11-28T14:01:53+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- Automattic이 신규 최상위 도메인 신청을 .vibe 에서 .php 로 변경 한다고 확인한 뒤, ICANN의 신청 의견 게시판에 반대 의견이 공개되기 시작함\n- 반대 의견은 파일 확장자와 도메인의 혼동에 따른 보안 위험 , 특정 기업이 독립적인 오픈소스 생태계의 이름을 통제하는 문제에 집중됨\n- wp-login.php 같은 익숙한 파일명이 등록 가능한 도메인이 되면, 무관한 사이트로 사용자를 유도하거나 피싱과 사칭 에 악용될 수 있다는 우려가 있음\n- PHP 개발자와 WordPress 기여자들은 언어 사용이 이름에 대한 권리를 주지는 않는다며, .php 가 필요하다면\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37990,
+   "title": "Atari Homebrew Awards 취소",
+   "url": "https://news.hada.io/topic?id=37990",
+   "publishedAt": "2026-11-28T14:33:23+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 8년간 홈브루 게임 제작자를 기려온 Atari Homebrew Awards 가 올해 제9회 행사를 취소함. 주최 측은 AI 사용 게임의 참가 자격을 공정하게 판단할 방법을 찾지 못함\n- LLM 성능 향상 으로 코드를 한 줄도 직접 쓰지 않고 게임 전체를 만들 수 있게 됐으며, 일부 개발자는 AI를 활용해 일주일에 여러 게임을 출시하고 있음\n- AI 전면 금지 는 사소한 용도로만 AI를 쓴 개발자까지 배제하지만, 전면 허용 은 AI로 만든 게임과 직접 코딩한 게임 사이의 형평성 문제를 낳음\n- 게임별 AI 사용량을 보고하거나 계산하는 표준 이 없고 공개 수준도 제각각\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37991,
+   "title": "임대인의 AI 비서가 월세 납부를 미뤄도 된다고 안내한 뒤 퇴거당한 여성",
+   "url": "https://news.hada.io/topic?id=37991",
+   "publishedAt": "2026-11-28T15:32:37+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- 미국 노스캐롤라이나주 세입자 Laura Mack가 연체 월세 3,934.17달러 를 11월 30일까지 내도 된다는 이메일을 받았지만, 11월 19일 퇴거당함 \n- Mack는 임대 사무실 직원이 상충하는 안내의 원인으로 AI 비서 Olivia 를 지목했다고 전했으나, 아파트 측은 이 경위를 공개적으로 확인하지 않음\n- WRAL이 검토한 이메일에는 AI가 보낸 메시지라는 표시가 없었다고 함 . Mack는 개인정보와 보수 문제까지 담겨 있어 임대 사무실과 소통한다고 믿었음\n- Olivia에게 납부 기한 연장 권한 이 있었는지, 직원이 퇴거 전 이메일을 검토했는지, 이메일이 법적\n…",
+   "via": "rss",
+   "aiGuess": true,
+   "alreadyPublished": false
+  },
+  {
+   "id": 37993,
+   "title": "Unkernel: 실제 Linux 커널을 WebAssembly로 컴파일",
+   "url": "https://news.hada.io/topic?id=37993",
+   "publishedAt": "2026-11-28T16:31:38+09:00",
+   "author": "neo",
+   "originalUrl": null,
+   "content": "- unkernel 은 WebAssembly로 컴파일한 Linux를 브라우저 탭에서 실행하며, 수정하지 않은 aarch64 사용자 공간 을 지원함\n- Debian, Alpine 또는 기본 셸로 부팅할 수 있고, 루트 파일 시스템의 변경 사항은 배포판별로 브라우저에 보관함\n- 여러 CPU를 선택하면 SMP 커널 을 부팅하고 CPU마다 Web Worker를 사용하며, JIT 컴파일러 는 자주 실행하는 게스트 코드를 WebAssembly로 변환함\n- Wisp 네트워크 로 게스트의 인터넷 연결을 제공하고, 게스트에서 실행한 웹 서버를 브라우저 창이나 별도 탭으로 열 수 있음\n- 그래픽과 사운드 , 실행 중인 시스\n…",
+   "via": "rss",
+   "aiGuess": false,
+   "alreadyPublished": false
   }
  ],
- "updatedAt": "2026-11-28T06:08:02+09:00",
+ "updatedAt": "2026-11-28T16:38:55+09:00",
  "counts": {
-  "items": 5,
-  "candidates": 5,
-  "aiGuess": 3
+  "items": 22,
+  "candidates": 22,
+  "aiGuess": 11
  },
  "status": "ok"
 }
